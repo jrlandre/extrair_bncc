@@ -64,86 +64,34 @@ def processar_descricao(texto_bruto, codigo):
     return re.sub(r"^[\s\(\)\.\-]+", "", texto).strip()
 
 def expandir_anos_ef(codigo_bncc):
+    """
+    Expande códigos de faixa (ex: EF15) para lista de anos individuais.
+    Garante 'perfect info' replicando o item para cada ano.
+    """
     match = re.search(r"EF(\d{2,3})", codigo_bncc)
     if not match: return ["Ano Indefinido"]
     digits = match.group(1)
-    if digits == "15": return [f"{i}º Ano" for i in range(1, 6)]
-    if digits == "69": return [f"{i}º Ano" for i in range(6, 10)]
-    if digits == "35": return [f"{i}º Ano" for i in range(3, 6)]
-    if digits == "12": return ["1º Ano", "2º Ano"]
-    if digits == "67": return ["6º Ano", "7º Ano"]
-    if digits == "89": return ["8º Ano", "9º Ano"]
-    if len(digits) == 2 and digits.isdigit():
+    
+    anos = []
+    # Faixas comuns na BNCC
+    if digits == "15": anos = [1, 2, 3, 4, 5]
+    elif digits == "69": anos = [6, 7, 8, 9]
+    elif digits == "35": anos = [3, 4, 5]
+    elif digits == "12": anos = [1, 2]
+    elif digits == "67": anos = [6, 7]
+    elif digits == "89": anos = [8, 9]
+    # Anos individuais (01 a 09)
+    elif len(digits) == 2 and digits.isdigit():
         val = int(digits)
-        if 1 <= val <= 9: return [f"{val}º Ano"]
-    return [f"Ano {digits}"]
-
-# --- MINERAÇÃO DE COMPETÊNCIAS V6 (Heurística de Lista) ---
-def extrair_competencias_texto(pdf, page_range):
-    print("--- Mineração de Competências (EF) - V6 Radar ---")
-    competencias_map = {}
+        if 1 <= val <= 9: anos = [val]
     
-    # Mapeamento aproximado de palavras-chave para identificar a área
-    KEYWORDS = {
-        "LINGUAGENS": "Linguagens", "LÍNGUA PORTUGUESA": "Língua Portuguesa",
-        "ARTE": "Arte", "EDUCAÇÃO FÍSICA": "Educação Física", "INGLESA": "Língua Inglesa",
-        "MATEMÁTICA": "Matemática", "CIÊNCIAS": "Ciências", "GEOGRAFIA": "Geografia",
-        "HISTÓRIA": "História", "RELIGIOSO": "Ensino Religioso"
-    }
-
-    current_context = None
-    buffer_list = []
-    
-    for page_num in page_range:
-        if page_num >= len(pdf.pages): break
-        page = pdf.pages[page_num]
-        text = page.extract_text()
-        if not text: continue
-        
-        text_norm = clean_text_basic(text).upper()
-        
-        # 1. Detecta Contexto (Título da Competência)
-        if "COMPETÊNCIAS ESPECÍFICAS" in text_norm:
-            # Tenta descobrir de qual área/componente se trata
-            for kw, val in KEYWORDS.items():
-                if kw in text_norm:
-                    # Se mudou o contexto, salva o anterior
-                    if current_context and buffer_list and current_context != val:
-                        if current_context not in competencias_map: competencias_map[current_context] = []
-                        competencias_map[current_context].extend(buffer_list)
-                        buffer_list = []
-                    
-                    current_context = val
-                    break
-        
-        # 2. Captura Itens Numerados (se tivermos um contexto ativo)
-        if current_context:
-            lines = text.split('\n')
-            for line in lines:
-                line_clean = clean_text_basic(line)
-                if not line_clean: continue
-                
-                # Match para "1. Texto" ou "01. Texto"
-                match_item = re.match(r"^(\d{1,2})[.\)]\s+(.*)", line_clean)
-                if match_item:
-                    # Início de item
-                    buffer_list.append(match_item.group(2).strip())
-                elif buffer_list and len(line_clean) > 5 and not line_clean.isupper():
-                    # Continuação de item (ignora cabeçalhos UPPERCASE e números de página)
-                    if not re.match(r"^\d+$", line_clean) and "COMPETÊNCIAS" not in line_clean.upper():
-                        buffer_list[-1] += " " + line_clean
-
-    # Salva o último
-    if current_context and buffer_list:
-        if current_context not in competencias_map: competencias_map[current_context] = []
-        competencias_map[current_context].extend(buffer_list)
-        
-    return competencias_map
+    if not anos: return [f"Ano {digits}"]
+    return [f"{a}º Ano" for a in anos]
 
 # --- EXTRATORES ---
 
 def extract_ei_final(pdf):
-    # (Mantido - EI está OK)
+    # (Código Original Mantido - Educação Infantil)
     print("--- Processando Educação Infantil ---")
     def separar_itens_sintese(texto_bruto_celula):
         if not texto_bruto_celula: return []
@@ -229,140 +177,215 @@ def extract_ei_final(pdf):
                             output["sintese_aprendizagens"][ultimo_campo_sintese].extend(novos)
     return output
 
-def extract_ef_v6_final(pdf):
-    print("--- Processando Ensino Fundamental (V6: Extração Gráfica Tolerante) ---")
+def extract_competencias_ef(pdf, page_range):
+    """
+    Extrai as competências (Nível 2 e Nível 4) detectando os títulos exatos na página.
+    """
+    print("--- Extraindo Competências (Área e Componente) ---")
+    competencias = {}
+    current_key = None
+    buffer = []
     
+    # Regex para capturar: "COMPETÊNCIAS ESPECÍFICAS DE [ALGO] PARA O ENSINO FUNDAMENTAL"
+    re_titulo = re.compile(r"COMPETÊNCIAS ESPECÍFICAS DE (.+?) PARA O ENSINO FUNDAMENTAL", re.IGNORECASE)
+    
+    for page_num in page_range:
+        if page_num >= len(pdf.pages): break
+        page = pdf.pages[page_num]
+        text = page.extract_text()
+        if not text: continue
+        
+        lines = text.split('\n')
+        for line in lines:
+            line_clean = clean_text_basic(line)
+            
+            # 1. Identifica Título
+            match = re_titulo.search(line_clean)
+            if match:
+                if current_key and buffer:
+                    competencias[current_key] = buffer
+                
+                raw_name = match.group(1).strip()
+                # Normalização de nomes para bater com o MAPA_EF_ESTRUTURA
+                if "LINGUAGENS" in raw_name.upper(): current_key = "Linguagens"
+                elif "MATEMÁTICA" in raw_name.upper(): current_key = "Matemática"
+                elif "CIÊNCIAS DA NATUREZA" in raw_name.upper(): current_key = "Ciências da Natureza"
+                elif "CIÊNCIAS HUMANAS" in raw_name.upper(): current_key = "Ciências Humanas"
+                elif "ENSINO RELIGIOSO" in raw_name.upper(): current_key = "Ensino Religioso"
+                elif "LÍNGUA PORTUGUESA" in raw_name.upper(): current_key = "Língua Portuguesa"
+                elif "ARTE" in raw_name.upper(): current_key = "Arte"
+                elif "EDUCAÇÃO FÍSICA" in raw_name.upper(): current_key = "Educação Física"
+                elif "LÍNGUA INGLESA" in raw_name.upper(): current_key = "Língua Inglesa"
+                elif "CIÊNCIAS" in raw_name.upper(): current_key = "Ciências"
+                elif "GEOGRAFIA" in raw_name.upper(): current_key = "Geografia"
+                elif "HISTÓRIA" in raw_name.upper(): current_key = "História"
+                else: current_key = raw_name # Fallback
+                
+                buffer = []
+                continue
+
+            # 2. Identifica Itens da Lista
+            if current_key:
+                # Começa com dígito (1. ou 1 - ou 01.)
+                if re.match(r"^\d+[\.\s\-]", line_clean):
+                    content = re.sub(r"^\d+[\.\s\-]+", "", line_clean).strip()
+                    buffer.append(content)
+                elif buffer and len(line_clean) > 5 and not re.match(r"^[A-Z\s]+$", line_clean):
+                    # Continuação da linha anterior (evita pegar cabeçalhos)
+                    buffer[-1] += " " + line_clean
+
+    if current_key and buffer:
+        competencias[current_key] = buffer
+        
+    return competencias
+
+def extract_ef_final(pdf):
+    print("--- Processando Ensino Fundamental (Estrutura Completa 8 Níveis) ---")
+    
+    # 1. Extração Prévia de Competências (Levels 2 & 4)
+    competencias_map = extract_competencias_ef(pdf, EF_PAGE_RANGE)
+    
+    # Inicializa a árvore com a estrutura fixa
     tree = {}
     
-    # 1. Competências com Radar
-    comps_raw = extrair_competencias_texto(pdf, EF_PAGE_RANGE)
-    
-    # Normaliza chaves do comps_raw para facilitar o match
-    comps_normalized = {}
-    for k, v in comps_raw.items():
-        # Remove acentos e upper para chave
-        key_simple = clean_text_basic(k).upper()
-        comps_normalized[key_simple] = v
-
     for sigla, info in MAPA_EF_ESTRUTURA.items():
-        area_nome = info["area"]
-        comp_nome = info["componente"]
+        area = info["area"]
+        comp = info["componente"]
         
-        if area_nome not in tree:
-            # Busca aproximada no dict de competências
-            c_list = []
-            target = clean_text_basic(area_nome).upper()
-            for k, v in comps_normalized.items():
-                if target in k or k in target: c_list = v; break
-            tree[area_nome] = {"competencias_especificas_area": c_list, "componentes": {}}
+        if area not in tree:
+            tree[area] = {
+                "competencias_especificas_area": competencias_map.get(area, []),
+                "componentes": {}
+            }
         
-        if comp_nome not in tree[area_nome]["componentes"]:
-            c_list = []
-            target = clean_text_basic(comp_nome).upper()
-            for k, v in comps_normalized.items():
-                if target in k or k in target: c_list = v; break
-            tree[area_nome]["componentes"][comp_nome] = {"competencias_especificas_componente": c_list, "anos": {}}
+        if comp not in tree[area]["componentes"]:
+            tree[area]["componentes"][comp] = {
+                "competencias_especificas_componente": competencias_map.get(comp, []),
+                "anos": {}
+            }
 
-    current_lp_field = "Campo de atuação geral"
-    
-    # MEMÓRIA
-    mem_col0 = "Geral"
-    mem_col1 = "Geral"
+    # Variáveis de Estado (Memória de Células Mescladas)
+    current_area = None
+    current_comp = None
+    last_unidade = "Geral"
+    last_objeto = "Geral"
 
     for page_num in EF_PAGE_RANGE:
         if page_num >= len(pdf.pages): break
         page = pdf.pages[page_num]
         
-        # --- SEGREDO V6: Tolerância alta para linhas falhadas ---
-        tables = page.extract_tables({
-            "vertical_strategy": "lines", 
-            "horizontal_strategy": "lines",
-            "intersection_y_tolerance": 50, # Alta tolerância para linhas quebradas
-            "intersection_x_tolerance": 50
-        })
-
+        # Tenta identificar contexto da página (Componente no topo)
+        text_page = page.extract_text() or ""
+        text_upper = text_page.upper()
+        
+        for sigla, info in MAPA_EF_ESTRUTURA.items():
+            # Verifica se o nome do componente aparece no cabeçalho/topo
+            if info["componente"].upper() in text_upper[:300]: 
+                current_comp = info["componente"]
+                current_area = info["area"]
+                break
+        
+        # Extração de Tabela
+        tables = page.extract_tables()
         for table in tables:
-            for row in table:
-                row_cells_raw = [clean_text_basic(c) for c in row] 
-                row_str = "".join(row_cells_raw).upper()
-                
-                if not row_str or "HABILIDADES" in row_str or "PRÁTICAS DE LINGUAGEM" in row_str:
-                    continue
-
-                tem_skill = False
-                for c in row_cells_raw:
-                    if "EF" in c and RE_CODE_EF.search(c): tem_skill = True; break
-
-                # --- ATUALIZAÇÃO DE MEMÓRIA ---
-                if not tem_skill:
-                    if "CAMPO" in row_str:
-                        possivel_campo = next((c for c in row_cells_raw if c), "")
-                        if len(possivel_campo) > 5:
-                            current_lp_field = possivel_campo
-                        continue
+            if not table or len(table) < 2: continue
+            
+            # Detecção de Colunas
+            header_row = [clean_text_basic(c).upper() for c in table[0] if c]
+            header_str = " ".join(header_row)
+            
+            # Índices Padrão
+            idx_unidade = 0
+            idx_objeto = 1
+            idx_habilidade = 2
+            is_lp = False # Língua Portuguesa tem layout diferente
+            
+            if "CAMPO" in header_str or (current_comp == "Língua Portuguesa" and len(table[0]) >= 4):
+                is_lp = True
+                idx_unidade = 0 # Campo de Atuação (Level 6)
+                # Coluna 1 é "Práticas de Linguagem" (vamos pular ou usar como contexto se precisar)
+                idx_objeto = 2  # Objeto de Conhecimento (Level 7)
+                idx_habilidade = 3
+            elif "UNIDADE" in header_str:
+                idx_unidade, idx_objeto, idx_habilidade = 0, 1, 2
+            else:
+                # Tenta inferir se não tiver cabeçalho claro (tabelas continuadas)
+                if len(table[0]) == 4: # Provavelmente LP
+                    is_lp = True
+                    idx_unidade, idx_objeto, idx_habilidade = 0, 2, 3
+                elif len(table[0]) == 3: # Padrão
+                    idx_unidade, idx_objeto, idx_habilidade = 0, 1, 2
                 else:
-                    skill_idx = -1
-                    for idx in range(len(row_cells_raw)-1, -1, -1):
-                        if RE_CODE_EF.search(row_cells_raw[idx]):
-                            skill_idx = idx; break
-                    
-                    if skill_idx == -1: continue
+                    continue 
 
-                    # Atualização Agressiva de Memória
-                    # Se temos texto à esquerda, ele É o contexto, independente da coluna exata
-                    left_context = [c for c in row_cells_raw[:skill_idx] if c and len(c) > 2]
+            # Processa linhas de dados
+            for row in table[1:]:
+                # Check bounds
+                if len(row) <= idx_habilidade: continue
+                
+                raw_unidade = clean_text_basic(row[idx_unidade])
+                raw_objeto = clean_text_basic(row[idx_objeto])
+                raw_habilidade = clean_text_basic(row[idx_habilidade])
+                
+                # Forward Fill (Memória para células mescladas)
+                if raw_unidade: last_unidade = raw_unidade
+                else: raw_unidade = last_unidade
+                
+                if raw_objeto: last_objeto = raw_objeto
+                else: raw_objeto = last_objeto
+                
+                # Valida se tem código de habilidade
+                if not raw_habilidade or not RE_CODE_EF.search(raw_habilidade):
+                    continue
+                
+                # Pode haver múltiplas habilidades na mesma célula
+                matches = list(RE_CODE_EF.finditer(raw_habilidade))
+                if not matches: continue
+                
+                for i, match in enumerate(matches):
+                    code = match.group(1)
+                    sigla_comp = match.group(2)
                     
-                    if len(left_context) == 2:
-                        mem_col0 = left_context[0] # Unidade
-                        mem_col1 = left_context[1] # Objeto
-                    elif len(left_context) == 1:
-                        # Se só tem 1, geralmente é Objeto, e Unidade é a anterior
-                        mem_col1 = left_context[0]
-                        # Mas se for a primeira linha da tabela, pode ser Unidade?
-                        # Na BNCC padrão, a coluna do meio (Objeto) é a mais densa.
+                    # Extrai Descrição
+                    start = match.end()
+                    end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
+                    desc = raw_habilidade[start:end]
+                    # Limpeza final da descrição
+                    desc = re.sub(r"^[\)\.\-\s]+", "", desc).strip()
                     
-                # --- PROCESSAMENTO SKILL ---
-                if tem_skill:
-                    cell_text = row_cells_raw[skill_idx]
-                    matches = list(RE_CODE_EF.finditer(cell_text))
+                    # Verifica se temos contexto válido
+                    if sigla_comp not in MAPA_EF_ESTRUTURA: continue
+                    info_now = MAPA_EF_ESTRUTURA[sigla_comp]
+                    comp_now = info_now["componente"]
+                    area_now = info_now["area"]
                     
-                    for i, match in enumerate(matches):
-                        skill_code = match.group(1)
-                        sigla_comp = match.group(2)
+                    # Nível 5: Expansão de Anos (EF15 -> 1, 2, 3, 4, 5)
+                    anos_list = expandir_anos_ef(code)
+                    
+                    for ano in anos_list:
+                        # Navegação na Árvore
+                        # Area -> Componentes -> Comp -> Anos -> Ano
+                        base_node = tree[area_now]["componentes"][comp_now]["anos"]
                         
-                        start = match.end()
-                        end = matches[i+1].start() if (i+1) < len(matches) else len(cell_text)
+                        if ano not in base_node: base_node[ano] = {}
                         
-                        raw_desc = cell_text[start:end]
-                        if raw_desc.strip().endswith('('): raw_desc = raw_desc.strip()[:-1]
-                        desc = processar_descricao(raw_desc, "")
+                        # Nível 6: Unidade ou Campo
+                        lvl6_key = raw_unidade if raw_unidade else "Geral"
+                        if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
                         
-                        if sigla_comp in MAPA_EF_ESTRUTURA:
-                            info = MAPA_EF_ESTRUTURA[sigla_comp]
-                            area = info["area"]
-                            comp = info["componente"]
-                            anos = expandir_anos_ef(skill_code)
-                            
-                            if sigla_comp == "LP":
-                                nivel_6 = current_lp_field
-                                nivel_7 = mem_col1 if mem_col1 else "Geral"
-                            else:
-                                nivel_6 = mem_col0 if mem_col0 else "Geral"
-                                nivel_7 = mem_col1 if mem_col1 else "Geral"
+                        # Nível 7: Objeto de Conhecimento
+                        lvl7_key = raw_objeto if raw_objeto else "Geral"
+                        if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
+                        
+                        # Nível 8: Habilidade (Evita duplicatas no mesmo nó)
+                        lista_habilidades = base_node[ano][lvl6_key][lvl7_key]
+                        if not any(h['codigo'] == code for h in lista_habilidades):
+                            lista_habilidades.append({"codigo": code, "descricao": desc})
 
-                            branch = tree[area]["componentes"][comp]["anos"]
-                            for ano in anos:
-                                if ano not in branch: branch[ano] = {}
-                                n6, n7 = nivel_6.strip(), nivel_7.strip()
-                                if n6 not in branch[ano]: branch[ano][n6] = {}
-                                if n7 not in branch[ano][n6]: branch[ano][n6][n7] = []
-                                
-                                exists = any(h['codigo'] == skill_code for h in branch[ano][n6][n7])
-                                if not exists:
-                                    branch[ano][n6][n7].append({"codigo": skill_code, "descricao": desc})
     return tree
 
 def extract_em(pdf):
+    # (Código Original Mantido - Ensino Médio)
     print("--- Processando Ensino Médio ---")
     data = []
     current_area = "Geral"
@@ -407,7 +430,7 @@ def main():
     except Exception as e: print(f"Erro: {e}"); return
 
     ei_data = extract_ei_final(pdf)
-    ef_data = extract_ef_v6_final(pdf) # Versão V6
+    ef_data = extract_ef_final(pdf) # Nova versão estruturada
     em_data = extract_em(pdf)
     
     pdf.close()
