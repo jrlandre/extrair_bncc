@@ -192,48 +192,25 @@ def extract_competencias_ef(pdf, page_range):
     for page_num in page_range:
         if page_num >= len(pdf.pages): break
         page = pdf.pages[page_num]
-        text = page.extract_text()
-        if not text: continue
-        
+        text = page.extract_text() or ""
         lines = text.split('\n')
         for line in lines:
-            line_clean = clean_text_basic(line)
-            
-            # 1. Identifica Título
-            match = re_titulo.search(line_clean)
+            line_limpa = line.strip()
+            if not line_limpa: continue
+            match = re_titulo.search(line_limpa.upper())
             if match:
-                if current_key and buffer:
+                if current_key:
                     competencias[current_key] = buffer
-                
-                raw_name = match.group(1).strip()
-                # Normalização de nomes para bater com o MAPA_EF_ESTRUTURA
-                if "LINGUAGENS" in raw_name.upper(): current_key = "Linguagens"
-                elif "MATEMÁTICA" in raw_name.upper(): current_key = "Matemática"
-                elif "CIÊNCIAS DA NATUREZA" in raw_name.upper(): current_key = "Ciências da Natureza"
-                elif "CIÊNCIAS HUMANAS" in raw_name.upper(): current_key = "Ciências Humanas"
-                elif "ENSINO RELIGIOSO" in raw_name.upper(): current_key = "Ensino Religioso"
-                elif "LÍNGUA PORTUGUESA" in raw_name.upper(): current_key = "Língua Portuguesa"
-                elif "ARTE" in raw_name.upper(): current_key = "Arte"
-                elif "EDUCAÇÃO FÍSICA" in raw_name.upper(): current_key = "Educação Física"
-                elif "LÍNGUA INGLESA" in raw_name.upper(): current_key = "Língua Inglesa"
-                elif "CIÊNCIAS" in raw_name.upper(): current_key = "Ciências"
-                elif "GEOGRAFIA" in raw_name.upper(): current_key = "Geografia"
-                elif "HISTÓRIA" in raw_name.upper(): current_key = "História"
-                else: current_key = raw_name # Fallback
-                
+                current_key = match.group(1).title()
                 buffer = []
-                continue
-
-            # 2. Identifica Itens da Lista
-            if current_key:
-                # Começa com dígito (1. ou 1 - ou 01.)
+            elif current_key:
+                line_clean = clean_item_sintese(line_limpa)
                 if re.match(r"^\d+[\.\s\-]", line_clean):
-                    content = re.sub(r"^\d+[\.\s\-]+", "", line_clean).strip()
-                    buffer.append(content)
-                elif buffer and len(line_clean) > 5 and not re.match(r"^[A-Z\s]+$", line_clean):
-                    # Continuação da linha anterior (evita pegar cabeçalhos)
-                    buffer[-1] += " " + line_clean
-
+                    if buffer:
+                        competencias[current_key].append(" ".join(buffer))
+                    buffer = [line_clean]
+                elif buffer and len(line_clean) > 5 and not re.match(r"^[A-Z\s]+$", line_clean.upper()):
+                    buffer.append(line_clean)
     if current_key and buffer:
         competencias[current_key] = buffer
         
@@ -267,6 +244,7 @@ def extract_ef_final(pdf):
     # Variáveis de Estado (Memória de Células Mescladas)
     current_area = None
     current_comp = None
+    previous_comp = None
     last_unidade = "Geral"
     last_objeto = "Geral"
 
@@ -280,13 +258,19 @@ def extract_ef_final(pdf):
         
         for sigla, info in MAPA_EF_ESTRUTURA.items():
             # Verifica se o nome do componente aparece no cabeçalho/topo
-            if info["componente"].upper() in text_upper[:300]: 
+            if info["componente"].upper() in text_upper: 
                 current_comp = info["componente"]
                 current_area = info["area"]
                 break
         
+        # Reset last_unidade e last_objeto se o componente mudou
+        if current_comp != previous_comp:
+            last_unidade = "Geral"
+            last_objeto = "Geral"
+            previous_comp = current_comp
+
         # Extração de Tabela
-        tables = page.extract_tables()
+        tables = page.extract_tables({"vertical_strategy": "lines", "horizontal_strategy": "lines"})
         for table in tables:
             if not table or len(table) < 2: continue
             
