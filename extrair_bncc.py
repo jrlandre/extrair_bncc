@@ -183,35 +183,23 @@ def extract_competencias_ef(pdf, page_range):
     """
     print("--- Extraindo Competências (Área e Componente) ---")
     competencias = {}
-    current_key = None
-    buffer = []
-    re_titulo = re.compile(r"COMPETÊNCIAS ESPECÍFICAS DE (.+?) PARA O ENSINO FUNDAMENTAL", re.IGNORECASE)
+    re_titulo = re.compile(r"COMPETÊNCIAS ESPECÍFICAS DE (.+?) PARA O ENSINO FUNDAMENTAL", re.IGNORECASE | re.DOTALL)
     
     for page_num in page_range:
         if page_num >= len(pdf.pages): break
         page = pdf.pages[page_num]
         text = page.extract_text() or ""
-        lines = text.split('\n')
-        for line in lines:
-            line_clean = clean_text_basic(line)
-            if not line_clean: continue
-            match = re_titulo.search(line_clean)
-            if match:
-                if current_key and buffer:
-                    competencias[current_key] = [' '.join(buffer).strip() ]
-                    buffer = []
-                current_key = match.group(1).title()
-                buffer = []
-            elif current_key:
-                if re.match(r"^\d+\.", line_clean):
-                    if buffer:
-                        competencias[current_key].append(' '.join(buffer).strip() )
-                    buffer = [line_clean]
-                else:
-                    buffer.append(line_clean)
-    if current_key and buffer:
-        competencias[current_key] = [' '.join(buffer).strip() ]
-    
+        match = re_titulo.search(text)
+        if match:
+            key = match.group(1).strip().title()
+            start = match.end()
+            buffer = []
+            item_re = re.compile(r"(\d+)\.\s*(.*?)(?=\n\d+\.|$)", re.S)
+            for m in item_re.finditer(text[start:]):
+                item_text = m.group(1) + ". " + clean_text_basic(m.group(2))
+                buffer.append(item_text.strip())
+            if buffer:
+                competencias[key] = buffer
     return competencias
 
 def extract_ef_final(pdf):
@@ -324,7 +312,7 @@ def extract_ef_final(pdf):
             for row in table[1:]:
                 # For objetos table
                 if is_objetos_table:
-                    raw_unidade = clean_text_basic(row[idx_unidade])
+                    raw_unidade = clean_text_basic(row[idx_unidade]) if len(row) > idx_unidade else ""
                     raw_objeto = clean_text_basic(row[idx_objeto]) if len(row) > idx_objeto else ""
                     if raw_unidade: last_unidade = raw_unidade
                     if raw_objeto: last_objeto = raw_objeto
