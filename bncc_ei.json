@@ -46,6 +46,23 @@
       }
     ]
   },
+  "sintese_aprendizagens": {
+    "EO": [
+      "Respeitar e expressar sentimentos e emoções. Atuar em grupo e demonstrar interesse em construir novas relações, respeitando a diversidade e solidarizando-se com os outros. Conhecer e respeitar regras de convívio social, manifestando respeito pelo outro."
+    ],
+    "CG": [
+      "Reconhecer a importância de ações e situações do cotidiano que contribuem para o cuidado de sua saúde e a manutenção de ambientes saudáveis. Apresentar autonomia nas práticas de higiene, alimentação, vestir-se e no cuidado com seu bem-estar, valorizando o próprio corpo. Utilizar o corpo intencionalmente (com criatividade, controle e adequação) como instrumento de interação com o outro e com o meio. Coordenar suas habilidades manuais."
+    ],
+    "TS": [
+      "Discriminar os diferentes tipos de sons e ritmos e interagir com a música, percebendo-a como forma de expressão individual e coletiva. Expressar-se por meio das artes visuais, utilizando diferentes materiais. Relacionar-se com o outro empregando gestos, palavras, brincadeiras, jogos, imitações, observações e expressão corporal."
+    ],
+    "EF": [
+      "Expressar ideias, desejos e sentimentos em distintas situações de interação, por diferentes meios. Argumentar e relatar fatos oralmente, em sequência temporal e causal, organizando e adequando sua fala ao contexto em que é produzida. Ouvir, compreender, contar, recontar e criar narrativas. Conhecer diferentes gêneros e portadores textuais, demonstrando compreensão da função social da escrita e reconhecendo a leitura como fonte de prazer e informação."
+    ],
+    "ET": [
+      "Identificar, nomear adequadamente e comparar as propriedades dos objetos, estabelecendo relações entre eles. Interagir com o meio ambiente e com fenômenos naturais ou artificiais, demonstrando curiosidade e cuidado com relação a eles. Utilizar vocabulário relativo às noções de grandeza (maior, menor, igual etc.), espaço (dentro e fora) e medidas (comprido, curto, grosso, fino) como meio de comunicação de suas experiências. Utilizar unidades de medida (dia e noite; dias, semanas, meses e ano) e noções de tempo (presente, passado e futuro; antes, agora e depois), para responder a necessidades e questões do cotidiano. Identificar e registrar quantidades por meio de diferentes formas de representação (contagens, desenhos, símbolos, escrita de números, organização de gráficos básicos etc.)."
+    ]
+  },
   "objetivos_aprendizagem": {
     "EI01": {
       "EO": [

@@ -7,8 +7,8 @@ import os
 # --- CONFIGURAÇÃO E CONSTANTES ---
 PDF_PATH = "BNCC_EI_EF_110518_versaofinal_site.pdf"
 
-# Intervalos de Páginas
-EI_PAGE_RANGE = range(35, 57)   # Cobre introdução e tabelas da EI
+# Intervalos de Páginas (Ajustados para cobrir também a Síntese na EI)
+EI_PAGE_RANGE = range(35, 60)   # Estendido para garantir leitura da Síntese
 EF_PAGE_RANGE = range(57, 460)  # Ensino Fundamental
 EM_PAGE_RANGE = range(460, 600) # Ensino Médio
 
@@ -40,16 +40,20 @@ def clean_text(text):
 
 def processar_descricao_ei(texto_bruto, codigo):
     """
-    Limpa a descrição especificamente para EI, removendo o código e
-    pontuações de início de lista (parênteses, hífens).
+    Limpa a descrição especificamente para EI.
+    MELHORIA: Adicionado '\(' e '\)' na regex para remover parênteses fantasmas.
     """
-    texto = texto_bruto.replace(codigo, "")
-    # Remove pontuação solta tipo ')', '.', '-' que sobrava no PDF
+    if codigo:
+        texto = texto_bruto.replace(codigo, "")
+    else:
+        texto = texto_bruto
+    
+    # Remove pontuação solta tipo '(', ')', '.', '-' e espaços do início
     texto = re.sub(r"^[\s\(\)\.\-]+", "", texto)
     return texto.strip()
 
 def extract_code_desc_regex(text, pattern):
-    """Legado: usado para EF e EM"""
+    """Legado: usado para EF e EM (Mantido conforme solicitado)"""
     if not text: return None, None
     match = pattern.search(text)
     if match:
@@ -63,22 +67,14 @@ def save_json(data, filename):
     try:
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
-        # Verifica se é lista ou dict para contar itens
-        count = len(data) if isinstance(data, list) else len(str(data))
         print(f"-> Salvo com sucesso: {filename}")
     except Exception as e:
         print(f"ERRO ao salvar {filename}: {e}")
 
 # --- EXTRATORES ---
 
-def extract_ei_v2(pdf):
-    """
-    Nova lógica para Educação Infantil:
-    - Gera estrutura hierárquica (JSON aninhado).
-    - Resolve o problema de 'Campo não identificado' usando o próprio código BNCC.
-    - Limpa caracteres sujos da descrição.
-    """
-    print("--- Processando Educação Infantil (Estrutura Otimizada) ---")
+def extract_ei_final(pdf):
+    print("--- Processando Educação Infantil (Versão Final com Síntese) ---")
     
     # Estrutura base da API
     output = {
@@ -94,6 +90,7 @@ def extract_ei_v2(pdf):
                 {"sigla": k, "nome": v} for k, v in CAMPOS_EXPERIENCIA.items()
             ]
         },
+        "sintese_aprendizagens": {k: [] for k in CAMPOS_EXPERIENCIA}, # Nova Chave
         "objetivos_aprendizagem": {
             "EI01": {k: [] for k in CAMPOS_EXPERIENCIA},
             "EI02": {k: [] for k in CAMPOS_EXPERIENCIA},
@@ -101,13 +98,16 @@ def extract_ei_v2(pdf):
         }
     }
 
-    # Mapa de colunas do PDF (índice -> id da faixa)
-    col_map = {0: "EI01", 1: "EI02", 2: "EI03"}
+    col_map_obj = {0: "EI01", 1: "EI02", 2: "EI03"}
+    
+    # Controle para saber qual Campo de Experiência estamos lendo na tabela de Síntese
+    ultimo_campo_sintese = None
 
     for page_num in EI_PAGE_RANGE:
         if page_num >= len(pdf.pages): break
         page = pdf.pages[page_num]
         
+        # Extração de tabelas
         tables = page.extract_tables({
             "vertical_strategy": "lines", 
             "horizontal_strategy": "lines"
@@ -115,35 +115,75 @@ def extract_ei_v2(pdf):
 
         for table in tables:
             for row in table:
-                # Pula cabeçalhos e linhas vazias
-                row_str = "".join([str(c) for c in row if c]).upper()
-                if not row_str or "CAMPO DE EXPERIÊNCIAS" in row_str or "OBJETIVOS DE APRENDIZAGEM" in row_str:
-                    continue
+                # Limpeza básica da linha para identificação
+                row_cells = [clean_text(c) for c in row if c]
+                row_str = "".join(row_cells).upper()
                 
-                for col_idx, cell_text in enumerate(row):
-                    if not cell_text or col_idx not in col_map: continue
-                    
-                    cleaned = clean_text(cell_text)
-                    
-                    # Regex captura a estrutura EI + Faixa + Campo
-                    match = RE_CODE_EI_FULL.search(cleaned)
-                    if match:
-                        codigo_completo = match.group(0) # Ex: EI02TS01
-                        faixa_id = "EI" + match.group(1) # Ex: EI02
-                        sigla_campo = match.group(2)     # Ex: TS
+                # --- LÓGICA 1: EXTRAÇÃO DE OBJETIVOS (Tabelas padrão) ---
+                # Identifica se é uma linha de conteúdo de objetivos (tem códigos EI..)
+                tem_codigo = False
+                for cell in row_cells:
+                    if "EI" in cell and RE_CODE_EI_FULL.search(cell):
+                        tem_codigo = True
+                        break
+                
+                if tem_codigo:
+                    for col_idx, cell_text in enumerate(row):
+                        if not cell_text or col_idx not in col_map_obj: continue
                         
-                        # Segurança: verifica se o código capturado é válido na nossa estrutura
-                        if faixa_id in output["objetivos_aprendizagem"] and sigla_campo in CAMPOS_EXPERIENCIA:
-                            desc = processar_descricao_ei(cleaned, codigo_completo)
+                        cleaned = clean_text(cell_text)
+                        
+                        # MELHORIA: finditer para capturar múltiplos códigos na mesma célula
+                        matches = list(RE_CODE_EI_FULL.finditer(cleaned))
+                        
+                        for i, match in enumerate(matches):
+                            codigo_completo = match.group(0)
+                            faixa_id = "EI" + match.group(1)
+                            sigla_campo = match.group(2)
                             
-                            obj_data = {
-                                "codigo": codigo_completo,
-                                "descricao": desc
-                            }
+                            # Recorte do texto da descrição
+                            start_idx = match.end()
+                            # Se houver outro match depois, o texto vai até o início dele
+                            end_idx = matches[i+1].start() if (i + 1) < len(matches) else len(cleaned)
+                            texto_bruto = cleaned[start_idx:end_idx]
                             
-                            # Adiciona na lista correta
-                            output["objetivos_aprendizagem"][faixa_id][sigla_campo].append(obj_data)
-    
+                            if faixa_id in output["objetivos_aprendizagem"] and sigla_campo in CAMPOS_EXPERIENCIA:
+                                desc = processar_descricao_ei(texto_bruto, "") # Passamos vazio pois já cortamos
+                                
+                                output["objetivos_aprendizagem"][faixa_id][sigla_campo].append({
+                                    "codigo": codigo_completo,
+                                    "descricao": desc
+                                })
+
+                # --- LÓGICA 2: EXTRAÇÃO DA SÍNTESE DAS APRENDIZAGENS ---
+                # A tabela de síntese geralmente tem 2 colunas: [Nome do Campo] | [Texto da Síntese]
+                # Ou linhas de continuação onde a primeira coluna é vazia.
+                elif "SÍNTESE" in row_str or len(row) == 2:
+                    if "SÍNTESE" in row_str and len(row_cells) < 3: 
+                        continue # Pula cabeçalho da tabela
+                    
+                    if len(row) == 2:
+                        col_campo = clean_text(row[0])
+                        col_texto = clean_text(row[1])
+                        
+                        # Tenta identificar o campo na primeira coluna
+                        campo_detectado = None
+                        for sigla, nome in CAMPOS_EXPERIENCIA.items():
+                            # Check flexível (in) pois o PDF pode quebrar linhas
+                            if nome.upper() in col_campo.upper():
+                                campo_detectado = sigla
+                                break
+                        
+                        if campo_detectado:
+                            ultimo_campo_sintese = campo_detectado
+                        
+                        # Se temos um campo ativo e texto na coluna da direita
+                        if ultimo_campo_sintese and col_texto and len(col_texto) > 10:
+                            # Às vezes o PDF traz vários pontos em uma string só. 
+                            # Vamos tentar separar por quebras se houver, ou adicionar como item único.
+                            # Na BNCC síntese costuma ser parágrafos ou bullets.
+                            output["sintese_aprendizagens"][ultimo_campo_sintese].append(col_texto)
+
     return output
 
 def extract_ef(pdf):
@@ -248,15 +288,15 @@ def main():
         print(f"Erro crítico ao abrir PDF: {e}")
         return
 
-    # 1. Extração da EI (Nova Lógica)
-    ei_data = extract_ei_v2(pdf)
+    # 1. Extração da EI (Lógica Final com Síntese e Correções)
+    ei_data = extract_ei_final(pdf)
     
-    # 2. Extração do EF (Lógica Original)
+    # 2. Extração do EF (Lógica Original Mantida)
     ef_data = extract_ef(pdf)
     # Deduplicação EF
     ef_data = list({v['code']: v for v in ef_data}.values())
 
-    # 3. Extração do EM (Lógica Original)
+    # 3. Extração do EM (Lógica Original Mantida)
     em_data = extract_em(pdf)
     # Deduplicação EM
     em_data = list({v['code']: v for v in em_data}.values())
