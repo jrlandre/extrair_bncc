@@ -45,7 +45,7 @@ def processar_descricao_ei(texto_bruto, codigo):
     """
     texto = texto_bruto.replace(codigo, "")
     # Remove pontuação solta tipo ')', '.', '-' que sobrava no PDF
-    texto = re.sub(r"^[\s\)\.\-]+", "", texto)
+    texto = re.sub(r"^[\s\(\)\.\-]+", "", texto)
     return texto.strip()
 
 def extract_code_desc_regex(text, pattern):
