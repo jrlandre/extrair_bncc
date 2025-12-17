@@ -183,27 +183,35 @@ def extract_competencias_ef(pdf, page_range):
     """
     print("--- Extraindo Competências (Área e Componente) ---")
     competencias = {}
-    
-    # Regex para capturar: "COMPETÊNCIAS ESPECÍFICAS DE [ALGO] PARA O ENSINO FUNDAMENTAL"
-    re_titulo = re.compile(r"COMPETÊNCIAS ESPECÍFICAS DE (.+?) PARA O ENSINO FUNDAMENTAL", re.IGNORECASE | re.DOTALL)
+    current_key = None
+    buffer = []
+    re_titulo = re.compile(r"COMPETÊNCIAS ESPECÍFICAS DE (.+?) PARA O ENSINO FUNDAMENTAL", re.IGNORECASE)
     
     for page_num in page_range:
         if page_num >= len(pdf.pages): break
         page = pdf.pages[page_num]
         text = page.extract_text() or ""
-        text_upper = text.upper()
-        match = re_titulo.search(text_upper)
-        if match:
-            key = match.group(1).title()
-            start = match.end()
-            buffer = []
-            # Regex para itens numerados
-            item_re = re.compile(r"(\d+)\.\s*(.*?)(?=\n\d+\.|$)", re.S)
-            for m in item_re.finditer(text[start:]):
-                item_text = m.group(1) + ". " + clean_text_basic(m.group(2))
-                buffer.append(item_text)
-            if buffer:
-                competencias[key] = buffer
+        lines = text.split('\n')
+        for line in lines:
+            line_clean = clean_text_basic(line)
+            if not line_clean: continue
+            match = re_titulo.search(line_clean)
+            if match:
+                if current_key and buffer:
+                    competencias[current_key] = [' '.join(buffer).strip() ]
+                    buffer = []
+                current_key = match.group(1).title()
+                buffer = []
+            elif current_key:
+                if re.match(r"^\d+\.", line_clean):
+                    if buffer:
+                        competencias[current_key].append(' '.join(buffer).strip() )
+                    buffer = [line_clean]
+                else:
+                    buffer.append(line_clean)
+    if current_key and buffer:
+        competencias[current_key] = [' '.join(buffer).strip() ]
+    
     return competencias
 
 def extract_ef_final(pdf):
@@ -235,6 +243,7 @@ def extract_ef_final(pdf):
     current_area = None
     current_comp = None
     previous_comp = None
+    current_campo = None
     last_unidade = "Geral"
     last_objeto = "Geral"
 
@@ -256,10 +265,19 @@ def extract_ef_final(pdf):
         if not current_comp and previous_comp:
             current_comp = previous_comp
         
+        # Detect current_campo from text
+        lines = text_page.split('\n')
+        for line in lines:
+            line_clean = clean_text_basic(line)
+            line_upper = line_clean.upper()
+            if re.match(r"^[A-Z /()]+$", line_upper) and len(line_clean) > 10 and not re.search(r"\d", line_upper) and not "COMPETÊNCIAS" in line_upper and not "FUNDAMENTAL" in line_upper:
+                current_campo = line_clean
+        
         # Reset last_unidade e last_objeto se o componente mudou
         if current_comp != previous_comp:
             last_unidade = "Geral"
             last_objeto = "Geral"
+            current_campo = None
             previous_comp = current_comp
 
         # Extração de Tabela
@@ -275,65 +293,63 @@ def extract_ef_final(pdf):
             idx_unidade = 0
             idx_objeto = 1
             idx_habilidade = 2
-            is_lp = False
+            is_lp = False # Língua Portuguesa tem layout diferente
             is_objetos_table = False
             is_habilidades_table = False
             
             if current_comp == "Língua Portuguesa":
                 if len(table[0]) >=4 or "CAMPO" in header_str:
                     is_lp = True
-                    idx_unidade = 0  # Campo de Atuação
-                    idx_objeto = 2  # Objeto de Conhecimento
+                    idx_unidade = 0 # Campo de Atuação (Level 6)
+                    # Coluna 1 é "Práticas de Linguagem" (ignorar ou usar como unid se necessário)
+                    idx_objeto = 2  # Objeto de Conhecimento (Level 7)
                     idx_habilidade = 3
-                elif len(table[0]) ==2 or len(table[0]) ==1:
+                else:
                     if "PRÁTICAS DE LINGUAGEM" in header_str or "OBJETOS DE CONHECIMENTO" in header_str:
                         is_objetos_table = True
-                        idx_unidade = 0
-                        idx_objeto = 1
-                        idx_habilidade = -1  # None
-                    elif "HABILIDADES" in header_str:
+                        idx_unidade = 0 # Práticas or something
+                        idx_objeto = 1 if "OBJETOS" in header_str else 0
+                        idx_habilidade = -1
+                    elif "HABILIDADES" in header_str or re.search(r"\d+º ANO", header_str):
                         is_habilidades_table = True
                         idx_left = 0
                         idx_right = 1 if len(table[0]) >1 else -1
             else:
-                if len(table[0]) ==3:
+                if len(table[0]) ==3 or "UNIDADE" in header_str:
                     idx_unidade, idx_objeto, idx_habilidade = 0, 1, 2
                 else:
-                    continue
+                    continue 
 
             # Processa linhas de dados
             for row in table[1:]:
                 # For objetos table
                 if is_objetos_table:
                     raw_unidade = clean_text_basic(row[idx_unidade])
-                    raw_objeto = clean_text_basic(row[idx_objeto])
-                    if raw_unidade:
-                        last_unidade = raw_unidade
-                    if raw_objeto:
-                        last_objeto = raw_objeto
-                    continue  # No habilidades here
+                    raw_objeto = clean_text_basic(row[idx_objeto]) if len(row) > idx_objeto else ""
+                    if raw_unidade: last_unidade = raw_unidade
+                    if raw_objeto: last_objeto = raw_objeto
+                    continue
                 
                 # For habilidades table
                 if is_habilidades_table:
-                    raw_habilidade = clean_text_basic(row[idx_left])
-                    if raw_habilidade:
-                        # Process left as habilidade
+                    raw_habilidade = clean_text_basic(row[idx_left]) if len(row) > idx_left else ""
+                    if raw_habilidade and RE_CODE_EF.search(raw_habilidade):
                         matches = list(RE_CODE_EF.finditer(raw_habilidade))
                         for i, match in enumerate(matches):
                             code = match.group(1)
                             sigla_comp = match.group(2)
                             start = match.end()
                             end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
-                            desc = processar_descricao(raw_habilidade[start:end], "")
-                            info_now = MAPA_EF_ESTRUTURA.get(sigla_comp, None)
-                            if not info_now: continue
+                            desc = processar_descricao(raw_habilidade[start:end], code)
+                            if sigla_comp not in MAPA_EF_ESTRUTURA: continue
+                            info_now = MAPA_EF_ESTRUTURA[sigla_comp]
                             comp_now = info_now["componente"]
                             area_now = info_now["area"]
                             anos_list = expandir_anos_ef(code)
                             for ano in anos_list:
                                 base_node = tree[area_now]["componentes"][comp_now]["anos"]
                                 if ano not in base_node: base_node[ano] = {}
-                                lvl6_key = last_unidade or "Geral"
+                                lvl6_key = current_campo or last_unidade or "Geral"
                                 if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
                                 lvl7_key = last_objeto or "Geral"
                                 if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
@@ -341,25 +357,24 @@ def extract_ef_final(pdf):
                                 if not any(h['codigo'] == code for h in lista_habilidades):
                                     lista_habilidades.append({"codigo": code, "descricao": desc})
                     if idx_right != -1:
-                        raw_habilidade = clean_text_basic(row[idx_right])
-                        if raw_habilidade:
-                            # Process right similar
+                        raw_habilidade = clean_text_basic(row[idx_right]) if len(row) > idx_right else ""
+                        if raw_habilidade and RE_CODE_EF.search(raw_habilidade):
                             matches = list(RE_CODE_EF.finditer(raw_habilidade))
                             for i, match in enumerate(matches):
                                 code = match.group(1)
                                 sigla_comp = match.group(2)
                                 start = match.end()
                                 end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
-                                desc = processar_descricao(raw_habilidade[start:end], "")
-                                info_now = MAPA_EF_ESTRUTURA.get(sigla_comp, None)
-                                if not info_now: continue
+                                desc = processar_descricao(raw_habilidade[start:end], code)
+                                if sigla_comp not in MAPA_EF_ESTRUTURA: continue
+                                info_now = MAPA_EF_ESTRUTURA[sigla_comp]
                                 comp_now = info_now["componente"]
                                 area_now = info_now["area"]
                                 anos_list = expandir_anos_ef(code)
                                 for ano in anos_list:
                                     base_node = tree[area_now]["componentes"][comp_now]["anos"]
                                     if ano not in base_node: base_node[ano] = {}
-                                    lvl6_key = last_unidade or "Geral"
+                                    lvl6_key = current_campo or last_unidade or "Geral"
                                     if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
                                     lvl7_key = last_objeto or "Geral"
                                     if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
@@ -368,12 +383,12 @@ def extract_ef_final(pdf):
                                         lista_habilidades.append({"codigo": code, "descricao": desc})
                     continue
                 
-                # Standard processing
+                # Standard processing for other tables
                 if len(row) <= idx_habilidade: continue
                 
-                raw_unidade = clean_text_basic(row[idx_unidade])
-                raw_objeto = clean_text_basic(row[idx_objeto])
-                raw_habilidade = clean_text_basic(row[idx_habilidade])
+                raw_unidade = clean_text_basic(row[idx_unidade]) if len(row) > idx_unidade else ""
+                raw_objeto = clean_text_basic(row[idx_objeto]) if len(row) > idx_objeto else ""
+                raw_habilidade = clean_text_basic(row[idx_habilidade]) if len(row) > idx_habilidade else ""
                 
                 # Forward Fill
                 if raw_unidade: last_unidade = raw_unidade
@@ -382,7 +397,12 @@ def extract_ef_final(pdf):
                 if raw_objeto: last_objeto = raw_objeto
                 else: raw_objeto = last_objeto
                 
+                # Skip if no habilidade or no code
                 if not raw_habilidade or not RE_CODE_EF.search(raw_habilidade):
+                    continue
+                
+                # If code in raw_objeto, perhaps error, skip or adjust
+                if RE_CODE_EF.search(raw_objeto):
                     continue
                 
                 matches = list(RE_CODE_EF.finditer(raw_habilidade))
@@ -393,7 +413,7 @@ def extract_ef_final(pdf):
                     sigla_comp = match.group(2)
                     start = match.end()
                     end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
-                    desc = processar_descricao(raw_habilidade[start:end], "")
+                    desc = processar_descricao(raw_habilidade[start:end], code)
                     if sigla_comp not in MAPA_EF_ESTRUTURA: continue
                     info_now = MAPA_EF_ESTRUTURA[sigla_comp]
                     comp_now = info_now["componente"]
@@ -402,9 +422,9 @@ def extract_ef_final(pdf):
                     for ano in anos_list:
                         base_node = tree[area_now]["componentes"][comp_now]["anos"]
                         if ano not in base_node: base_node[ano] = {}
-                        lvl6_key = raw_unidade if raw_unidade else "Geral"
+                        lvl6_key = current_campo or raw_unidade or "Geral"
                         if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
-                        lvl7_key = raw_objeto if raw_objeto else "Geral"
+                        lvl7_key = raw_objeto or "Geral"
                         if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
                         lista_habilidades = base_node[ano][lvl6_key][lvl7_key]
                         if not any(h['codigo'] == code for h in lista_habilidades):
