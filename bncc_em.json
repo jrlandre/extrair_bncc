@@ -1,0 +1,917 @@
+[
+  {
+    "code": "EM13LGG101",
+    "description": ") Compreender e analisar processos de produção e circulação de discursos,",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG102",
+    "description": ") Analisar visões de mundo, conflitos de interesse, preconceitos e",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG103",
+    "description": ") Analisar o funcionamento das linguagens, para interpretar e produzir",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG104",
+    "description": ") Utilizar as diferentes linguagens, levando em conta seus funcionamentos,",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG105",
+    "description": ") Analisar e experimentar diversos processos de remidiação de produções",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG201",
+    "description": ") Utilizar as diversas linguagens (artísticas, corporais e verbais) em",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG202",
+    "description": ") Analisar interesses, relações de poder e perspectivas de mundo",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG203",
+    "description": ") Analisar os diálogos e os processos de disputa por legitimidade nas",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG204",
+    "description": ") Dialogar e produzir entendimento mútuo, nas diversas linguagens",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG301",
+    "description": ") Participar de processos de produção individual e colaborativa em",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG302",
+    "description": ") Posicionar-se criticamente diante de diversas visões de mundo presentes",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG303",
+    "description": ") Debater questões polêmicas de relevância social, analisando diferentes",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG304",
+    "description": ") Formular propostas, intervir e tomar decisões que levem em conta o bem",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG305",
+    "description": ") Mapear e criar, por meio de práticas de linguagem, possibilidades de",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG401",
+    "description": ") Analisar criticamente textos de modo a compreender e caracterizar as",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG402",
+    "description": ") Empregar, nas interações sociais, a variedade e o estilo de língua",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG403",
+    "description": ") Fazer uso do inglês como língua de comunicação global, levando em",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG501",
+    "description": ") Selecionar e utilizar movimentos corporais de forma consciente e",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG502",
+    "description": ") Analisar criticamente preconceitos, estereótipos e relações de poder",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG503",
+    "description": ") Vivenciar práticas corporais e significá-las em seu projeto de vida, como",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG601",
+    "description": ") Apropriar-se do patrimônio artístico de diferentes tempos e lugares,",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG602",
+    "description": ") Fruir e apreciar esteticamente diversas manifestações artísticas e culturais,",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG603",
+    "description": ") Expressar-se e atuar em processos de criação autorais individuais e coletivos",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG604",
+    "description": ") Relacionar as práticas artísticas às diferentes dimensões da vida social,",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG701",
+    "description": ") Explorar tecnologias digitais da informação e comunicação (TDIC),",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG702",
+    "description": ") Avaliar o impacto das tecnologias digitais da informação e comunicação",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG703",
+    "description": ") Utilizar diferentes linguagens, mídias e ferramentas digitais em processos",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LGG704",
+    "description": ") Apropriar-se criticamente de processos de pesquisa e busca de",
+    "area": "LGG"
+  },
+  {
+    "code": "EM13LP01",
+    "description": ") Relacionar o texto, tanto na produção como na leitura/ 2",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP02",
+    "description": ") Estabelecer relações entre as partes do texto, tanto 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP03",
+    "description": ") Analisar relações de intertextualidade e interdiscursividade 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP04",
+    "description": ") Estabelecer relações de interdiscursividade e 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP05",
+    "description": ") Analisar, em textos argumentativos, os posicionamentos 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP06",
+    "description": ") Analisar efeitos de sentido decorrentes de usos 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP07",
+    "description": ") Analisar, em textos de diferentes gêneros, marcas que 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP08",
+    "description": ") Analisar elementos e aspectos da sintaxe do português, 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP09",
+    "description": ") Comparar o tratamento dado pela gramática tradicional 4",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP10",
+    "description": ") Analisar o fenômeno da variação linguística, em seus 4",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP11",
+    "description": ") Fazer curadoria de informação, tendo em vista diferentes 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP12",
+    "description": ") Selecionar informações, dados e argumentos em fontes 1, 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP13",
+    "description": ") Analisar, a partir de referências contextuais, estéticas e 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP14",
+    "description": ") Analisar, a partir de referências contextuais, estéticas e 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP15",
+    "description": ") Planejar, produzir, revisar, editar, reescrever e avaliar textos 1, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP16",
+    "description": ") Produzir e analisar textos orais, considerando sua 1, 4",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP17",
+    "description": ") Elaborar roteiros para a produção de vídeos variados 3, 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP18",
+    "description": ") Utilizar softwares de edição de textos, fotos, vídeos e 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP19",
+    "description": ") Apresentar-se por meio de textos multimodais diversos 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP20",
+    "description": ") Compartilhar gostos, interesses, práticas culturais, temas/ 2, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP21",
+    "description": ") Produzir, de forma colaborativa, e socializar playlists 1, 6",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP22",
+    "description": ") Construir e/ou atualizar, de forma colaborativa, registros 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP23",
+    "description": ") Analisar criticamente o histórico e o discurso político de 1, 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP24",
+    "description": ") Analisar formas não institucionalizadas de participação 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP25",
+    "description": ") Participar de reuniões na escola (conselho de escola e de 1, 2, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP26",
+    "description": ") Relacionar textos e documentos legais e normativos de 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP27",
+    "description": ") Engajar-se na busca de solução para problemas que 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP28",
+    "description": ") Organizar situações de estudo e utilizar procedimentos 3, 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP29",
+    "description": ") Resumir e resenhar textos, por meio do uso de paráfrases, 2, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP30",
+    "description": ") Realizar pesquisas de diferentes tipos (bibliográfica, de 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP31",
+    "description": ") Compreender criticamente textos de divulgação 1",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP32",
+    "description": ") Selecionar informações e dados necessários para uma 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP33",
+    "description": ") Selecionar, elaborar e utilizar instrumentos de coleta 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP34",
+    "description": ") Produzir textos para a divulgação do conhecimento e 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP35",
+    "description": ") Utilizar adequadamente ferramentas de apoio a 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP36",
+    "description": ") Analisar os interesses que movem o campo jornalístico, os 2",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP37",
+    "description": ") Conhecer e analisar diferentes projetos editorias – 2",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP38",
+    "description": ") Analisar os diferentes graus de parcialidade/imparcialidade 1, 2",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP39",
+    "description": ") Usar procedimentos de checagem de fatos noticiados 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP40",
+    "description": ") Analisar o fenômeno da pós-verdade – discutindo as 2, 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP41",
+    "description": ") Analisar os processos humanos e automáticos de 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP42",
+    "description": ") Acompanhar, analisar e discutir a cobertura da mídia 2",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP43",
+    "description": ") Atuar de forma fundamentada, ética e crítica na produção 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP44",
+    "description": ") Analisar formas contemporâneas de publicidade em 1, 7",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP45",
+    "description": ") Analisar, discutir, produzir e socializar, tendo em vista 1, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP46",
+    "description": ") Compartilhar sentidos construídos na leitura/escuta de 6",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP47",
+    "description": ") Participar de eventos (saraus, competições orais, audições, 3, 6",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP48",
+    "description": ") Identificar assimilações, rupturas e permanências no 1, 6",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP49",
+    "description": ") Perceber as peculiaridades estruturais e estilísticas de 1, 6",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP50",
+    "description": ") Analisar relações intertextuais e interdiscursivas entre 6",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP51",
+    "description": ") Selecionar obras do repertório artístico-literário 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP52",
+    "description": ") Analisar obras significativas das literaturas brasileiras e de 1, 2",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP53",
+    "description": ") Produzir apresentações e comentários apreciativos e 1, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13LP54",
+    "description": ") Criar obras autorais, em diferentes gêneros e mídias – 1, 3",
+    "area": "Unknown"
+  },
+  {
+    "code": "EM13MAT101",
+    "description": ") Interpretar criticamente situações econômicas, sociais e fatos relativos",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT102",
+    "description": ") Analisar tabelas, gráficos e amostras de pesquisas estatísticas apresentadas",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT103",
+    "description": ") Interpretar e compreender textos científicos ou divulgados pelas mídias,",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT104",
+    "description": ") Interpretar taxas e índices de natureza socioeconômica (índice de",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT105",
+    "description": ") Utilizar as noções de transformações isométricas (translação, reflexão,",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT106",
+    "description": ") Identificar situações da vida cotidiana nas quais seja necessário fazer",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT201",
+    "description": ") Propor ou participar de ações adequadas às demandas da região,",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT202",
+    "description": ") Planejar e executar pesquisa amostral sobre questões relevantes, usando",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT203",
+    "description": ") Aplicar conceitos matemáticos no planejamento, na execução e na",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT301",
+    "description": ") Resolver e elaborar problemas do cotidiano, da Matemática e de outras",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT302",
+    "description": ") Construir modelos empregando as funções polinomiais de 1o ou",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT303",
+    "description": ") Interpretar e comparar situações que envolvam juros simples com as que",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT304",
+    "description": ") Resolver e elaborar problemas com funções exponenciais nos quais seja",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT305",
+    "description": ") Resolver e elaborar problemas com funções logarítmicas nos quais seja",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT306",
+    "description": ") Resolver e elaborar problemas em contextos que envolvem fenômenos",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT307",
+    "description": ") Empregar diferentes métodos para a obtenção da medida da área de",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT308",
+    "description": ") Aplicar as relações métricas, incluindo as leis do seno e do cosseno ou as",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT309",
+    "description": ") Resolver e elaborar problemas que envolvem o cálculo de áreas totais e",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT310",
+    "description": ") Resolver e elaborar problemas de contagem envolvendo agrupamentos",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT311",
+    "description": ") Identificar e descrever o espaço amostral de eventos aleatórios, realizando",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT312",
+    "description": ") Resolver e elaborar problemas que envolvem o cálculo de probabilidade",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT313",
+    "description": ") Utilizar, quando necessário, a notação científica para expressar uma",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT314",
+    "description": ") Resolver e elaborar problemas que envolvem grandezas determinadas pela",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT315",
+    "description": ") Investigar e registrar, por meio de um fluxograma, quando possível, um",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT316",
+    "description": ") Resolver e elaborar problemas, em diferentes contextos, que envolvem",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT401",
+    "description": ") Converter representações algébricas de funções polinomiais de 1o grau",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT402",
+    "description": ") Converter representações algébricas de funções polinomiais de 2o grau",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT403",
+    "description": ") Analisar e estabelecer relações, com ou sem apoio de tecnologias",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT404",
+    "description": ") Analisar funções definidas por uma ou mais sentenças (tabela do Imposto",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT405",
+    "description": ") Utilizar conceitos iniciais de uma linguagem de programação na",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT406",
+    "description": ") Construir e interpretar tabelas e gráficos de frequências com base",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT407",
+    "description": ") Interpretar e comparar conjuntos de dados estatísticos por meio de",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT501",
+    "description": ") Investigar relações entre números expressos em tabelas para",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT502",
+    "description": ") Investigar relações entre números expressos em tabelas para",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT503",
+    "description": ") Investigar pontos de máximo ou de mínimo de funções quadráticas em",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT504",
+    "description": ") Investigar processos de obtenção da medida do volume de prismas,",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT505",
+    "description": ") Resolver problemas sobre ladrilhamento do plano, com ou sem apoio de",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT506",
+    "description": ") Representar graficamente a variação da área e do perímetro de",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT507",
+    "description": ") Identificar e associar progressões aritméticas (PA) a funções afins de",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT508",
+    "description": ") Identificar e associar progressões geométricas (PG) a funções",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT509",
+    "description": ") Investigar a deformação de ângulos e áreas provocada pelas diferentes",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT510",
+    "description": ") Investigar conjuntos de dados relativos ao comportamento de duas",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13MAT511",
+    "description": ") Reconhecer a existência de diferentes tipos de espaços amostrais,",
+    "area": "MAT"
+  },
+  {
+    "code": "EM13CNT101",
+    "description": ") Analisar e representar, com ou sem o uso de dispositivos e de aplicativos",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT102",
+    "description": ") Realizar previsões, avaliar intervenções e/ou construir protótipos de",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT103",
+    "description": ") Utilizar o conhecimento sobre as radiações e suas origens para avaliar",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT104",
+    "description": ") Avaliar os benefícios e os riscos à saúde e ao ambiente, considerando",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT105",
+    "description": ") Analisar os ciclos biogeoquímicos e interpretar os efeitos de fenômenos",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT106",
+    "description": ") Avaliar, com ou sem o uso de dispositivos e aplicativos digitais,",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT107",
+    "description": ") Realizar previsões qualitativas e quantitativas sobre o funcionamento",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT201",
+    "description": ") Analisar e discutir modelos, teorias e leis propostos em diferentes épocas",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT202",
+    "description": ") Analisar as diversas formas de manifestação da vida em seus diferentes",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT203",
+    "description": ") Avaliar e prever efeitos de intervenções nos ecossistemas, e seus",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT204",
+    "description": ") Elaborar explicações, previsões e cálculos a respeito dos movimentos",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT205",
+    "description": ") Interpretar resultados e realizar previsões sobre atividades experimentais,",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT206",
+    "description": ") Discutir a importância da preservação e conservação da biodiversidade,",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT207",
+    "description": ") Identificar, analisar e discutir vulnerabilidades vinculadas às vivências",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT208",
+    "description": ") Aplicar os princípios da evolução biológica para analisar a história",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT209",
+    "description": ") Analisar a evolução estelar associando-a aos modelos de origem e",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT301",
+    "description": ") Construir questões, elaborar hipóteses, previsões e estimativas, empregar",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT302",
+    "description": ") Comunicar, para públicos variados, em diversos contextos, resultados de",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT303",
+    "description": ") Interpretar textos de divulgação científica que tratem de temáticas das",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT304",
+    "description": ") Analisar e debater situações controversas sobre a aplicação de",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT305",
+    "description": ") Investigar e discutir o uso indevido de conhecimentos das Ciências",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT306",
+    "description": ") Avaliar os riscos envolvidos em atividades cotidianas, aplicando",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT307",
+    "description": ") Analisar as propriedades dos materiais para avaliar a adequação de seu",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT308",
+    "description": ") Investigar e analisar o funcionamento de equipamentos elétricos e/ou",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT309",
+    "description": ") Analisar questões socioambientais, políticas e econômicas relativas",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CNT310",
+    "description": ") Investigar e analisar os efeitos de programas de infraestrutura e",
+    "area": "CNT"
+  },
+  {
+    "code": "EM13CHS101",
+    "description": ") Identificar, analisar e comparar diferentes fontes e narrativas expressas",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS102",
+    "description": ") Identificar, analisar e discutir as circunstâncias históricas, geográficas,",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS103",
+    "description": ") Elaborar hipóteses, selecionar evidências e compor argumentos relativos",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS104",
+    "description": ") Analisar objetos e vestígios da cultura material e imaterial de modo a",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS105",
+    "description": ") Identificar, contextualizar e criticar tipologias evolutivas (populações",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS106",
+    "description": ") Utilizar as linguagens cartográfica, gráfica e iconográfica, diferentes",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS201",
+    "description": ") Analisar e caracterizar as dinâmicas das populações, das mercadorias",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS202",
+    "description": ") Analisar e avaliar os impactos das tecnologias na estruturação e nas",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS203",
+    "description": ") Comparar os significados de território, fronteiras e vazio (espacial,",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS204",
+    "description": ") Comparar e avaliar os processos de ocupação do espaço e a formação",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS205",
+    "description": ") Analisar a produção de diferentes territorialidades em suas",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS206",
+    "description": ") Analisar a ocupação humana e a produção do espaço em diferentes",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS301",
+    "description": ") Problematizar hábitos e práticas individuais e coletivos de produção,",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS302",
+    "description": ") Analisar e avaliar criticamente os impactos econômicos e socioambientais",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS303",
+    "description": ") Debater e avaliar o papel da indústria cultural e das culturas de massa",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS304",
+    "description": ") Analisar os impactos socioambientais decorrentes de práticas de",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS305",
+    "description": ") Analisar e discutir o papel e as competências legais dos organismos",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS306",
+    "description": ") Contextualizar, comparar e avaliar os impactos de diferentes modelos",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS401",
+    "description": ") Identificar e analisar as relações entre sujeitos, grupos, classes sociais",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS402",
+    "description": ") Analisar e comparar indicadores de emprego, trabalho e renda em",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS403",
+    "description": ") Caracterizar e analisar os impactos das transformações tecnológicas",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS404",
+    "description": ") Identificar e discutir os múltiplos aspectos do trabalho em diferentes",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS501",
+    "description": ") Analisar os fundamentos da ética em diferentes culturas, tempos e",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS502",
+    "description": ") Analisar situações da vida cotidiana, estilos de vida, valores, condutas",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS503",
+    "description": ") Identificar diversas formas de violência (física, simbólica, psicológica",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS504",
+    "description": ") Analisar e avaliar os impasses ético-políticos decorrentes das",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS601",
+    "description": ") Identificar e analisar as demandas e os protagonismos políticos,",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS602",
+    "description": ") Identificar e caracterizar a presença do paternalismo, do autoritarismo e",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS603",
+    "description": ") Analisar a formação de diferentes países, povos e nações e de suas",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS604",
+    "description": ") Discutir o papel dos organismos internacionais no contexto mundial,",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS605",
+    "description": ") Analisar os princípios da declaração dos Direitos Humanos, recorrendo",
+    "area": "CHS"
+  },
+  {
+    "code": "EM13CHS606",
+    "description": ") Analisar as características socioeconômicas da sociedade brasileira",
+    "area": "CHS"
+  }
+]
