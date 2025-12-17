@@ -113,7 +113,7 @@ def extrair_competencias_texto(pdf, page_range):
         # Remove acentos para comparação
         text_norm_no_acc = ''.join(c for c in unicodedata.normalize('NFD', text_norm) if unicodedata.category(c) != 'Mn')
         
-        found_new_key = False
+        # Deteta se estamos numa página de competências
         if "COMPETENCIAS ESPECIFICAS" in text_norm_no_acc and "ENSINO FUNDAMENTAL" in text_norm_no_acc:
             for titulo_norm, titulo_real in TITULOS_ALVO.items():
                 if titulo_norm in text_norm_no_acc:
@@ -124,7 +124,6 @@ def extrair_competencias_texto(pdf, page_range):
                     
                     current_key = titulo_real # Usa o nome bonito
                     buffer_list = []
-                    found_new_key = True
                     break
         
         # 2. Extrai Itens
@@ -245,8 +244,6 @@ def extract_ef_v5_platinum(pdf):
     tree = {}
     
     # 1. Competências com Match Seguro
-    # O mapeamento retorna chaves como "Língua Portuguesa"
-    # Precisamos normalizar para bater com MAPA_EF_ESTRUTURA
     comps_raw = extrair_competencias_texto(pdf, EF_PAGE_RANGE)
     
     for sigla, info in MAPA_EF_ESTRUTURA.items():
@@ -351,9 +348,6 @@ def extract_ef_v5_platinum(pdf):
                             # Definição de Níveis usando Memória
                             if sigla_comp == "LP":
                                 nivel_6 = current_lp_field
-                                # Em LP: Col 0=Prática, Col 1=Objeto
-                                # Se a linha atual tiver texto, usa ele. Se não, usa memória.
-                                # Se memória for None, usa "Geral"
                                 
                                 if skill_idx >= 2:
                                     val_obj = row_cells_raw[1] if row_cells_raw[1] else mem_col1
@@ -443,9 +437,9 @@ def main():
 
     print("\n--- Salvando Arquivos ---")
     with open("bncc_ei.json", "w", encoding="utf-8") as f: json.dump(ei_data, f, ensure_ascii=False, indent=2)
-    with open("bncc_ef_FINAL.json", "w", encoding="utf-8") as f: json.dump(ef_data, f, ensure_ascii=False, indent=2)
+    with open("bncc_ef.json", "w", encoding="utf-8") as f: json.dump(ef_data, f, ensure_ascii=False, indent=2)
     with open("bncc_em.json", "w", encoding="utf-8") as f: json.dump(em_data, f, ensure_ascii=False, indent=2)
-    print("Processo concluído. Verifique bncc_ef_FINAL.json")
+    print("Processo concluído. Verifique bncc_ef.json")
 
 if __name__ == "__main__":
     main()
