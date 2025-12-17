@@ -75,7 +75,9 @@
                 {
                   "codigo": "EF01LP02",
                   "descricao": "Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas."
-                },
+                }
+              ],
+              "(EF01LP03) Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.": [
                 {
                   "codigo": "EF12LP03",
                   "descricao": "Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação."
@@ -87,7 +89,9 @@
                 {
                   "codigo": "EF01LP05",
                   "descricao": "Reconhecer o sistema de escrita alfabética como representação dos sons da fala."
-                },
+                }
+              ],
+              "(EF01LP12) Reconhecer a separação das palavras, na escrita, por espaços em branco.": [
                 {
                   "codigo": "EF01LP13",
                   "descricao": "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais."
@@ -119,11 +123,15 @@
                 {
                   "codigo": "EF15LP19",
                   "descricao": "Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor."
-                },
+                }
+              ],
+              "(EF01LP24) Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.": [
                 {
                   "codigo": "EF12LP18",
                   "descricao": "Apreciar poemas e outros textos versificados, observando rimas, sonoridades, jogos de palavras, reconhecendo seu pertencimento ao mundo imaginário e sua dimensão de encantamento, jogo e fruição."
-                },
+                }
+              ],
+              "(EF01LP26) Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.": [
                 {
                   "codigo": "EF12LP19",
                   "descricao": "Reconhecer, em textos versificados, rimas, sonoridades, jogos de palavras, palavras, expressões, comparações, relacionando-as com sensações e associações."
@@ -131,11 +139,13 @@
               ]
             },
             "CAMPO DA VIDA COTIDIANA – Campo de atuação relativo à participação em situações de leitura, próprias de atividades vivenciadas cotidianamente por crianças, adolescentes, jovens e adultos, no espaço doméstico e familiar, escolar, cultural e profissional. Alguns gêneros textuais deste campo: agendas, listas, bilhetes, recados, avisos, convites, cartas, cardápios, diários, receitas, regras de jogos e brincadeiras.": {
-              "Geral": [
+              "(EF01LP15) Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).": [
                 {
                   "codigo": "EF12LP04",
                   "descricao": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor ou já com certa autonomia, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade."
-                },
+                }
+              ],
+              "(EF01LP18) Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.": [
                 {
                   "codigo": "EF12LP05",
                   "descricao": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, (re)contagens de histórias, poemas e outros textos versificados (letras de canção, quadrinhas, cordel), poemas visuais, tiras e histórias em quadrinhos, dentre outros gêneros do campo artístico-literário, considerando a situação comunicativa e a finalidade do texto."
@@ -147,11 +157,13 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA – Campo de atuação relativo à participação em situações de leitura e escrita, especialmente de textos das esferas jornalística, publicitária, política, jurídica e reivindicatória, contemplando temas que impactam a cidadania e o exercício de direitos. Alguns gêneros textuais deste campo: notas; álbuns noticiosos; notícias; reportagens; cartas do leitor (revista infantil); comentários em sites para criança; textos de campanhas de conscientização; Estatuto da Criança e do Adolescente; abaixo-assinados; cartas de reclamação, regras e regulamentos.": {
-              "Geral": [
+              "(EF01LP19) Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.": [
                 {
                   "codigo": "EF12LP07",
                   "descricao": "Identificar e (re)produzir, em cantiga, quadras, quadrinhas, parlendas, trava-línguas e canções, rimas, aliterações, assonâncias, o ritmo de fala relacionado ao ritmo e à melodia das músicas e seus efeitos de sentido."
-                },
+                }
+              ],
+              "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.": [
                 {
                   "codigo": "EF12LP08",
                   "descricao": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto."
@@ -167,7 +179,7 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.": [
                 {
                   "codigo": "EF12LP11",
                   "descricao": "Escrever, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, digitais ou impressos, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto."
@@ -175,7 +187,9 @@
                 {
                   "codigo": "EF12LP12",
                   "descricao": "Escrever, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/ assunto/finalidade do texto."
-                },
+                }
+              ],
+              "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF12LP13",
                   "descricao": "Planejar, em colaboração com os colegas e com a ajuda do professor, slogans e peça de campanha de conscientização destinada ao público infantil que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto."
@@ -195,7 +209,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA – Campo de atuação relativo à participação em situações de leitura/escrita que possibilitem conhecer os textos expositivos e argumentativos, a linguagem e as práticas relacionadas ao estudo, à pesquisa e à divulgação científica, favorecendo a aprendizagem dentro e fora da escola. Alguns gêneros deste campo em mídia impressa ou digital: enunciados de tarefas escolares; relatos de experimentos; quadros; gráficos; tabelas; infográficos; diagramas; entrevistas; notas de divulgação científica; verbetes de enciclopédia.": {
-              "Geral": [
+              "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF12LP17",
                   "descricao": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, enunciados de tarefas escolares, diagramas, curiosidades, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, entre outros gêneros do campo investigativo, considerando a situação comunicativa e o tema/assunto do texto."
@@ -265,20 +279,16 @@
                 {
                   "codigo": "EF12LP02",
                   "descricao": "Buscar, selecionar e ler, com a mediação do professor (leitura compartilhada), textos que circulam em meios impressos ou digitais, de acordo com as necessidades e interesses."
-                },
-                {
-                  "codigo": "EF12LP03",
-                  "descricao": "Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação."
-                },
-                {
-                  "codigo": "EF02LP11",
-                  "descricao": "Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho."
                 }
               ],
               "(EF01LP03) Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.": [
                 {
                   "codigo": "EF02LP01",
                   "descricao": "Utilizar, ao produzir o texto, grafia correta de palavras conhecidas ou com estruturas silábicas já dominadas, letras maiúsculas em início de frases e em substantivos próprios, segmentação entre as palavras, ponto final, ponto de interrogação e ponto de exclamação."
+                },
+                {
+                  "codigo": "EF12LP03",
+                  "descricao": "Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação."
                 }
               ],
               "(EF01LP06) Segmentar oralmente palavras em sílabas.": [
@@ -333,6 +343,10 @@
                 {
                   "codigo": "EF02LP10",
                   "descricao": "Identificar sinônimos de palavras de texto lido, determinando a diferença de sentido entre eles, e formar antônimos de palavras encontradas em texto lido pelo acréscimo do prefixo de negação in-/im-."
+                },
+                {
+                  "codigo": "EF02LP11",
+                  "descricao": "Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho."
                 }
               ]
             },
@@ -361,6 +375,12 @@
                 {
                   "codigo": "EF15LP19",
                   "descricao": "Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor."
+                }
+              ],
+              "(EF01LP24) Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.": [
+                {
+                  "codigo": "EF02LP25",
+                  "descricao": "Identificar e reproduzir, em relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais."
                 },
                 {
                   "codigo": "EF02LP26",
@@ -369,20 +389,6 @@
                 {
                   "codigo": "EF12LP18",
                   "descricao": "Apreciar poemas e outros textos versificados, observando rimas, sonoridades, jogos de palavras, reconhecendo seu pertencimento ao mundo imaginário e sua dimensão de encantamento, jogo e fruição."
-                },
-                {
-                  "codigo": "EF12LP19",
-                  "descricao": "Reconhecer, em textos versificados, rimas, sonoridades, jogos de palavras, palavras, expressões, comparações, relacionando-as com sensações e associações."
-                },
-                {
-                  "codigo": "EF02LP29",
-                  "descricao": "Observar, em poemas visuais, o formato do texto na página, as ilustrações e outros efeitos visuais."
-                }
-              ],
-              "(EF01LP24) Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.": [
-                {
-                  "codigo": "EF02LP25",
-                  "descricao": "Identificar e reproduzir, em relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais."
                 }
               ],
               "(EF01LP25) Produzir, tendo o professor como escriba, recontagens de histórias lidas pelo professor, histórias imaginadas ou baseadas em livros de imagens, observando a forma de composição de textos narrativos (personagens, enredo, tempo e espaço).": [
@@ -395,22 +401,22 @@
                 {
                   "codigo": "EF02LP28",
                   "descricao": "Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução, além de palavras, expressões e frases que caracterizam personagens e ambientes."
+                },
+                {
+                  "codigo": "EF12LP19",
+                  "descricao": "Reconhecer, em textos versificados, rimas, sonoridades, jogos de palavras, palavras, expressões, comparações, relacionando-as com sensações e associações."
+                },
+                {
+                  "codigo": "EF02LP29",
+                  "descricao": "Observar, em poemas visuais, o formato do texto na página, as ilustrações e outros efeitos visuais."
                 }
               ]
             },
             "CAMPO DA VIDA COTIDIANA – Campo de atuação relativo à participação em situações de leitura, próprias de atividades vivenciadas cotidianamente por crianças, adolescentes, jovens e adultos, no espaço doméstico e familiar, escolar, cultural e profissional. Alguns gêneros textuais deste campo: agendas, listas, bilhetes, recados, avisos, convites, cartas, cardápios, diários, receitas, regras de jogos e brincadeiras.": {
-              "Geral": [
+              "(EF01LP15) Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).": [
                 {
                   "codigo": "EF12LP04",
                   "descricao": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor ou já com certa autonomia, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade."
-                },
-                {
-                  "codigo": "EF12LP05",
-                  "descricao": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, (re)contagens de histórias, poemas e outros textos versificados (letras de canção, quadrinhas, cordel), poemas visuais, tiras e histórias em quadrinhos, dentre outros gêneros do campo artístico-literário, considerando a situação comunicativa e a finalidade do texto."
-                },
-                {
-                  "codigo": "EF12LP06",
-                  "descricao": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, recados, avisos, convites, receitas, instruções de montagem, dentre outros gêneros do campo da vida cotidiana, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto."
                 }
               ],
               "(EF01LP16) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.": [
@@ -429,6 +435,14 @@
                 {
                   "codigo": "EF02LP14",
                   "descricao": "Planejar e produzir pequenos relatos de observação de processos, de fatos, de experiências pessoais, mantendo as características do gênero, considerando a situação comunicativa e o tema/assunto do texto."
+                },
+                {
+                  "codigo": "EF12LP05",
+                  "descricao": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, (re)contagens de histórias, poemas e outros textos versificados (letras de canção, quadrinhas, cordel), poemas visuais, tiras e histórias em quadrinhos, dentre outros gêneros do campo artístico-literário, considerando a situação comunicativa e a finalidade do texto."
+                },
+                {
+                  "codigo": "EF12LP06",
+                  "descricao": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, recados, avisos, convites, receitas, instruções de montagem, dentre outros gêneros do campo da vida cotidiana, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto."
                 }
               ],
               "(EF01LP19) Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.": [
@@ -439,10 +453,16 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA – Campo de atuação relativo à participação em situações de leitura e escrita, especialmente de textos das esferas jornalística, publicitária, política, jurídica e reivindicatória, contemplando temas que impactam a cidadania e o exercício de direitos. Alguns gêneros textuais deste campo: notas; álbuns noticiosos; notícias; reportagens; cartas do leitor (revista infantil); comentários em sites para criança; textos de campanhas de conscientização; Estatuto da Criança e do Adolescente; abaixo-assinados; cartas de reclamação, regras e regulamentos.": {
-              "Geral": [
+              "(EF01LP19) Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.": [
                 {
                   "codigo": "EF12LP07",
                   "descricao": "Identificar e (re)produzir, em cantiga, quadras, quadrinhas, parlendas, trava-línguas e canções, rimas, aliterações, assonâncias, o ritmo de fala relacionado ao ritmo e à melodia das músicas e seus efeitos de sentido."
+                }
+              ],
+              "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.": [
+                {
+                  "codigo": "EF02LP16",
+                  "descricao": "Identificar e reproduzir, em bilhetes, recados, avisos, cartas, e-mails, receitas (modo de fazer), relatos (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros."
                 },
                 {
                   "codigo": "EF02LP17",
@@ -460,16 +480,10 @@
                   "codigo": "EF12LP10",
                   "descricao": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, cartazes, avisos, folhetos, regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto."
                 }
-              ],
-              "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.": [
-                {
-                  "codigo": "EF02LP16",
-                  "descricao": "Identificar e reproduzir, em bilhetes, recados, avisos, cartas, e-mails, receitas (modo de fazer), relatos (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros."
-                }
               ]
             },
             "CAMPO DA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.": [
                 {
                   "codigo": "EF12LP11",
                   "descricao": "Escrever, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, digitais ou impressos, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto."
@@ -477,6 +491,12 @@
                 {
                   "codigo": "EF12LP12",
                   "descricao": "Escrever, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/ assunto/finalidade do texto."
+                }
+              ],
+              "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.": [
+                {
+                  "codigo": "EF02LP18",
+                  "descricao": "Planejar e produzir cartazes e folhetos para divulgar eventos da escola ou da comunidade, utilizando linguagem persuasiva e elementos textuais e visuais (tamanho da letra, leiaute, imagens) adequados ao gênero, considerando a situação comunicativa e o tema/assunto do texto."
                 },
                 {
                   "codigo": "EF02LP19",
@@ -498,16 +518,10 @@
                   "codigo": "EF12LP16",
                   "descricao": "Identificar e reproduzir, em anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil (orais e escritos, digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros, inclusive o uso de imagens."
                 }
-              ],
-              "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.": [
-                {
-                  "codigo": "EF02LP18",
-                  "descricao": "Planejar e produzir cartazes e folhetos para divulgar eventos da escola ou da comunidade, utilizando linguagem persuasiva e elementos textuais e visuais (tamanho da letra, leiaute, imagens) adequados ao gênero, considerando a situação comunicativa e o tema/assunto do texto."
-                }
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA – Campo de atuação relativo à participação em situações de leitura/escrita que possibilitem conhecer os textos expositivos e argumentativos, a linguagem e as práticas relacionadas ao estudo, à pesquisa e à divulgação científica, favorecendo a aprendizagem dentro e fora da escola. Alguns gêneros deste campo em mídia impressa ou digital: enunciados de tarefas escolares; relatos de experimentos; quadros; gráficos; tabelas; infográficos; diagramas; entrevistas; notas de divulgação científica; verbetes de enciclopédia.": {
-              "Geral": [
+              "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF12LP17",
                   "descricao": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, enunciados de tarefas escolares, diagramas, curiosidades, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, entre outros gêneros do campo investigativo, considerando a situação comunicativa e o tema/assunto do texto."
@@ -519,16 +533,16 @@
                 {
                   "codigo": "EF02LP21",
                   "descricao": "Explorar, com a mediação do professor, textos informativos de diferentes ambientes digitais de pesquisa, conhecendo suas possibilidades."
-                },
-                {
-                  "codigo": "EF02LP23",
-                  "descricao": "Planejar e produzir, com certa autonomia, pequenos registros de observação de resultados de pesquisa, coerentes com um tema investigado."
                 }
               ],
               "(EF01LP22) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, diagramas, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.": [
                 {
                   "codigo": "EF02LP22",
                   "descricao": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto."
+                },
+                {
+                  "codigo": "EF02LP23",
+                  "descricao": "Planejar e produzir, com certa autonomia, pequenos registros de observação de resultados de pesquisa, coerentes com um tema investigado."
                 }
               ],
               "(EF01LP23) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.": [
@@ -593,7 +607,9 @@
                 {
                   "codigo": "EF15LP13",
                   "descricao": "Identificar finalidades da interação oral em diferentes contextos comunicativos (solicitar informações, apresentar opiniões, informar, relatar experiências etc.)."
-                },
+                }
+              ],
+              "(EF01LP26) Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.": [
                 {
                   "codigo": "EF35LP01",
                   "descricao": "Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado."
@@ -641,7 +657,9 @@
                 {
                   "codigo": "EF35LP12",
                   "descricao": "Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema."
-                },
+                }
+              ],
+              "(EF03LP02) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.": [
                 {
                   "codigo": "EF03LP03",
                   "descricao": "Ler e escrever corretamente palavras com os dígrafos lh, nh, ch."
@@ -649,7 +667,9 @@
                 {
                   "codigo": "EF35LP13",
                   "descricao": "Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial quenão representa fonema."
-                },
+                }
+              ],
+              "(EF03LP04) Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s.": [
                 {
                   "codigo": "EF03LP05",
                   "descricao": "Identificar o número de sílabas de palavras, classificando-as em monossílabas, dissílabas, trissílabas e polissílabas."
@@ -685,7 +705,9 @@
                 {
                   "codigo": "EF15LP19",
                   "descricao": "Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor."
-                },
+                }
+              ],
+              "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.": [
                 {
                   "codigo": "EF35LP21",
                   "descricao": "Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores."
@@ -721,7 +743,7 @@
               ]
             },
             "CAMPO DA VIDA COTIDIANA – Campo de atuação relativo à participação em situações de leitura, próprias de atividades vivenciadas cotidianamente por crianças, adolescentes, jovens e adultos, no espaço doméstico e familiar, escolar, cultural e profissional. Alguns gêneros textuais deste campo: agendas, listas, bilhetes, recados, avisos, convites, cartas, cardápios, diários, receitas, regras de jogos e brincadeiras.": {
-              "Geral": [
+              "(EF03LP09) Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos.": [
                 {
                   "codigo": "EF35LP14",
                   "descricao": "Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico."
@@ -729,7 +751,7 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA – Campo de atuação relativo à participação em situações de leitura e escrita, especialmente de textos das esferas jornalística, publicitária, política, jurídica e reivindicatória, contemplando temas que impactam a cidadania e o exercício de direitos. Alguns gêneros textuais deste campo: notas; álbuns noticiosos; notícias; reportagens; cartas do leitor (revista infantil); comentários em sites para criança; textos de campanhas de conscientização; Estatuto da Criança e do Adolescente; abaixo-assinados; cartas de reclamação, regras e regulamentos.": {
-              "Geral": [
+              "(EF03LP16) Identificar e reproduzir, em textos injuntivos instrucionais (receitas, instruções de montagem, digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e a diagramação específica dos textos desses gêneros (lista de ingredientes ou materiais e instruções de execução – \"modo de fazer\").": [
                 {
                   "codigo": "EF03LP17",
                   "descricao": "Identificar e reproduzir, em gêneros epistolares e diários, a formatação própria desses textos (relatos de acontecimentos, expressão de vivências, emoções, opiniões ou críticas) e a diagramação específica dos textos desses gêneros (data, saudação, corpo do texto, despedida, assinatura)."
@@ -737,7 +759,7 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF03LP20) Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campo político-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF03LP21",
                   "descricao": "Produzir anúncios publicitários, textos de campanhas de conscientização destinados ao público infantil, observando os recursos de persuasão utilizados nos textos publicitários e de propaganda (cores, imagens, slogan, escolha de palavras, jogo de palavras, tamanho e tipo de letras, diagramação)."
@@ -745,7 +767,9 @@
                 {
                   "codigo": "EF35LP15",
                   "descricao": "Opinar e defender ponto de vista sobre tema polêmico relacionado a situações vivenciadas na escola e/ou na comunidade, utilizando registro formal e estrutura adequada à argumentação, considerando a situação comunicativa e o tema/assunto do texto."
-                },
+                }
+              ],
+              "(EF03LP22) Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.": [
                 {
                   "codigo": "EF35LP16",
                   "descricao": "Identificar e reproduzir, em notícias, manchetes, lides e corpo de notícias simples para público infantil e cartas de reclamação (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais."
@@ -753,7 +777,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA – Campo de atuação relativo à participação em situações de leitura/escrita que possibilitem conhecer os textos expositivos e argumentativos, a linguagem e as práticas relacionadas ao estudo, à pesquisa e à divulgação científica, favorecendo a aprendizagem dentro e fora da escola. Alguns gêneros deste campo em mídia impressa ou digital: enunciados de tarefas escolares; relatos de experimentos; quadros; gráficos; tabelas; infográficos; diagramas; entrevistas; notas de divulgação científica; verbetes de enciclopédia.": {
-              "Geral": [
+              "(EF03LP24) Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF35LP17",
                   "descricao": "Buscar e selecionar, com o apoio do professor, informações de interesse sobre fenômenos sociais e naturais, em textos que circulam em meios impressos ou digitais."
@@ -761,7 +785,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP25) Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF35LP18",
                   "descricao": "Escutar, com atenção, apresentações de trabalhos realizadas por colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário."
@@ -777,7 +801,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF35LP29",
                   "descricao": "Identificar, em narrativas, cenário, personagem central, conflito gerador, resolução e o ponto de vista com base no qual histórias são narradas, diferenciando narrativas em primeira e terceira pessoas."
@@ -847,7 +871,9 @@
                 {
                   "codigo": "EF15LP13",
                   "descricao": "Identificar finalidades da interação oral em diferentes contextos comunicativos (solicitar informações, apresentar opiniões, informar, relatar experiências etc.)."
-                },
+                }
+              ],
+              "(EF01LP26) Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.": [
                 {
                   "codigo": "EF35LP01",
                   "descricao": "Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado."
@@ -895,16 +921,16 @@
                 {
                   "codigo": "EF35LP12",
                   "descricao": "Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema."
-                },
-                {
-                  "codigo": "EF35LP13",
-                  "descricao": "Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial quenão representa fonema."
                 }
               ],
               "(EF03LP02) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.": [
                 {
                   "codigo": "EF04LP02",
                   "descricao": "Ler e escrever, corretamente, palavras com sílabas VV e CVV em casos nos quais a combinação VV (ditongo) é reduzida na língua oral (ai, ei, ou)."
+                },
+                {
+                  "codigo": "EF35LP13",
+                  "descricao": "Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial quenão representa fonema."
                 }
               ]
             },
@@ -933,7 +959,9 @@
                 {
                   "codigo": "EF15LP19",
                   "descricao": "Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor."
-                },
+                }
+              ],
+              "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.": [
                 {
                   "codigo": "EF35LP21",
                   "descricao": "Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores."
@@ -979,9 +1007,7 @@
                 {
                   "codigo": "EF04LP07",
                   "descricao": "Identificar em textos e usar na produção textual a concordância entre artigo, substantivo e adjetivo (concordância no grupo nominal)."
-                }
-              ],
-              "Geral": [
+                },
                 {
                   "codigo": "EF35LP14",
                   "descricao": "Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico."
@@ -989,11 +1015,13 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF03LP20) Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campo político-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF35LP15",
                   "descricao": "Opinar e defender ponto de vista sobre tema polêmico relacionado a situações vivenciadas na escola e/ou na comunidade, utilizando registro formal e estrutura adequada à argumentação, considerando a situação comunicativa e o tema/assunto do texto."
-                },
+                }
+              ],
+              "(EF03LP22) Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.": [
                 {
                   "codigo": "EF35LP16",
                   "descricao": "Identificar e reproduzir, em notícias, manchetes, lides e corpo de notícias simples para público infantil e cartas de reclamação (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais."
@@ -1001,7 +1029,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA – Campo de atuação relativo à participação em situações de leitura/escrita que possibilitem conhecer os textos expositivos e argumentativos, a linguagem e as práticas relacionadas ao estudo, à pesquisa e à divulgação científica, favorecendo a aprendizagem dentro e fora da escola. Alguns gêneros deste campo em mídia impressa ou digital: enunciados de tarefas escolares; relatos de experimentos; quadros; gráficos; tabelas; infográficos; diagramas; entrevistas; notas de divulgação científica; verbetes de enciclopédia.": {
-              "Geral": [
+              "(EF03LP24) Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF35LP17",
                   "descricao": "Buscar e selecionar, com o apoio do professor, informações de interesse sobre fenômenos sociais e naturais, em textos que circulam em meios impressos ou digitais."
@@ -1009,7 +1037,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP25) Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF35LP18",
                   "descricao": "Escutar, com atenção, apresentações de trabalhos realizadas por colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário."
@@ -1021,7 +1049,9 @@
                 {
                   "codigo": "EF35LP20",
                   "descricao": "Expor trabalhos ou pesquisas escolares, em sala de aula, com apoio de recursos multissemióticos (imagens, diagrama, tabelas etc.), orientando-se por roteiro escrito, planejando o tempo de fala e adequando a linguagem à situação comunicativa."
-                },
+                }
+              ],
+              "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.": [
                 {
                   "codigo": "EF04LP24",
                   "descricao": "Identificar e reproduzir, em seu formato, tabelas, diagramas e gráficos em relatórios de observação e pesquisa, como forma de apresentação de dados e informações."
@@ -1029,7 +1059,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF35LP29",
                   "descricao": "Identificar, em narrativas, cenário, personagem central, conflito gerador, resolução e o ponto de vista com base no qual histórias são narradas, diferenciando narrativas em primeira e terceira pessoas."
@@ -1103,7 +1133,9 @@
                 {
                   "codigo": "EF15LP13",
                   "descricao": "Identificar finalidades da interação oral em diferentes contextos comunicativos (solicitar informações, apresentar opiniões, informar, relatar experiências etc.)."
-                },
+                }
+              ],
+              "(EF01LP26) Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.": [
                 {
                   "codigo": "EF35LP01",
                   "descricao": "Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado."
@@ -1151,41 +1183,41 @@
                 {
                   "codigo": "EF35LP12",
                   "descricao": "Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema."
-                },
+                }
+              ],
+              "(EF03LP01) Ler e escrever palavras com correspondências regulares contextuais entre grafemas e fonemas – c/qu; g/gu; r/rr; s/ss; o (e não u) e e (e não i) em sílaba átona em final de palavra – e com marcas de nasalidade (til, m, n).": [
+                {
+                  "codigo": "EF05LP01",
+                  "descricao": "Grafar palavras utilizando regras de correspondência fonema- -grafema regulares, contextuais emorfológicas e palavras de uso frequente com correspondências irregulares."
+                }
+              ],
+              "(EF03LP02) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.": [
                 {
                   "codigo": "EF35LP13",
                   "descricao": "Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial quenão representa fonema."
+                },
+                {
+                  "codigo": "EF05LP02",
+                  "descricao": "Identificar o caráter polissêmico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de determinados termos utilizados nas áreas científicas com esses mesmos termos utilizados na linguagem usual."
+                }
+              ],
+              "(EF03LP04) Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s.": [
+                {
+                  "codigo": "EF05LP03",
+                  "descricao": "Acentuar corretamente palavras oxítonas, paroxítonas e proparoxítonas."
+                }
+              ],
+              "(EF03LP07) Identificar a função na leitura e usar na escrita ponto final, ponto de interrogação, ponto de exclamação e, em diálogos (discurso direto), dois-pontos e travessão.": [
+                {
+                  "codigo": "EF05LP04",
+                  "descricao": "Diferenciar, na leitura de textos, vírgula, ponto e vírgula, dois-pontos e reconhecer, na leitura de textos, o efeito de sentido que decorre do uso de reticências, aspas, parênteses."
                 },
                 {
                   "codigo": "EF05LP05",
                   "descricao": "Identificar a expressão de presente, passado e futuro em tempos verbais do modo indicativo."
                 }
               ],
-              "(EF04LP01) Grafar palavras utilizando regras de correspondência fonema- -grafema regulares diretas e contextuais.": [
-                {
-                  "codigo": "EF05LP01",
-                  "descricao": "Grafar palavras utilizando regras de correspondência fonema- -grafema regulares, contextuais emorfológicas e palavras de uso frequente com correspondências irregulares."
-                }
-              ],
-              "(EF04LP03) Localizar palavras no dicionário para esclarecer significados, reconhecendo o significado mais plausível para o contexto que deu origem à consulta.": [
-                {
-                  "codigo": "EF05LP02",
-                  "descricao": "Identificar o caráter polissêmico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de determinados termos utilizados nas áreas científicas com esses mesmos termos utilizados na linguagem usual."
-                }
-              ],
-              "(EF04LP04) Usar acento gráfico (agudo ou circunflexo) em paroxítonas terminadas em -i(s), -l, -r, -ão(s).": [
-                {
-                  "codigo": "EF05LP03",
-                  "descricao": "Acentuar corretamente palavras oxítonas, paroxítonas e proparoxítonas."
-                }
-              ],
-              "(EF04LP05) Identificar a função na leitura e usar, adequadamente, na escrita ponto final, de interrogação, de exclamação, dois-pontos e travessão em diálogos (discurso direto), vírgula em enumerações e em separação de vocativo e de aposto.": [
-                {
-                  "codigo": "EF05LP04",
-                  "descricao": "Diferenciar, na leitura de textos, vírgula, ponto e vírgula, dois-pontos e reconhecer, na leitura de textos, o efeito de sentido que decorre do uso de reticências, aspas, parênteses."
-                }
-              ],
-              "(EF04LP06) Identificar em textos e usar na produção textual a concordância entre substantivo ou pronome pessoal e verbo (concordância verbal).": [
+              "(EF03LP08) Identificar e diferenciar, em textos, substantivos e verbos e suas funções na oração: agente, ação, objeto da ação.": [
                 {
                   "codigo": "EF05LP06",
                   "descricao": "Flexionar, adequadamente, na escrita e na oralidade, os verbos em concordância com pronomes pessoais/nomes sujeitos da oração."
@@ -1217,7 +1249,9 @@
                 {
                   "codigo": "EF15LP19",
                   "descricao": "Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor."
-                },
+                }
+              ],
+              "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.": [
                 {
                   "codigo": "EF35LP21",
                   "descricao": "Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores."
@@ -1253,7 +1287,7 @@
               ]
             },
             "CAMPO DA VIDA COTIDIANA – Campo de atuação relativo à participação em situações de leitura, próprias de atividades vivenciadas cotidianamente por crianças, adolescentes, jovens e adultos, no espaço doméstico e familiar, escolar, cultural e profissional. Alguns gêneros textuais deste campo: agendas, listas, bilhetes, recados, avisos, convites, cartas, cardápios, diários, receitas, regras de jogos e brincadeiras.": {
-              "Geral": [
+              "(EF03LP09) Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos.": [
                 {
                   "codigo": "EF35LP14",
                   "descricao": "Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico."
@@ -1263,13 +1297,13 @@
                   "descricao": "Identificar, em textos, o uso de conjunções e a relação que estabelecem entre partes do texto: adição, oposição, tempo, causa, condição, finalidade."
                 }
               ],
-              "(EF04LP08) Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfológicas).": [
+              "(EF03LP10) Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras.": [
                 {
                   "codigo": "EF05LP08",
                   "descricao": "Diferenciar palavras primitivas, derivadas e compostas, e derivadas por adição de prefixo e de sufixo."
                 }
               ],
-              "(EF04LP09) Ler e compreender, com autonomia, boletos, faturas e carnês, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero (campos, itens elencados, medidas de consumo, código de barras) e considerando a situação comunicativa e a finalidade do texto.": [
+              "(EF03LP11) Ler e compreender, com autonomia, textos injuntivos instrucionais (receitas, instruções de montagem etc.), com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico- visuais, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP09",
                   "descricao": "Ler e compreender, com autonomia, textos instrucional de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto."
@@ -1277,25 +1311,25 @@
               ]
             },
             "CAMPO DA VIDA COTIDIANA": {
-              "(EF04LP10) Ler e compreender, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto/finalidade do texto.": [
+              "(EF03LP12) Ler e compreender, com autonomia, cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP10",
                   "descricao": "Ler e compreender, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto."
                 }
               ],
-              "(EF04LP11) Planejar e produzir, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e com a estrutura própria desses textos (problema, opinião, argumentos), considerando a situação comunicativa e o tema/assunto/finalidade do texto.": [
+              "(EF03LP13) Planejar e produzir cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções dos gêneros carta e diário e considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP11",
                   "descricao": "Registrar, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto."
                 }
               ],
-              "Geral": [
+              "(EF03LP14) Planejar e produzir textos injuntivos instrucionais, com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico-visuais, considerando a situação comunicativa e o tema/ assunto do texto.": [
                 {
                   "codigo": "EF05LP12",
                   "descricao": "Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto."
                 }
               ],
-              "(EF04LP12) Assistir, em vídeo digital, a programa infantil com instruções de montagem, de jogos e brincadeiras e, a partir dele, planejar e produzir tutoriais em áudio ou vídeo.": [
+              "(EF03LP15) Assistir, em vídeo digital, a programa de culinária infantil e, a partir dele, planejar e produzir receitas em áudio ou vídeo.": [
                 {
                   "codigo": "EF05LP13",
                   "descricao": "Assistir, em vídeo digital, a postagem de vlog infantil de críticas de brinquedos e livros de literatura infantil e, a partir dele, planejar e produzir resenhas digitais em áudio ou vídeo."
@@ -1303,13 +1337,13 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA – Campo de atuação relativo à participação em situações de leitura e escrita, especialmente de textos das esferas jornalística, publicitária, política, jurídica e reivindicatória, contemplando temas que impactam a cidadania e o exercício de direitos. Alguns gêneros textuais deste campo: notas; álbuns noticiosos; notícias; reportagens; cartas do leitor (revista infantil); comentários em sites para criança; textos de campanhas de conscientização; Estatuto da Criança e do Adolescente; abaixo-assinados; cartas de reclamação, regras e regulamentos.": {
-              "(EF04LP13) Identificar e reproduzir, em textos injuntivos instrucionais (instruções de jogos digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e formato específico dos textos orais ou escritos desses gêneros (lista/ apresentação de materiais e instruções/passos de jogo).": [
+              "(EF03LP16) Identificar e reproduzir, em textos injuntivos instrucionais (receitas, instruções de montagem, digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e a diagramação específica dos textos desses gêneros (lista de ingredientes ou materiais e instruções de execução – \"modo de fazer\").": [
                 {
                   "codigo": "EF05LP14",
                   "descricao": "Identificar e reproduzir, em textos de resenha crítica de brinquedos ou livros de literatura infantil, a formatação própria desses textos (apresentação e avaliação do produto)."
                 }
               ],
-              "(EF04LP14) Identificar, em notícias, fatos, participantes, local e momento/tempo da ocorrência do fato noticiado.": [
+              "(EF03LP18) Ler e compreender, com autonomia, cartas dirigidas a veículos da mídia impressa ou digital (cartas de leitor e de reclamação a jornais, revistas) e notícias, dentre outros gêneros do campo jornalístico, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP15",
                   "descricao": "Ler/assistir e compreender, com autonomia, notícias, reportagens, vídeos em vlogs argumentativos, dentre outros gêneros do campo político-cidadão, de acordo com as convenções dos gêneros e considerando a situação comunicativa e o tema/assunto do texto."
@@ -1317,22 +1351,26 @@
               ]
             },
             "CAMPO DA VIDA PÚBLICA": {
-              "(EF04LP15) Distinguir fatos de opiniões/sugestões em textos (informativos, jornalísticos, publicitários etc.).": [
+              "(EF03LP19) Identificar e discutir o propósito do uso de recursos de persuasão (cores, imagens, escolha de palavras, jogo de palavras, tamanho de letras) em textos publicitários e de propaganda, como elementos de convencimento.": [
                 {
                   "codigo": "EF05LP16",
                   "descricao": "Comparar informações sobre um mesmo fato veiculadas em diferentes mídias e concluir sobre qual é mais confiável e por quê."
                 }
               ],
-              "(EF04LP16) Produzir notícias sobre fatos ocorridos no universo escolar, digitais ou impressas, para o jornal da escola, noticiando os fatos e seus atores e comentando decorrências, de acordo com as convenções do gênero notícia e considerando a situação comunicativa e o tema/assunto do texto.": [
+              "(EF03LP20) Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campo político-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP17",
                   "descricao": "Produzir roteiro para edição de uma reportagem digital sobre temas de interesse da turma, a partir de buscas de informações, imagens, áudios e vídeos na internet, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/assunto do texto."
-                }
-              ],
-              "Geral": [
+                },
                 {
                   "codigo": "EF35LP15",
                   "descricao": "Opinar e defender ponto de vista sobre tema polêmico relacionado a situações vivenciadas na escola e/ou na comunidade, utilizando registro formal e estrutura adequada à argumentação, considerando a situação comunicativa e o tema/assunto do texto."
+                }
+              ],
+              "(EF03LP22) Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.": [
+                {
+                  "codigo": "EF05LP18",
+                  "descricao": "Roteirizar, produzir e editar vídeo para vlogs argumentativos sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/ assunto/finalidade do texto."
                 },
                 {
                   "codigo": "EF05LP19",
@@ -1341,19 +1379,13 @@
                 {
                   "codigo": "EF35LP16",
                   "descricao": "Identificar e reproduzir, em notícias, manchetes, lides e corpo de notícias simples para público infantil e cartas de reclamação (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais."
-                },
+                }
+              ],
+              "(EF03LP23) Analisar o uso de adjetivos em cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), digitais ou impressas.": [
                 {
                   "codigo": "EF05LP20",
                   "descricao": "Analisar a validade e força de argumentos em argumentações sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos."
-                }
-              ],
-              "(EF04LP17) Produzir jornais radiofônicos ou televisivos e entrevistas veiculadas em rádio, TV e na internet, orientando-se por roteiro ou texto e demonstrando conhecimento dos gêneros jornal falado/televisivo e entrevista.": [
-                {
-                  "codigo": "EF05LP18",
-                  "descricao": "Roteirizar, produzir e editar vídeo para vlogs argumentativos sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/ assunto/finalidade do texto."
-                }
-              ],
-              "(EF04LP18) Analisar o padrão entonacional e a expressão facial e corporal de âncoras de jornais radiofônicos ou televisivos e de entrevistadores/entrevistados.": [
+                },
                 {
                   "codigo": "EF05LP21",
                   "descricao": "Analisar o padrão entonacional, a expressão facial e corporal e as escolhas de variedade e registro linguísticos de vloggers de vlogs opinativos ou argumentativos."
@@ -1361,31 +1393,25 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA – Campo de atuação relativo à participação em situações de leitura/escrita que possibilitem conhecer os textos expositivos e argumentativos, a linguagem e as práticas relacionadas ao estudo, à pesquisa e à divulgação científica, favorecendo a aprendizagem dentro e fora da escola. Alguns gêneros deste campo em mídia impressa ou digital: enunciados de tarefas escolares; relatos de experimentos; quadros; gráficos; tabelas; infográficos; diagramas; entrevistas; notas de divulgação científica; verbetes de enciclopédia.": {
-              "(EF04LP19) Ler e compreender textos expositivos de divulgação científica para crianças, considerando a situação comunicativa e o tema/ assunto do texto.": [
+              "(EF03LP24) Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP22",
                   "descricao": "Ler e compreender verbetes de dicionário, identificando a estrutura, as informações gramaticais (significado de abreviaturas) e as informações semânticas."
-                }
-              ],
-              "(EF04LP20) Reconhecer a função de gráficos, diagramas e tabelas em textos, como forma de apresentação de dados e informações.": [
+                },
                 {
                   "codigo": "EF05LP23",
                   "descricao": "Comparar informações apresentadas em gráficos ou tabelas."
-                }
-              ],
-              "Geral": [
+                },
                 {
                   "codigo": "EF35LP17",
                   "descricao": "Buscar e selecionar, com o apoio do professor, informações de interesse sobre fenômenos sociais e naturais, em textos que circulam em meios impressos ou digitais."
                 }
               ],
-              "(EF04LP21) Planejar e produzir textos sobre temas de interesse, com base em resultados de observações e pesquisas em fontes de informações impressas ou eletrônicas, incluindo, quando pertinente, imagens e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.": [
+              "(EF03LP25) Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF05LP24",
                   "descricao": "Planejar e produzir texto sobre tema de interesse, organizando resultados de pesquisa em fontes de informação impressas ou digitais, incluindo imagens e gráficos ou tabelas, considerando a situação comunicativa e o tema/assunto do texto."
-                }
-              ],
-              "(EF04LP22) Planejar e produzir, com certa autonomia, verbetes de enciclopédia infantil, digitais ou impressos, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.": [
+                },
                 {
                   "codigo": "EF05LP25",
                   "descricao": "Planejar e produzir, com certa autonomia, verbetes de dicionário, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto."
@@ -1393,7 +1419,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP25) Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.": [
                 {
                   "codigo": "EF35LP18",
                   "descricao": "Escutar, com atenção, apresentações de trabalhos realizadas por colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário."
@@ -1405,13 +1431,13 @@
                 {
                   "codigo": "EF35LP20",
                   "descricao": "Expor trabalhos ou pesquisas escolares, em sala de aula, com apoio de recursos multissemióticos (imagens, diagrama, tabelas etc.), orientando-se por roteiro escrito, planejando o tempo de fala e adequando a linguagem à situação comunicativa."
-                },
+                }
+              ],
+              "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.": [
                 {
                   "codigo": "EF05LP26",
                   "descricao": "Utilizar, ao produzir o texto, conhecimentos linguísticos e gramaticais: regras sintáticas de concordância nominal e verbal, convenções de escrita de citações, pontuação (ponto final, dois-pontos, vírgulas em enumerações) e regras ortográficas."
-                }
-              ],
-              "(EF04LP23) Identificar e reproduzir, em verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica desse gênero (título do verbete, definição, detalhamento, curiosidades), considerando a situação comunicativa e o tema/ assunto/finalidade do texto.": [
+                },
                 {
                   "codigo": "EF05LP27",
                   "descricao": "Utilizar, ao produzir o texto, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível adequado de informatividade."
@@ -1419,7 +1445,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF35LP29",
                   "descricao": "Identificar, em narrativas, cenário, personagem central, conflito gerador, resolução e o ponto de vista com base no qual histórias são narradas, diferenciando narrativas em primeira e terceira pessoas."
@@ -1431,9 +1457,7 @@
                 {
                   "codigo": "EF35LP31",
                   "descricao": "Identificar, em textos versificados, efeitos de sentido decorrentes do uso de recursos rítmicos e sonoros e de metáforas."
-                }
-              ],
-              "(EF04LP26) Observar, em poemas concretos, o formato, a distribuição e a diagramação das letras do texto na página.": [
+                },
                 {
                   "codigo": "EF05LP28",
                   "descricao": "Observar, em ciberpoemas e minicontos infantis em mídia digital, os recursos multissemióticos presentes nesses textos digitais."
@@ -1443,7 +1467,7 @@
           },
           "6º Ano": {
             "Vários são os gêneros possíveis de serem contemplados em atividades de leitura e produção de textos para além dos já trabalhados nos anos iniciais do ensino fundamental (notícia, álbum noticioso, carta de leitor, entrevista etc.): reportagem, reportagem multimidiática, fotorreportagem, foto-denúncia, artigo de opinião, editorial, resenha crítica, crônica, comentário, debate, vlog noticioso, vlog cultural, meme, charge, charge digital, political remix, anúncio publicitário, propaganda, jingle, spot, dentre outros. A referência geral é que, em cada ano, contemplem-se gêneros que lidem com informação, opinião e apreciação, gêneros mais típicos dos letramentos da letra e do impresso e gêneros multissemióticos e hipermidiáticos, próprios da cultura digital e das culturas juvenis. Diversos também são os processos, ações e atividades que podem ser contemplados em atividades de uso e reflexão: curar, seguir/ser seguido, curtir, comentar, compartilhar, remixar etc. Ainda com relação a esse campo, trata-se também de compreender as formas de persuasão do discurso publicitário, o apelo ao consumo, as diferenças entre vender um produto e “vender” uma ideia, entre anúncio publicitário e propaganda.": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP01",
                   "descricao": "Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso."
@@ -1467,7 +1491,7 @@
               ]
             },
             "CAMPO JORNALÍSTICO-MIDIÁTICO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP07",
                   "descricao": "Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc."
@@ -1535,7 +1559,9 @@
                 {
                   "codigo": "EF69LP23",
                   "descricao": "Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP08",
                   "descricao": "Identificar os efeitos de sentido devidos à escolha de imagens estáticas, sequenciação ou sobreposição de imagens, definição de figura/fundo, ângulo, profundidade e foco, cores/tonalidades, relação com o escrito (relações de reiteração, complementação ou oposição) etc. em notícias, reportagens, fotorreportagens, foto-denúncias, memes, gifs, anúncios publicitários e propagandas publicados em jornais, revistas, sites na internet etc."
@@ -1563,7 +1589,7 @@
               ]
             },
             "CAMPO DE ATUAÇÃO NA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP24",
                   "descricao": "Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo."
@@ -1607,7 +1633,9 @@
                 {
                   "codigo": "EF69LP34",
                   "descricao": "Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e um posicionamento frente aos textos, se esse for o caso."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP14",
                   "descricao": "Definir o contexto de produção da entrevista (objetivos, o que se pretende conseguir, porque aquele entrevistado etc.), levantar informações sobre o entrevistado e sobre o acontecimento ou tema em questão, preparar o roteiro de perguntar e realizar entrevista oral com envolvidos ou especialistas relacionados com o fato noticiado ou com o tema em pauta, usando roteiro previamente elaborado e formulando outras perguntas a partir das respostas dadas e, quando for o caso, selecionar partes, transcrever e proceder a uma edição escrita do texto, adequando-o a seu contexto de publicação, à construção composicional do gênero e garantindo a relevância das informações mantidas e a continuidade temática."
@@ -1635,7 +1663,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP35",
                   "descricao": "Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados."
@@ -1687,7 +1715,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP47",
                   "descricao": "Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo."
@@ -1711,7 +1739,9 @@
                 {
                   "codigo": "EF69LP52",
                   "descricao": "Representar cenas ou textos dramáticos, considerando, na caracterização dos personagens, os aspectos linguísticos e paralinguísticos das falas (timbre e tom de voz, pausas e hesitações, entonação e expressividade, variedades e registros linguísticos), os gestos e os deslocamentos no espaço cênico, o figurino e a maquiagem e elaborando as rubricas indicadas pelo autor por meio do cenário, da trilha sonora e da exploração dos modos de interpretação."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP20",
                   "descricao": "Realizar pesquisa, a partir de recortes e questões definidos previamente, usando fontes indicadas e abertas."
@@ -1755,7 +1785,7 @@
               ]
             },
             "TODOS OS CAMPOS DE ATUAÇÃO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP53",
                   "descricao": "Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão."
@@ -1771,7 +1801,9 @@
                 {
                   "codigo": "EF69LP56",
                   "descricao": "Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP30",
                   "descricao": "Criar narrativas ficcionais, tais como contos populares, contos de suspense, mistério, terror, humor, narrativas de enigma, crônicas, histórias em quadrinhos, dentre outros, que utilizem cenários e personagens realistas ou de fantasia, observando os elementos da estrutura narrativa próprios ao gênero pretendido, tais como enredo, personagens, tempo, espaço e narrador, utilizando tempos verbais adequados à narração de fatos passados, empregando conhecimentos sobre diferentes modos de se iniciar uma história e de inserir os discursos direto e indireto."
@@ -1787,7 +1819,9 @@
                 {
                   "codigo": "EF67LP33",
                   "descricao": "Pontuar textos adequadamente."
-                },
+                }
+              ],
+              "(EF06LP03) Analisar diferenças de sentido entre palavras de uma série sinonímica.": [
                 {
                   "codigo": "EF67LP34",
                   "descricao": "Formar antônimos com acréscimo de prefixos que expressam noção de negação."
@@ -1795,11 +1829,15 @@
                 {
                   "codigo": "EF67LP35",
                   "descricao": "Distinguir palavras derivadas por acréscimo de afixos e palavras compostas."
-                },
+                }
+              ],
+              "(EF06LP06) Empregar, adequadamente, as regras de concordância nominal (relações entre os substantivos e seus determinantes) e as regras de concordância verbal (relações entre o verbo e o sujeito simples e composto).": [
                 {
                   "codigo": "EF06LP07",
                   "descricao": "Identificar, em textos, períodos compostos por orações separadas por vírgula sem a utilização de conectivos, nomeando-os como períodos compostos por coordenação."
-                },
+                }
+              ],
+              "(EF06LP09) Classificar, em texto ou sequência textual, os períodos simples compostos.": [
                 {
                   "codigo": "EF06LP10",
                   "descricao": "Identificar sintagmas nominais e verbais como constituintes imediatos da oração."
@@ -1807,7 +1845,9 @@
                 {
                   "codigo": "EF06LP11",
                   "descricao": "Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: tempos verbais, concordância nominal e verbal, regras ortográficas, pontuação etc."
-                },
+                }
+              ],
+              "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).": [
                 {
                   "codigo": "EF67LP36",
                   "descricao": "Utilizar, ao produzir texto, recursos de coesão referencial (léxica e pronominal) e sequencial e outros recursos expressivos adequados ao gênero textual."
@@ -1823,7 +1863,7 @@
               ]
             },
             "Leitura": {
-              "Geral": [
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP01",
                   "descricao": "Analisar a estrutura e funcionamento dos hiperlinks em textos noticiosos publicados na Web e vislumbrar possibilidades de uma escrita hipertextual."
@@ -1857,7 +1897,7 @@
           },
           "7º Ano": {
             "Vários são os gêneros possíveis de serem contemplados em atividades de leitura e produção de textos para além dos já trabalhados nos anos iniciais do ensino fundamental (notícia, álbum noticioso, carta de leitor, entrevista etc.): reportagem, reportagem multimidiática, fotorreportagem, foto-denúncia, artigo de opinião, editorial, resenha crítica, crônica, comentário, debate, vlog noticioso, vlog cultural, meme, charge, charge digital, political remix, anúncio publicitário, propaganda, jingle, spot, dentre outros. A referência geral é que, em cada ano, contemplem-se gêneros que lidem com informação, opinião e apreciação, gêneros mais típicos dos letramentos da letra e do impresso e gêneros multissemióticos e hipermidiáticos, próprios da cultura digital e das culturas juvenis. Diversos também são os processos, ações e atividades que podem ser contemplados em atividades de uso e reflexão: curar, seguir/ser seguido, curtir, comentar, compartilhar, remixar etc. Ainda com relação a esse campo, trata-se também de compreender as formas de persuasão do discurso publicitário, o apelo ao consumo, as diferenças entre vender um produto e “vender” uma ideia, entre anúncio publicitário e propaganda.": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP01",
                   "descricao": "Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso."
@@ -1881,7 +1921,7 @@
               ]
             },
             "CAMPO JORNALÍSTICO-MIDIÁTICO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP07",
                   "descricao": "Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc."
@@ -1949,7 +1989,9 @@
                 {
                   "codigo": "EF69LP23",
                   "descricao": "Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP08",
                   "descricao": "Identificar os efeitos de sentido devidos à escolha de imagens estáticas, sequenciação ou sobreposição de imagens, definição de figura/fundo, ângulo, profundidade e foco, cores/tonalidades, relação com o escrito (relações de reiteração, complementação ou oposição) etc. em notícias, reportagens, fotorreportagens, foto-denúncias, memes, gifs, anúncios publicitários e propagandas publicados em jornais, revistas, sites na internet etc."
@@ -1977,7 +2019,7 @@
               ]
             },
             "CAMPO DE ATUAÇÃO NA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP24",
                   "descricao": "Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo."
@@ -2021,7 +2063,9 @@
                 {
                   "codigo": "EF69LP34",
                   "descricao": "Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e um posicionamento frente aos textos, se esse for o caso."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP14",
                   "descricao": "Definir o contexto de produção da entrevista (objetivos, o que se pretende conseguir, porque aquele entrevistado etc.), levantar informações sobre o entrevistado e sobre o acontecimento ou tema em questão, preparar o roteiro de perguntar e realizar entrevista oral com envolvidos ou especialistas relacionados com o fato noticiado ou com o tema em pauta, usando roteiro previamente elaborado e formulando outras perguntas a partir das respostas dadas e, quando for o caso, selecionar partes, transcrever e proceder a uma edição escrita do texto, adequando-o a seu contexto de publicação, à construção composicional do gênero e garantindo a relevância das informações mantidas e a continuidade temática."
@@ -2049,7 +2093,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP35",
                   "descricao": "Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados."
@@ -2101,7 +2145,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP47",
                   "descricao": "Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo."
@@ -2125,7 +2169,9 @@
                 {
                   "codigo": "EF69LP52",
                   "descricao": "Representar cenas ou textos dramáticos, considerando, na caracterização dos personagens, os aspectos linguísticos e paralinguísticos das falas (timbre e tom de voz, pausas e hesitações, entonação e expressividade, variedades e registros linguísticos), os gestos e os deslocamentos no espaço cênico, o figurino e a maquiagem e elaborando as rubricas indicadas pelo autor por meio do cenário, da trilha sonora e da exploração dos modos de interpretação."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP20",
                   "descricao": "Realizar pesquisa, a partir de recortes e questões definidos previamente, usando fontes indicadas e abertas."
@@ -2169,7 +2215,7 @@
               ]
             },
             "TODOS OS CAMPOS DE ATUAÇÃO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP53",
                   "descricao": "Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão."
@@ -2185,7 +2231,9 @@
                 {
                   "codigo": "EF69LP56",
                   "descricao": "Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada."
-                },
+                }
+              ],
+              "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.": [
                 {
                   "codigo": "EF67LP30",
                   "descricao": "Criar narrativas ficcionais, tais como contos populares, contos de suspense, mistério, terror, humor, narrativas de enigma, crônicas, histórias em quadrinhos, dentre outros, que utilizem cenários e personagens realistas ou de fantasia, observando os elementos da estrutura narrativa próprios ao gênero pretendido, tais como enredo, personagens, tempo, espaço e narrador, utilizando tempos verbais adequados à narração de fatos passados, empregando conhecimentos sobre diferentes modos de se iniciar uma história e de inserir os discursos direto e indireto."
@@ -2201,6 +2249,12 @@
                 {
                   "codigo": "EF67LP33",
                   "descricao": "Pontuar textos adequadamente."
+                }
+              ],
+              "(EF06LP03) Analisar diferenças de sentido entre palavras de uma série sinonímica.": [
+                {
+                  "codigo": "EF07LP03",
+                  "descricao": "Formar, com base em palavras primitivas, palavras derivadas com os prefixos e sufixos mais produtivos no português."
                 },
                 {
                   "codigo": "EF67LP34",
@@ -2209,6 +2263,24 @@
                 {
                   "codigo": "EF67LP35",
                   "descricao": "Distinguir palavras derivadas por acréscimo de afixos e palavras compostas."
+                }
+              ],
+              "(EF06LP04) Analisar a função e as flexões de substantivos e adjetivos e de verbos nos modos Indicativo, Subjuntivo e Imperativo: afirmativo e negativo.": [
+                {
+                  "codigo": "EF07LP04",
+                  "descricao": "Reconhecer, em textos, o verbo como o núcleo das orações."
+                }
+              ],
+              "(EF06LP05) Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.": [
+                {
+                  "codigo": "EF07LP05",
+                  "descricao": "Identificar, em orações de textos lidos ou de produção própria, verbos de predicação completa e incompleta: intransitivos e transitivos."
+                }
+              ],
+              "(EF06LP06) Empregar, adequadamente, as regras de concordância nominal (relações entre os substantivos e seus determinantes) e as regras de concordância verbal (relações entre o verbo e o sujeito simples e composto).": [
+                {
+                  "codigo": "EF07LP06",
+                  "descricao": "Empregar as regras básicas de concordância nominal e verbal em situações comunicativas e na produção de textos."
                 },
                 {
                   "codigo": "EF07LP07",
@@ -2221,6 +2293,24 @@
                 {
                   "codigo": "EF07LP09",
                   "descricao": "Identificar, em textos lidos ou de produção própria, advérbios e locuções adverbiais que ampliam o sentido do verbo núcleo da oração."
+                }
+              ],
+              "(EF06LP08) Identificar, em texto ou sequência textual, orações como unidades constituídas em torno de um núcleo verbal e períodos como conjunto de orações conectadas.": [
+                {
+                  "codigo": "EF07LP10",
+                  "descricao": "Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: modos e tempos verbais, concordância nominal e verbal, pontuação etc."
+                }
+              ],
+              "(EF06LP09) Classificar, em texto ou sequência textual, os períodos simples compostos.": [
+                {
+                  "codigo": "EF07LP11",
+                  "descricao": "Identificar,em textos lidos ou de produção própria, períodos compostos nos quais duas orações são conectadas por vírgula, ou por conjunções que expressem soma de sentido (conjunção “e”) ou oposição de sentidos (conjunções “mas”, “porém”)."
+                }
+              ],
+              "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).": [
+                {
+                  "codigo": "EF07LP12",
+                  "descricao": "Reconhecer recursos de coesão referencial: substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos)."
                 },
                 {
                   "codigo": "EF67LP36",
@@ -2242,48 +2332,6 @@
                   "codigo": "EF67LP38",
                   "descricao": "Analisar os efeitos de sentido do uso de figuras de linguagem, como comparação, metáfora, metonímia, personificação, hipérbole, dentre outras."
                 }
-              ],
-              "(EF06LP03) Analisar diferenças de sentido entre palavras de uma série sinonímica.": [
-                {
-                  "codigo": "EF07LP03",
-                  "descricao": "Formar, com base em palavras primitivas, palavras derivadas com os prefixos e sufixos mais produtivos no português."
-                }
-              ],
-              "(EF06LP04) Analisar a função e as flexões de substantivos e adjetivos e de verbos nos modos Indicativo, Subjuntivo e Imperativo: afirmativo e negativo.": [
-                {
-                  "codigo": "EF07LP04",
-                  "descricao": "Reconhecer, em textos, o verbo como o núcleo das orações."
-                }
-              ],
-              "(EF06LP05) Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.": [
-                {
-                  "codigo": "EF07LP05",
-                  "descricao": "Identificar, em orações de textos lidos ou de produção própria, verbos de predicação completa e incompleta: intransitivos e transitivos."
-                }
-              ],
-              "(EF06LP06) Empregar, adequadamente, as regras de concordância nominal (relações entre os substantivos e seus determinantes) e as regras de concordância verbal (relações entre o verbo e o sujeito simples e composto).": [
-                {
-                  "codigo": "EF07LP06",
-                  "descricao": "Empregar as regras básicas de concordância nominal e verbal em situações comunicativas e na produção de textos."
-                }
-              ],
-              "(EF06LP08) Identificar, em texto ou sequência textual, orações como unidades constituídas em torno de um núcleo verbal e períodos como conjunto de orações conectadas.": [
-                {
-                  "codigo": "EF07LP10",
-                  "descricao": "Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: modos e tempos verbais, concordância nominal e verbal, pontuação etc."
-                }
-              ],
-              "(EF06LP09) Classificar, em texto ou sequência textual, os períodos simples compostos.": [
-                {
-                  "codigo": "EF07LP11",
-                  "descricao": "Identificar,em textos lidos ou de produção própria, períodos compostos nos quais duas orações são conectadas por vírgula, ou por conjunções que expressem soma de sentido (conjunção “e”) ou oposição de sentidos (conjunções “mas”, “porém”)."
-                }
-              ],
-              "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).": [
-                {
-                  "codigo": "EF07LP12",
-                  "descricao": "Reconhecer recursos de coesão referencial: substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos)."
-                }
               ]
             },
             "Leitura": {
@@ -2297,9 +2345,7 @@
                 {
                   "codigo": "EF07LP02",
                   "descricao": "Comparar notícias e reportagens sobre um mesmo fato divulgadas em diferentes mídias, analisando as especificidades das mídias, os processos de (re)elaboração dos textos e a convergência das mídias em notícias ou reportagens multissemióticas."
-                }
-              ],
-              "Geral": [
+                },
                 {
                   "codigo": "EF67LP01",
                   "descricao": "Analisar a estrutura e funcionamento dos hiperlinks em textos noticiosos publicados na Web e vislumbrar possibilidades de uma escrita hipertextual."
@@ -2333,7 +2379,7 @@
           },
           "8º Ano": {
             "Vários são os gêneros possíveis de serem contemplados em atividades de leitura e produção de textos para além dos já trabalhados nos anos iniciais do ensino fundamental (notícia, álbum noticioso, carta de leitor, entrevista etc.): reportagem, reportagem multimidiática, fotorreportagem, foto-denúncia, artigo de opinião, editorial, resenha crítica, crônica, comentário, debate, vlog noticioso, vlog cultural, meme, charge, charge digital, political remix, anúncio publicitário, propaganda, jingle, spot, dentre outros. A referência geral é que, em cada ano, contemplem-se gêneros que lidem com informação, opinião e apreciação, gêneros mais típicos dos letramentos da letra e do impresso e gêneros multissemióticos e hipermidiáticos, próprios da cultura digital e das culturas juvenis. Diversos também são os processos, ações e atividades que podem ser contemplados em atividades de uso e reflexão: curar, seguir/ser seguido, curtir, comentar, compartilhar, remixar etc. Ainda com relação a esse campo, trata-se também de compreender as formas de persuasão do discurso publicitário, o apelo ao consumo, as diferenças entre vender um produto e “vender” uma ideia, entre anúncio publicitário e propaganda.": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP01",
                   "descricao": "Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso."
@@ -2357,7 +2403,7 @@
               ]
             },
             "CAMPO JORNALÍSTICO-MIDIÁTICO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP07",
                   "descricao": "Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc."
@@ -2425,7 +2471,9 @@
                 {
                   "codigo": "EF69LP23",
                   "descricao": "Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão."
-                },
+                }
+              ],
+              "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.": [
                 {
                   "codigo": "EF89LP08",
                   "descricao": "Planejar reportagem impressa e em outras mídias (rádio ou TV/vídeo, sites), tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. – a partir da escolha do fato a ser aprofundado ou do tema a ser focado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato ou tema – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes diversas, análise de documentos, cobertura de eventos etc. -, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc., da produção de infográficos, quando for o caso, e da organização hipertextual (no caso a publicação em sites ou blogs noticiosos ou mesmo de jornais impressos, por meio de boxes variados)."
@@ -2437,7 +2485,9 @@
                 {
                   "codigo": "EF89LP10",
                   "descricao": "Planejar artigos de opinião, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do tema ou questão a ser discutido(a), da relevância para a turma, escola ou comunidade, do levantamento de dados e informações sobre a questão, de argumentos relacionados a diferentes posicionamentos em jogo, da definição – o que pode envolver consultas a fontes diversas, entrevistas com especialistas, análise de textos, organização esquemática das informações e argumentos – dos (tipos de) argumentos e estratégias que pretende utilizar para convencer os leitores."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP11",
                   "descricao": "Produzir, revisar e editar peças e campanhas publicitárias, envolvendo o uso articulado e complementar de diferentes peças publicitárias: cartaz, banner, indoor, folheto, panfleto, anúncio de jornal/revista, para internet, spot, propaganda de rádio, TV, a partir da escolha da questão/problema/causa significativa para a escola e/ou a comunidade escolar, da definição do público-alvo, das peças que serão produzidas, das estratégias de persuasão e convencimento que serão utilizadas."
@@ -2465,7 +2515,7 @@
               ]
             },
             "CAMPO DE ATUAÇÃO NA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP24",
                   "descricao": "Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo."
@@ -2509,7 +2559,9 @@
                 {
                   "codigo": "EF69LP34",
                   "descricao": "Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e um posicionamento frente aos textos, se esse for o caso."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP17",
                   "descricao": "Relacionar textos e documentos legais e normativos de importância universal, nacional ou local que envolvam direitos, em especial, de crianças, adolescentes e jovens – tais como a Declaração dos Direitos Humanos, a Constituição Brasileira, o ECA -, e a regulamentação da organização escolar – por exemplo, regimento escolar -, a seus contextos de produção, reconhecendo e analisando possíveis motivações, finalidades e sua vinculação com experiências humanas e fatos históricos e sociais, como forma de ampliar a compreensão dos direitos e deveres, de fomentar os princípios democráticos e uma atuação pautada pela ética da responsabilidade (o outro tem direito a uma vida digna tanto quanto eu tenho)."
@@ -2533,7 +2585,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP35",
                   "descricao": "Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados."
@@ -2581,7 +2633,9 @@
                 {
                   "codigo": "EF69LP46",
                   "descricao": "Participar de práticas de compartilhamento de leitura/recepção de obras literárias/ manifestações artísticas, como rodas de leitura, clubes de leitura, eventos de contação de histórias, de leituras dramáticas, de apresentações teatrais, musicais e de filmes, cineclubes, festivais de vídeo, saraus, slams, canais de booktubers, redes sociais temáticas (de leitores, de cinéfilos, de música etc.), dentre outros, tecendo, quando possível, comentários de ordem estética e afetiva e justificando suas apreciações, escrevendo comentários e resenhas para jornais, blogs e redes sociais e utilizando formas de expressão das culturas juvenis, tais como, vlogs e podcasts culturais (literatura, cinema, teatro, música), playlists comentadas, fanfics, fanzines, e-zines, fanvídeos, fanclipes, posts em fanpages, trailer honesto, vídeo-minuto, dentre outras possibilidades de práticas de apreciação e de manifestação da cultura de fãs."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP22",
                   "descricao": "Compreender e comparar as diferentes posições e interesses em jogo em uma discussão ou apresentação de propostas, avaliando a validade e força dos argumentos e as consequências do que está sendo proposto e, quando for o caso, formular e negociar propostas de diferentes naturezas relativas a interesses coletivos envolvendo a escola ou comunidade escolar."
@@ -2625,7 +2679,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP47",
                   "descricao": "Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo."
@@ -2653,7 +2707,7 @@
               ]
             },
             "TODOS OS CAMPOS DE ATUAÇÃO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP53",
                   "descricao": "Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão."
@@ -2669,7 +2723,9 @@
                 {
                   "codigo": "EF69LP56",
                   "descricao": "Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP32",
                   "descricao": "Analisar os efeitos de sentido decorrentes do uso de mecanismos de intertextualidade (referências, alusões, retomadas) entre os textos literários, entre esses textos literários e outras manifestações artísticas (cinema, teatro, artes visuais e midiáticas, música), quanto aos temas, personagens, estilos, autores etc., e entre o texto original e paródias, paráfrases, pastiches, trailer honesto, vídeos-minuto, vidding, dentre outros."
@@ -2689,11 +2745,15 @@
                 {
                   "codigo": "EF89LP36",
                   "descricao": "Parodiar poemas conhecidos da literatura e criar textos em versos (como poemas concretos, ciberpoemas, haicais, liras, microrroteiros, lambe-lambes e outros tipos de poemas), explorando o uso de recursos sonoros e semânticos (como figuras de linguagem e jogos de palavras) e visuais (como relações entre imagem e texto verbal e distribuição da mancha gráfica), de forma a propiciar diferentes efeitos de sentido."
-                },
+                }
+              ],
+              "(EF08LP04) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: ortografia, regências e concordâncias nominal e verbal, modos e tempos verbais, pontuação etc.": [
                 {
                   "codigo": "EF08LP05",
                   "descricao": "Analisar processos de formação de palavras por composição (aglutinação e justaposição), apropriando-se de regras básicas de uso do hífen em palavras compostas."
-                },
+                }
+              ],
+              "(EF08LP08) Identificar, em textos lidos ou de produção própria, verbos na voz ativa e na voz passiva, interpretando os efeitos de sentido de sujeito ativo e passivo (agente da passiva).": [
                 {
                   "codigo": "EF08LP09",
                   "descricao": "Interpretar efeitos de sentido de modificadores (adjuntos adnominais – artigos definido ou indefinido, adjetivos, expressões adjetivas) em substantivos com função de sujeito ou de complemento verbal, usando-os para enriquecer seus próprios textos."
@@ -2705,7 +2765,9 @@
                 {
                   "codigo": "EF08LP11",
                   "descricao": "Identificar, em textos lidos ou de produção própria, agrupamento de orações em períodos, diferenciando coordenação de subordinação."
-                },
+                }
+              ],
+              "(EF08LP12) Identificar, em textos lidos, orações subordinadas com conjunções de uso frequente, incorporando-as às suas próprias produções.": [
                 {
                   "codigo": "EF08LP13",
                   "descricao": "Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial: conjunções e articuladores textuais."
@@ -2713,7 +2775,9 @@
                 {
                   "codigo": "EF08LP14",
                   "descricao": "Utilizar, ao produzir texto, recursos de coesão sequencial (articuladores) e referencial (léxica e pronominal), construções passivas e impessoais, discurso direto e indireto e outros recursos expressivos adequados ao gênero textual."
-                },
+                }
+              ],
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08LP16",
                   "descricao": "Explicar os efeitos de sentido do uso, em textos, de estratégias de modalização e argumentatividade (sinais de pontuação, adjetivos, substantivos, expressões de grau, verbos e perífrases verbais, advérbios etc.)."
@@ -2725,11 +2789,13 @@
               ]
             },
             "Leitura": {
-              "Geral": [
+              "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).": [
                 {
                   "codigo": "EF89LP01",
                   "descricao": "Analisar os interesses que movem o campo jornalístico, os efeitos das novas tecnologias no campo e as condições que fazem da informação uma mercadoria, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos."
-                },
+                }
+              ],
+              "(EF08LP01) Identificar e comparar as várias editorias de jornais impressos e digitais e de sites noticiosos, de forma a refletir sobre os tipos de fato que são noticiados e comentados, as escolhas sobre o que noticiar e o que não noticiar e o destaque/enfoque dado e a fidedignidade da informação.": [
                 {
                   "codigo": "EF89LP02",
                   "descricao": "Analisar diferentes práticas (curtir, compartilhar, comentar, curar etc.) e textos pertencentes a diferentes gêneros da cultura digital (meme, gif, comentário, charge digital etc.) envolvidos no trato com a informação e opinião, de forma a possibilitar uma presença mais crítica e ética nas redes."
@@ -2737,7 +2803,9 @@
                 {
                   "codigo": "EF89LP03",
                   "descricao": "Analisar textos de opinião (artigos de opinião, editoriais, cartas de leitores, comentários, posts de blog e de redes sociais, charges, memes, gifs etc.) e posicionar-se de forma crítica e fundamentada, ética e respeitosa frente a fatos e opiniões relacionados a essestextos."
-                },
+                }
+              ],
+              "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.": [
                 {
                   "codigo": "EF89LP04",
                   "descricao": "Identificar e avaliar teses/opiniões/posicionamentos explícitos e implícitos, argumentos e contra-argumentos em textos argumentativos do campo (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), posicionando-se frente à questão controversa de forma sustentada."
@@ -2759,7 +2827,7 @@
           },
           "9º Ano": {
             "Vários são os gêneros possíveis de serem contemplados em atividades de leitura e produção de textos para além dos já trabalhados nos anos iniciais do ensino fundamental (notícia, álbum noticioso, carta de leitor, entrevista etc.): reportagem, reportagem multimidiática, fotorreportagem, foto-denúncia, artigo de opinião, editorial, resenha crítica, crônica, comentário, debate, vlog noticioso, vlog cultural, meme, charge, charge digital, political remix, anúncio publicitário, propaganda, jingle, spot, dentre outros. A referência geral é que, em cada ano, contemplem-se gêneros que lidem com informação, opinião e apreciação, gêneros mais típicos dos letramentos da letra e do impresso e gêneros multissemióticos e hipermidiáticos, próprios da cultura digital e das culturas juvenis. Diversos também são os processos, ações e atividades que podem ser contemplados em atividades de uso e reflexão: curar, seguir/ser seguido, curtir, comentar, compartilhar, remixar etc. Ainda com relação a esse campo, trata-se também de compreender as formas de persuasão do discurso publicitário, o apelo ao consumo, as diferenças entre vender um produto e “vender” uma ideia, entre anúncio publicitário e propaganda.": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP01",
                   "descricao": "Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso."
@@ -2783,7 +2851,7 @@
               ]
             },
             "CAMPO JORNALÍSTICO-MIDIÁTICO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP07",
                   "descricao": "Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc."
@@ -2851,7 +2919,9 @@
                 {
                   "codigo": "EF69LP23",
                   "descricao": "Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão."
-                },
+                }
+              ],
+              "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.": [
                 {
                   "codigo": "EF89LP08",
                   "descricao": "Planejar reportagem impressa e em outras mídias (rádio ou TV/vídeo, sites), tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. – a partir da escolha do fato a ser aprofundado ou do tema a ser focado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato ou tema – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes diversas, análise de documentos, cobertura de eventos etc. -, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc., da produção de infográficos, quando for o caso, e da organização hipertextual (no caso a publicação em sites ou blogs noticiosos ou mesmo de jornais impressos, por meio de boxes variados)."
@@ -2863,6 +2933,12 @@
                 {
                   "codigo": "EF89LP10",
                   "descricao": "Planejar artigos de opinião, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do tema ou questão a ser discutido(a), da relevância para a turma, escola ou comunidade, do levantamento de dados e informações sobre a questão, de argumentos relacionados a diferentes posicionamentos em jogo, da definição – o que pode envolver consultas a fontes diversas, entrevistas com especialistas, análise de textos, organização esquemática das informações e argumentos – dos (tipos de) argumentos e estratégias que pretende utilizar para convencer os leitores."
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
+                {
+                  "codigo": "EF09LP03",
+                  "descricao": "Produzir artigos de opinião, tendo em vista o contexto de produção dado, assumindo posição diante de tema polêmico, argumentando de acordo com a estrutura própria desse tipo de texto e utilizando diferentes tipos de argumentos – de autoridade, comprovação, exemplificação princípio etc."
                 },
                 {
                   "codigo": "EF89LP11",
@@ -2888,16 +2964,10 @@
                   "codigo": "EF89LP16",
                   "descricao": "Analisar a modalização realizada em textos noticiosos e argumentativos, por meio das modalidades apreciativas, viabilizadas por classes e estruturas gramaticais como adjetivos, locuções adjetivas, advérbios, locuções adverbiais, orações adjetivas e adverbiais, orações relativas restritivas e explicativas etc., de maneira a perceber a apreciação ideológica sobre os fatos noticiados ou as posições implícitas ou assumidas."
                 }
-              ],
-              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
-                {
-                  "codigo": "EF09LP03",
-                  "descricao": "Produzir artigos de opinião, tendo em vista o contexto de produção dado, assumindo posição diante de tema polêmico, argumentando de acordo com a estrutura própria desse tipo de texto e utilizando diferentes tipos de argumentos – de autoridade, comprovação, exemplificação princípio etc."
-                }
               ]
             },
             "CAMPO DE ATUAÇÃO NA VIDA PÚBLICA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP24",
                   "descricao": "Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo."
@@ -2941,7 +3011,9 @@
                 {
                   "codigo": "EF69LP34",
                   "descricao": "Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e um posicionamento frente aos textos, se esse for o caso."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP17",
                   "descricao": "Relacionar textos e documentos legais e normativos de importância universal, nacional ou local que envolvam direitos, em especial, de crianças, adolescentes e jovens – tais como a Declaração dos Direitos Humanos, a Constituição Brasileira, o ECA -, e a regulamentação da organização escolar – por exemplo, regimento escolar -, a seus contextos de produção, reconhecendo e analisando possíveis motivações, finalidades e sua vinculação com experiências humanas e fatos históricos e sociais, como forma de ampliar a compreensão dos direitos e deveres, de fomentar os princípios democráticos e uma atuação pautada pela ética da responsabilidade (o outro tem direito a uma vida digna tanto quanto eu tenho)."
@@ -2965,7 +3037,7 @@
               ]
             },
             "CAMPO DAS PRÁTICAS DE ESTUDO E PESQUISA": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP35",
                   "descricao": "Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados."
@@ -3013,7 +3085,9 @@
                 {
                   "codigo": "EF69LP46",
                   "descricao": "Participar de práticas de compartilhamento de leitura/recepção de obras literárias/ manifestações artísticas, como rodas de leitura, clubes de leitura, eventos de contação de histórias, de leituras dramáticas, de apresentações teatrais, musicais e de filmes, cineclubes, festivais de vídeo, saraus, slams, canais de booktubers, redes sociais temáticas (de leitores, de cinéfilos, de música etc.), dentre outros, tecendo, quando possível, comentários de ordem estética e afetiva e justificando suas apreciações, escrevendo comentários e resenhas para jornais, blogs e redes sociais e utilizando formas de expressão das culturas juvenis, tais como, vlogs e podcasts culturais (literatura, cinema, teatro, música), playlists comentadas, fanfics, fanzines, e-zines, fanvídeos, fanclipes, posts em fanpages, trailer honesto, vídeo-minuto, dentre outras possibilidades de práticas de apreciação e de manifestação da cultura de fãs."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP22",
                   "descricao": "Compreender e comparar as diferentes posições e interesses em jogo em uma discussão ou apresentação de propostas, avaliando a validade e força dos argumentos e as consequências do que está sendo proposto e, quando for o caso, formular e negociar propostas de diferentes naturezas relativas a interesses coletivos envolvendo a escola ou comunidade escolar."
@@ -3057,7 +3131,7 @@
               ]
             },
             "CAMPO ARTÍSTICO-LITERÁRIO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP47",
                   "descricao": "Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo."
@@ -3085,7 +3159,7 @@
               ]
             },
             "TODOS OS CAMPOS DE ATUAÇÃO": {
-              "Geral": [
+              "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.": [
                 {
                   "codigo": "EF69LP53",
                   "descricao": "Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão."
@@ -3101,7 +3175,9 @@
                 {
                   "codigo": "EF69LP56",
                   "descricao": "Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada."
-                },
+                }
+              ],
+              "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.": [
                 {
                   "codigo": "EF89LP32",
                   "descricao": "Analisar os efeitos de sentido decorrentes do uso de mecanismos de intertextualidade (referências, alusões, retomadas) entre os textos literários, entre esses textos literários e outras manifestações artísticas (cinema, teatro, artes visuais e midiáticas, música), quanto aos temas, personagens, estilos, autores etc., e entre o texto original e paródias, paráfrases, pastiches, trailer honesto, vídeos-minuto, vidding, dentre outros."
@@ -3121,22 +3197,6 @@
                 {
                   "codigo": "EF89LP36",
                   "descricao": "Parodiar poemas conhecidos da literatura e criar textos em versos (como poemas concretos, ciberpoemas, haicais, liras, microrroteiros, lambe-lambes e outros tipos de poemas), explorando o uso de recursos sonoros e semânticos (como figuras de linguagem e jogos de palavras) e visuais (como relações entre imagem e texto verbal e distribuição da mancha gráfica), de forma a propiciar diferentes efeitos de sentido."
-                },
-                {
-                  "codigo": "EF09LP09",
-                  "descricao": "Identificar efeitos de sentido do uso de orações adjetivas restritivas e explicativas em um período composto."
-                },
-                {
-                  "codigo": "EF09LP11",
-                  "descricao": "Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial (conjunções e articuladores textuais)."
-                },
-                {
-                  "codigo": "EF89LP37",
-                  "descricao": "Analisar os efeitos de sentido do uso de figuras de linguagem como ironia, eufemismo, antítese, aliteração, assonância, dentre outras."
-                },
-                {
-                  "codigo": "EF09LP12",
-                  "descricao": "Identificar estrangeirismos, caracterizando-os segundo a conservação, ou não, de sua forma gráfica de origem, avaliando a pertinência, ou não, de seu uso."
                 }
               ],
               "(EF08LP04) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: ortografia, regências e concordâncias nominal e verbal, modos e tempos verbais, pontuação etc.": [
@@ -3167,20 +3227,42 @@
                 {
                   "codigo": "EF09LP08",
                   "descricao": "Identificar, em textos lidos e em produções próprias, a relação que conjunções (e locuções conjuntivas) coordenativas e subordinativas estabelecem entre as orações que conectam."
+                },
+                {
+                  "codigo": "EF09LP09",
+                  "descricao": "Identificar efeitos de sentido do uso de orações adjetivas restritivas e explicativas em um período composto."
                 }
               ],
               "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF09LP10",
                   "descricao": "Comparar as regras de colocação pronominal na norma-padrão com o seu uso no português brasileiro coloquial."
+                },
+                {
+                  "codigo": "EF09LP11",
+                  "descricao": "Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial (conjunções e articuladores textuais)."
+                },
+                {
+                  "codigo": "EF89LP37",
+                  "descricao": "Analisar os efeitos de sentido do uso de figuras de linguagem como ironia, eufemismo, antítese, aliteração, assonância, dentre outras."
+                },
+                {
+                  "codigo": "EF09LP12",
+                  "descricao": "Identificar estrangeirismos, caracterizando-os segundo a conservação, ou não, de sua forma gráfica de origem, avaliando a pertinência, ou não, de seu uso."
                 }
               ]
             },
             "Leitura": {
-              "Geral": [
+              "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).": [
                 {
                   "codigo": "EF89LP01",
                   "descricao": "Analisar os interesses que movem o campo jornalístico, os efeitos das novas tecnologias no campo e as condições que fazem da informação uma mercadoria, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos."
+                }
+              ],
+              "(EF08LP01) Identificar e comparar as várias editorias de jornais impressos e digitais e de sites noticiosos, de forma a refletir sobre os tipos de fato que são noticiados e comentados, as escolhas sobre o que noticiar e o que não noticiar e o destaque/enfoque dado e a fidedignidade da informação.": [
+                {
+                  "codigo": "EF09LP01",
+                  "descricao": "Analisar o fenômeno da disseminação de notícias falsas nas redes sociais e desenvolver estratégias para reconhecê-las, a partir da verificação/avaliação do veículo, fonte, data e local da publicação, autoria, URL, da análise da formatação, da comparação de diferentes fontes, da consulta a sites de curadoria que atestam a fidedignidade do relato dos fatos e denunciam boatos etc."
                 },
                 {
                   "codigo": "EF89LP02",
@@ -3189,6 +3271,12 @@
                 {
                   "codigo": "EF89LP03",
                   "descricao": "Analisar textos de opinião (artigos de opinião, editoriais, cartas de leitores, comentários, posts de blog e de redes sociais, charges, memes, gifs etc.) e posicionar-se de forma crítica e fundamentada, ética e respeitosa frente a fatos e opiniões relacionados a essestextos."
+                }
+              ],
+              "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.": [
+                {
+                  "codigo": "EF09LP02",
+                  "descricao": "Analisar e comentar a cobertura da imprensa sobre fatos de relevância social, comparando diferentes enfoques por meio do uso de ferramentas de curadoria."
                 },
                 {
                   "codigo": "EF89LP04",
@@ -3206,18 +3294,6 @@
                   "codigo": "EF89LP07",
                   "descricao": "Analisar, em notícias, reportagens e peças publicitárias em várias mídias, os efeitos de sentido devidos ao tratamento e à composição dos elementos nas imagens em movimento, à performance, à montagem feita (ritmo, duração e sincronização entre as linguagens – complementaridades, interferências etc.) e ao ritmo, melodia, instrumentos e sampleamentos das músicas e efeitos sonoros."
                 }
-              ],
-              "(EF08LP01) Identificar e comparar as várias editorias de jornais impressos e digitais e de sites noticiosos, de forma a refletir sobre os tipos de fato que são noticiados e comentados, as escolhas sobre o que noticiar e o que não noticiar e o destaque/enfoque dado e a fidedignidade da informação.": [
-                {
-                  "codigo": "EF09LP01",
-                  "descricao": "Analisar o fenômeno da disseminação de notícias falsas nas redes sociais e desenvolver estratégias para reconhecê-las, a partir da verificação/avaliação do veículo, fonte, data e local da publicação, autoria, URL, da análise da formatação, da comparação de diferentes fontes, da consulta a sites de curadoria que atestam a fidedignidade do relato dos fatos e denunciam boatos etc."
-                }
-              ],
-              "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.": [
-                {
-                  "codigo": "EF09LP02",
-                  "descricao": "Analisar e comentar a cobertura da imprensa sobre fatos de relevância social, comparando diferentes enfoques por meio do uso de ferramentas de curadoria."
-                }
               ]
             }
           }
@@ -3228,7 +3304,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF15AR01",
                   "descricao": "Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -3338,7 +3414,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF15AR01",
                   "descricao": "Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -3448,7 +3524,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF15AR01",
                   "descricao": "Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -3558,7 +3634,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF15AR01",
                   "descricao": "Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -3668,7 +3744,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF15AR01",
                   "descricao": "Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -3778,7 +3854,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF69AR01",
                   "descricao": "Pesquisar, apreciar e analisar formas distintas das artes visuais tradicionais e contemporâneas, em obras de artistas brasileiros e estrangeiros de diferentes épocas e em diferentes matrizes estéticas e culturais, de modo a ampliar a experiência com diferentes contextos e práticas artístico-visuais e cultivar a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -3924,7 +4000,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF69AR01",
                   "descricao": "Pesquisar, apreciar e analisar formas distintas das artes visuais tradicionais e contemporâneas, em obras de artistas brasileiros e estrangeiros de diferentes épocas e em diferentes matrizes estéticas e culturais, de modo a ampliar a experiência com diferentes contextos e práticas artístico-visuais e cultivar a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -4070,7 +4146,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF69AR01",
                   "descricao": "Pesquisar, apreciar e analisar formas distintas das artes visuais tradicionais e contemporâneas, em obras de artistas brasileiros e estrangeiros de diferentes épocas e em diferentes matrizes estéticas e culturais, de modo a ampliar a experiência com diferentes contextos e práticas artístico-visuais e cultivar a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -4216,7 +4292,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF69AR01",
                   "descricao": "Pesquisar, apreciar e analisar formas distintas das artes visuais tradicionais e contemporâneas, em obras de artistas brasileiros e estrangeiros de diferentes épocas e em diferentes matrizes estéticas e culturais, de modo a ampliar a experiência com diferentes contextos e práticas artístico-visuais e cultivar a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético."
@@ -4367,7 +4443,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF12EF01",
                   "descricao": "Experimentar, fruir e recriar diferentes brincadeiras e jogos da cultura popular presentes no contexto comunitário e regional, reconhecendo e respeitando as diferenças individuais de desempenho dos colegas."
@@ -4421,7 +4497,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF12EF01",
                   "descricao": "Experimentar, fruir e recriar diferentes brincadeiras e jogos da cultura popular presentes no contexto comunitário e regional, reconhecendo e respeitando as diferenças individuais de desempenho dos colegas."
@@ -4475,7 +4551,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF35EF01",
                   "descricao": "Experimentar e fruir brincadeiras e jogos populares do Brasil e do mundo, incluindo aqueles de matriz indígena e africana, e recriá-los, valorizando a importância desse patrimônio histórico cultural."
@@ -4541,7 +4617,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF35EF01",
                   "descricao": "Experimentar e fruir brincadeiras e jogos populares do Brasil e do mundo, incluindo aqueles de matriz indígena e africana, e recriá-los, valorizando a importância desse patrimônio histórico cultural."
@@ -4607,7 +4683,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF35EF01",
                   "descricao": "Experimentar e fruir brincadeiras e jogos populares do Brasil e do mundo, incluindo aqueles de matriz indígena e africana, e recriá-los, valorizando a importância desse patrimônio histórico cultural."
@@ -4673,7 +4749,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF67EF01",
                   "descricao": "Experimentar e fruir, na escola e fora dela, jogos eletrônicos diversos, valorizando e respeitando os sentidos e significados atribuídos a eles por diferentes grupos sociais e etários."
@@ -4743,7 +4819,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF67EF01",
                   "descricao": "Experimentar e fruir, na escola e fora dela, jogos eletrônicos diversos, valorizando e respeitando os sentidos e significados atribuídos a eles por diferentes grupos sociais e etários."
@@ -4813,7 +4889,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF89EF07",
                   "descricao": "Experimentar e fruir um ou mais programas de exercícios físicos, identificando as exigências corporais desses diferentes programas e reconhecendo a importância de uma prática individualizada, adequada às características e necessidades de cada sujeito."
@@ -4879,7 +4955,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF89EF07",
                   "descricao": "Experimentar e fruir um ou mais programas de exercícios físicos, identificando as exigências corporais desses diferentes programas e reconhecendo a importância de uma prática individualizada, adequada às características e necessidades de cada sujeito."
@@ -4950,7 +5026,7 @@
         "anos": {
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF06LI01",
                   "descricao": "Interagir em situações de intercâmbio oral, demonstrando iniciativa para utilizar a língua inglesa."
@@ -5060,7 +5136,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF07LI01",
                   "descricao": "Interagir em situações de intercâmbio oral para realizar as atividades em sala de aula, de forma respeitosa e colaborativa, trocando ideias e engajando-se em brincadeiras e jogos."
@@ -5154,7 +5230,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08LI01",
                   "descricao": "Fazer uso da língua inglesa para resolver mal-entendidos, emitir opiniões e esclarecer informações por meio de paráfrases ou justificativas."
@@ -5240,7 +5316,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF09LI01",
                   "descricao": "Fazer uso da língua inglesa para expor pontos de vista, argumentos e contra-argumentos, considerando o contexto e os recursos linguísticos voltados para a eficácia da comunicação."
@@ -5332,7 +5408,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF01MA01",
                   "descricao": "Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam contagem nem ordem, mas sim código de identificação."
@@ -5426,7 +5502,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF02MA01",
                   "descricao": "Comparar e ordenar números naturais (até a ordem de centenas) pela compreensão de características do sistema de numeração decimal (valor posicional e função do zero)."
@@ -5524,7 +5600,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF03MA01",
                   "descricao": "Ler, escrever e comparar números naturais de até a ordem de unidade de milhar, estabelecendo relações entre os registros numéricos e em língua materna."
@@ -5642,7 +5718,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF04MA01",
                   "descricao": "Ler, escrever e ordenar números naturais até a ordem de dezenas de milhar."
@@ -5760,7 +5836,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF05MA01",
                   "descricao": "Ler, escrever e ordenar números naturais até a ordem das centenas de milhar com compreensão das principais características do sistema de numeração decimal."
@@ -5866,7 +5942,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF06MA01",
                   "descricao": "Comparar, ordenar, ler e escrever números naturais e números racionais cuja representação decimal é finita, fazendo uso da reta numérica."
@@ -6008,7 +6084,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF07MA01",
                   "descricao": "Resolver e elaborar problemas com números naturais, envolvendo as noções de divisor e de múltiplo, podendo incluir máximo divisor comum ou mínimo múltiplo comum, por meio de estratégias diversas, sem a aplicação de algoritmos."
@@ -6162,7 +6238,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08MA01",
                   "descricao": "Efetuar cálculos com potências de expoentes inteiros e aplicar esse conhecimento na representação de números em notação científica."
@@ -6276,7 +6352,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF09MA01",
                   "descricao": "Reconhecer que, uma vez fixada uma unidade de comprimento, existem segmentos de reta cujo comprimento não é expresso por número racional (como as medidas de diagonais de um polígono e alturas de um triângulo, quando se toma a medida de cada lado como unidade)."
@@ -6384,7 +6460,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF01CI01",
                   "descricao": "Comparar características de diferentes materiais presentes em objetos de uso cotidiano, discutindo sua origem, os modos como são descartados e como podem ser usados de forma mais consciente."
@@ -6414,7 +6490,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF02CI01",
                   "descricao": "Identificar de que materiais (metais, madeira, vidro etc.) são feitos os objetos que fazem parte da vida cotidiana, como esses objetos são utilizados e com quais materiais eram produzidos no passado."
@@ -6452,7 +6528,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF03CI01",
                   "descricao": "Produzir diferentes sons a partir da vibração de variados objetos e identificar variáveis que influem nesse fenômeno."
@@ -6498,7 +6574,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF04CI01",
                   "descricao": "Identificar misturas na vida diária, com base em suas propriedades físicas observáveis, reconhecendo sua composição."
@@ -6548,7 +6624,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF05CI01",
                   "descricao": "Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais – como densidade, condutibilidade térmica e elétrica, respostas a forças magnéticas, solubilidade, respostas a forças mecânicas (dureza, elasticidade etc.), entre outras."
@@ -6606,7 +6682,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF06CI01",
                   "descricao": "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais (água e sal, água e óleo, água e areia etc.)."
@@ -6668,7 +6744,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF07CI01",
                   "descricao": "Discutir a aplicação, ao longo da história, das máquinas simples e propor soluções e invenções para a realização de tarefas mecânicas cotidianas."
@@ -6738,7 +6814,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08CI01",
                   "descricao": "Identificar e classificar diferentes fontes (renováveis e não renováveis) e tipos de energia utilizados em residências, comunidades ou cidades."
@@ -6808,7 +6884,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF09CI01",
                   "descricao": "Investigar as mudanças de estado físico da matéria e explicar essas transformações com base no modelo de constituição submicroscópica."
@@ -6892,7 +6968,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF01GE01",
                   "descricao": "Descrever características observadas de seus lugares de vivência (moradia, escola etc.) e identificar semelhanças e diferenças entre esses lugares."
@@ -6942,7 +7018,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF02GE01",
                   "descricao": "Descrever a história das migrações no bairro ou comunidade em que vive."
@@ -6992,7 +7068,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF03GE01",
                   "descricao": "Identificar e comparar aspectos culturais dos grupos sociais de seus lugares de vivência, seja na cidade, seja no campo."
@@ -7042,7 +7118,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF04GE01",
                   "descricao": "Selecionar, em seus lugares de vivência e em suas histórias familiares e/ou da comunidade, elementos de distintas culturas (indígenas, afro-brasileiras, de outras regiões do país, latino-americanas, europeias, asiáticas etc.), valorizando o que é próprio em cada uma delas e sua contribuição para a formação da cultura local, regional e brasileira."
@@ -7092,7 +7168,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF05GE01",
                   "descricao": "Descrever e analisar dinâmicas populacionais na Unidade da Federação em que vive, estabelecendo relações entre migrações e condições de infraestrutura."
@@ -7146,7 +7222,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF06GE01",
                   "descricao": "Comparar modificações das paisagens nos lugares de vivência e os usos desses lugares em diferentes tempos."
@@ -7204,7 +7280,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF07GE01",
                   "descricao": "Avaliar, por meio de exemplos extraídos dos meios de comunicação, ideias e estereótipos acerca das paisagens e da formação territorial do Brasil."
@@ -7258,7 +7334,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08GE01",
                   "descricao": "Descrever as rotas de dispersão da população humana pelo planeta e os principais fluxos migratórios em diferentes períodos da história, discutindo os fatores históricos e condicionantes físico-naturais associados à distribuição da população humana pelos continentes."
@@ -7360,7 +7436,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF09GE01",
                   "descricao": "Analisar criticamente de que forma a hegemonia europeia foi exercida em várias regiões do planeta, notadamente em situações de conflito, intervenções militares e/ou influência cultural em diferentes tempos e lugares."
@@ -7443,7 +7519,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF01HI01",
                   "descricao": "Identificar aspectos do seu crescimento por meio do registro das lembranças particulares ou de lembranças dos membros de sua família e/ou de sua comunidade."
@@ -7481,7 +7557,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF02HI01",
                   "descricao": "Reconhecer espaços de sociabilidade e identificar os motivos que aproximam e separam as pessoas em diferentes grupos sociais ou de parentesco."
@@ -7531,7 +7607,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF03HI01",
                   "descricao": "Identificar os grupos populacionais que formam a cidade, o município e a região, as relações estabelecidas entre eles e os eventos que marcam a formação da cidade, como fenômenos migratórios (vida rural/vida urbana), desmatamentos, estabelecimento de grandes empresas etc."
@@ -7585,7 +7661,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF04HI01",
                   "descricao": "Reconhecer a história como resultado da ação do ser humano no tempo e no espaço, com base na identificação de mudanças e permanências ao longo do tempo."
@@ -7635,7 +7711,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF05HI01",
                   "descricao": "Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado."
@@ -7681,7 +7757,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF06HI01",
                   "descricao": "Identificar diferentes formas de compreensão da noção de tempo e de periodização dos processos históricos (continuidades e rupturas)."
@@ -7763,7 +7839,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF07HI01",
                   "descricao": "Explicar o significado de “modernidade” e suas lógicas de inclusão e exclusão, com base em uma concepção europeia."
@@ -7837,7 +7913,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08HI01",
                   "descricao": "Identificar os principais aspectos conceituais do iluminismo e do liberalismo e discutir a relação entre eles e a organização do mundo contemporâneo."
@@ -7951,7 +8027,7 @@
           },
           "9º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF09HI01",
                   "descricao": "Descrever e contextualizar os principais aspectos sociais, culturais, econômicos e políticos da emergência da República no Brasil."
@@ -8111,7 +8187,7 @@
         "anos": {
           "1º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF01ER01",
                   "descricao": "Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós."
@@ -8141,7 +8217,7 @@
           },
           "2º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF02ER01",
                   "descricao": "Reconhecer os diferentes espaços de convivência."
@@ -8175,7 +8251,7 @@
           },
           "3º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF03ER01",
                   "descricao": "Identificar e respeitar os diferentes espaços e territórios religiosos de diferentes tradições e movimentos religiosos."
@@ -8205,7 +8281,7 @@
           },
           "4º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF04ER01",
                   "descricao": "Identificar ritos presentes no cotidiano pessoal, familiar, escolar e comunitário."
@@ -8239,7 +8315,7 @@
           },
           "5º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF05ER01",
                   "descricao": "Identificar e respeitar acontecimentos sagrados de diferentes culturas e tradições religiosas como recurso para preservar a memória."
@@ -8273,7 +8349,7 @@
           },
           "6º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF06ER01",
                   "descricao": "Reconhecer o papel da tradição escrita na preservação de memórias, acontecimentos e ensinamentos religiosos."
@@ -8307,7 +8383,7 @@
           },
           "7º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF07ER01",
                   "descricao": "Reconhecer e respeitar as práticas de comunicação com as divindades em distintas manifestações e tradições religiosas."
@@ -8345,7 +8421,7 @@
           },
           "8º Ano": {
             "Geral": {
-              "Geral": [
+              "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.": [
                 {
                   "codigo": "EF08ER01",
                   "descricao": "Discutir como as crenças e convicções podem influenciar escolhas e atitudes pessoais e coletivas."
