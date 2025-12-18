@@ -56,12 +56,42 @@ def clean_item_sintese(text):
     text = unicodedata.normalize("NFKC", text)
     text = re.sub(r"^[\s•\-]+", "", text)
     text = re.sub(r'\s+', ' ', text).strip()
+    return format_special_chars(text)
+
+def format_special_chars(text):
+    """
+    Formata caracteres especiais para preservar notação matemática e ordinais.
+    Exemplos: "2o grau" → "2º grau", "ax2" → "ax²", "3o ano" → "3º ano"
+    """
+    if not text: return ""
+    
+    # Ordinais: 1o, 2o, 3o, etc. → 1º, 2º, 3º
+    text = re.sub(r'(\d+)o\b', r'\1º', text)
+    text = re.sub(r'(\d+)a\b', r'\1ª', text)
+    
+    # Superscripts matemáticos comuns
+    superscript_map = {
+        '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+        '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+        'n': 'ⁿ', 'x': 'ˣ', 'y': 'ʸ'
+    }
+    
+    # Padrões específicos de notação matemática
+    # ax2 → ax², x2 → x², y3 → y³, etc.
+    for base in ['x', 'y', 'z', 'a', 'b', 'c', 'n', 'm']:
+        for exp in ['2', '3', '4', '5', '6', '7', '8', '9']:
+            pattern = f'{base}{exp}'
+            replacement = f'{base}{superscript_map[exp]}'
+            # Apenas substitui se seguido de espaço, =, +, -, ou fim de string
+            text = re.sub(f'{pattern}(?=[\s=+\-)]|$)', replacement, text)
+    
     return text
 
 def processar_descricao(texto_bruto, codigo):
     if codigo: texto = texto_bruto.replace(codigo, "")
     else: texto = texto_bruto
-    return re.sub(r"^[\s\(\)\.\-]+", "", texto).strip()
+    texto = re.sub(r"^[\s\(\)\.\-]+", "", texto).strip()
+    return format_special_chars(texto)
 
 def expandir_anos_ef(codigo_bncc):
     """
