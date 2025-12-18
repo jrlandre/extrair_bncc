@@ -7,7 +7,7 @@ import os
 # --- CONFIGURAÇÃO ---
 PDF_PATH = "BNCC_EI_EF_110518_versaofinal_site.pdf"
 EI_PAGE_RANGE = range(35, 60)
-EF_PAGE_RANGE = range(57, 460)
+EF_PAGE_RANGE = range(57, 465)  # Includes all EF content incl. Ensino Religioso 9º Ano (page 461)
 EM_PAGE_RANGE = range(460, 600)
 
 RE_CODE_EI_FULL = re.compile(r"EI(\d{2})([A-Z]{2})\d{2}")
@@ -73,17 +73,26 @@ def expandir_anos_ef(codigo_bncc):
     digits = match.group(1)
     
     anos = []
-    # Faixas comuns na BNCC
-    if digits == "15": anos = [1, 2, 3, 4, 5]
-    elif digits == "69": anos = [6, 7, 8, 9]
-    elif digits == "35": anos = [3, 4, 5]
-    elif digits == "12": anos = [1, 2]
-    elif digits == "67": anos = [6, 7]
-    elif digits == "89": anos = [8, 9]
-    # Anos individuais (01 a 09)
-    elif len(digits) == 2 and digits.isdigit():
+    
+    # Anos individuais de 2 dígitos (01 a 09)
+    if len(digits) == 2:
         val = int(digits)
-        if 1 <= val <= 9: anos = [val]
+        if 1 <= val <= 9:
+            anos = [val]
+        # Faixas comuns com 2 dígitos
+        elif digits == "12": anos = [1, 2]
+        elif digits == "15": anos = [1, 2, 3, 4, 5]
+        elif digits == "35": anos = [3, 4, 5]
+        elif digits == "67": anos = [6, 7]
+        elif digits == "69": anos = [6, 7, 8, 9]
+        elif digits == "89": anos = [8, 9]
+    
+    # Anos individuais de 3 dígitos (ex: EF601, EF602...)
+    elif len(digits) == 3:
+        # Extract first digit as year
+        val = int(digits[0])
+        if 1 <= val <= 9:
+            anos = [val]
     
     if not anos: return [f"Ano {digits}"]
     return [f"{a}º Ano" for a in anos]
@@ -179,33 +188,146 @@ def extract_ei_final(pdf):
 
 def extract_competencias_ef(pdf, page_range):
     """
-    Extrai as competências (Nível 2 e Nível 4) detectando os títulos exatos na página.
+    Retorna as competências específicas (Área e Componente) do Ensino Fundamental.
+    
+ NOTA: As páginas de competências no PDF (67, 89-90, etc.) são imagens não-extraíveis programaticamente.
+    Por isso, este mapeamento usa o texto oficial da BNCC disponível na documentação pública.
+    Fonte: http://basenacionalcomum.mec.gov.br/
     """
     print("--- Extraindo Competências (Área e Componente) ---")
-    competencias = {}
-    re_titulo = re.compile(r"COMPETÊNCIAS ESPECÍFICAS DE (.+?) PARA O ENSINO FUNDAMENTAL", re.IGNORECASE | re.DOTALL)
     
-    for page_num in page_range:
-        if page_num >= len(pdf.pages): break
-        page = pdf.pages[page_num]
-        text = page.extract_text() or ""
-        match = re_titulo.search(text)
-        if match:
-            key = match.group(1).strip().title()
-            start = match.end()
-            buffer = []
-            item_re = re.compile(r"(\d+)\.\s*(.*?)(?=\n\d+\.|$)", re.S)
-            for m in item_re.finditer(text[start:]):
-                item_text = m.group(1) + ". " + clean_text_basic(m.group(2))
-                buffer.append(item_text.strip())
-            if buffer:
-                competencias[key] = buffer
+    competencias = {
+        # Competências Específicas da Área de Linguagens para o Ensino Fundamental
+        "Linguagens": [
+            "1. Compreender as linguagens como construção humana, histórica, social e cultural, de natureza dinâmica, reconhecendo-as e valorizando-as como formas de significação da realidade e expressão de subjetividades e identidades sociais e culturais.",
+            "2. Conhecer e explorar diversas práticas de linguagem (artísticas, corporais e linguísticas) em diferentes campos da atividade humana para continuar aprendendo, ampliar suas possibilidades de participação na vida social e colaborar para a construção de uma sociedade mais justa, democrática e inclusiva.",
+            "3. Utilizar diferentes linguagens – verbal (oral ou visual-motora, como Libras, e escrita), corporal, visual, sonora e digital –, para se expressar e partilhar informações, experiências, ideias e sentimentos em diferentes contextos e produzir sentidos que levem ao diálogo, à resolução de conflitos e à cooperação.",
+            "4. Utilizar diferentes linguagens para defender pontos de vista que respeitem o outro e promovam os direitos humanos, a consciência socioambiental e o consumo responsável em âmbito local, regional e global, atuando criticamente frente a questões do mundo contemporâneo.",
+            "5. Desenvolver o senso estético para reconhecer, fruir e respeitar as diversas manifestações artísticas e culturais, das locais às mundiais, inclusive aquelas pertencentes ao patrimônio cultural da humanidade, bem como participar de práticas diversificadas, individuais e coletivas, da produção artístico-cultural, com respeito à diversidade de saberes, identidades e culturas.",
+            "6. Compreender e utilizar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais (incluindo as escolares), para se comunicar por meio das diferentes linguagens e mídias, produzir conhecimentos, resolver problemas e desenvolver projetos autorais e coletivos."
+        ],
+        
+        # Competências Específicas de Língua Portuguesa para o Ensino Fundamental
+        "Língua Portuguesa": [
+            "1. Compreender a língua como fenômeno cultural, histórico, social, variável, heterogêneo e sensível aos contextos de uso, reconhecendo-a como meio de construção de identidades de seus usuários e da comunidade a que pertencem.",
+            "2. Apropriar-se da linguagem escrita, reconhecendo-a como forma de interação nos diferentes campos de atuação da vida social e utilizando-a para ampliar suas possibilidades de participar da cultura letrada, de construir conhecimentos (inclusive escolares) e de se envolver com maior autonomia e protagonismo na vida social.",
+            "3. Ler, escutar e produzir textos orais, escritos e multissemióticos que circulam em diferentes campos de atuação e mídias, com compreensão, autonomia, fluência e criticidade, de modo a se expressar e partilhar informações, experiências, ideias e sentimentos, e continuar aprendendo.",
+            "4. Compreender o fenômeno da variação linguística, demonstrando atitude respeitosa diante de variedades linguísticas e rejeitando preconceitos linguísticos.",
+            "5. Empregar, nas interações sociais, a variedade e o estilo de linguagem adequados à situação comunicativa, ao(s) interlocutor(es) e ao gênero do discurso/gênero textual.",
+            "6. Analisar informações, argumentos e opiniões manifestados em interações sociais e nos meios de comunicação, posicionando-se ética e criticamente em relação a conteúdos discriminatórios que ferem direitos humanos e ambientais.",
+            "7. Reconhecer o texto como lugar de manifestação e negociação de sentidos, valores e ideologias.",
+            "8. Selecionar textos e livros para leitura integral, de acordo com objetivos, interesses e projetos pessoais (estudo, formação pessoal, entretenimento, pesquisa, trabalho etc.).",
+            "9. Envolver-se em práticas de leitura literária que possibilitem o desenvolvimento do senso estético para fruição, valorizando a literatura e outras manifestações artístico-culturais como formas de acesso às dimensões lúdicas, de imaginário e encantamento, reconhecendo o potencial transformador e humanizador da experiência com a literatura.",
+            "10. Mobilizar práticas da cultura digital, diferentes linguagens, mídias e ferramentas digitais para expandir as formas de produzir sentidos (nos processos de compreensão e produção), aprender e refletir sobre o mundo e realizar diferentes projetos autorais."
+        ],
+        
+        # Competências Específicas de Arte para o Ensino Fundamental
+        "Arte": [
+            "1. Explorar, conhecer, fruir e analisar criticamente práticas e produções artísticas e culturais do seu entorno social, dos povos indígenas, das comunidades tradicionais brasileiras e de diversas sociedades, em distintos tempos e espaços, para reconhecer a arte como um fenômeno cultural, histórico, social e sensível a diferentes contextos e dialogar com as diversidades.",
+            "2. Compreender as relações entre as linguagens da Arte e suas práticas integradas, inclusive aquelas possibilitadas pelo uso das novas tecnologias de informação e comunicação, pelo cinema e pelo audiovisual, nas condições particulares de produção, na prática de cada linguagem e nas suas articulações.",
+            "3. Pesquisar e conhecer distintas matrizes estéticas e culturais – especialmente aquelas manifestas na arte e nas culturas que constituem a identidade brasileira –, sua tradição e manifestações contemporâneas, reelaborando-as nas criações em Arte.",
+            "4. Experienciar a ludicidade, a percepção, a expressividade e a imaginação, ressignificando espaços da escola e de fora dela no âmbito da Arte.",
+            "5. Mobilizar recursos tecnológicos como formas de registro, pesquisa e criação artística.",
+            "6. Estabelecer relações entre arte, mídia, mercado e consumo, compreendendo, de forma crítica e problematizadora, modos de produção e de circulação da arte na sociedade.",
+            "7. Problematizar questões políticas, sociais, econômicas, científicas, tecnológicas e culturais, por meio de exercícios, produções, intervenções e apresentações artísticas.",
+            "8. Desenvolver a autonomia, a crítica, a autoria e o trabalho coletivo e colaborativo nas artes.",
+            "9. Analisar e valorizar o patrimônio artístico nacional e internacional, material e imaterial, com suas histórias e diferentes visões de mundo."
+        ],
+        
+        # Competências Específicas de Educação Física para o Ensino Fundamental
+        "Educação Física": [
+            "1. Compreender a origem da cultura corporal de movimento e seus vínculos com a organização da vida coletiva e individual.",
+            "2. Planejar e empregar estratégias para resolver desafios e aumentar as possibilidades de aprendizagem das práticas corporais, além de se envolver no processo de ampliação do acervo cultural nesse campo.",
+            "3. Refletir, criticamente, sobre as relações entre a realização das práticas corporais e os processos de saúde/doença, inclusive no contexto das atividades laborais.",
+            "4. Identificar a multiplicidade de padrões de desempenho, saúde, beleza e estética corporal, analisando, criticamente, os modelos disseminados na mídia e discutir posturas consumistas e preconceituosas.",
+            "5. Identificar as formas de produção dos preconceitos, compreender seus efeitos e combater posicionamentos discriminatórios em relação às práticas corporais e aos seus participantes.",
+            "6. Interpretar e recriar os valores, os sentidos e os significados atribuídos às diferentes práticas corporais, bem como aos sujeitos que delas participam.",
+            "7. Reconhecer as práticas corporais como elementos constitutivos da identidade cultural dos povos e grupos.",
+            "8. Usufruir das práticas corporais de forma autônoma para potencializar o envolvimento em contextos de lazer, ampliar as redes de sociabilidade e a promoção da saúde.",
+            "9. Reconhecer o acesso às práticas corporais como direito do cidadão, propondo e produzindo alternativas para sua realização no contexto comunitário.",
+            "10. Experimentar, desfrutar, apreciar e criar diferentes brincadeiras, jogos, danças, ginásticas, esportes, lutas e práticas corporais de aventura, valorizando o trabalho coletivo e o protagonismo."
+        ],
+        
+        # Competências Específicas da Área de Matemática para o Ensino Fundamental
+        "Matemática": [
+            "1. Reconhecer que a Matemática é uma ciência humana, fruto das necessidades e preocupações de diferentes culturas, em diferentes momentos históricos, e é uma ciência viva, que contribui para solucionar problemas científicos e tecnológicos e para alicerçar descobertas e construções, inclusive com impactos no mundo do trabalho.",
+            "2. Desenvolver o raciocínio lógico, o espírito de investigação e a capacidade de produzir argumentos convincentes, recorrendo aos conhecimentos matemáticos para compreender e atuar no mundo.",
+            "3. Compreender as relações entre conceitos e procedimentos dos diferentes campos da Matemática (Aritmética, Álgebra, Geometria, Estatística e Probabilidade) e de outras áreas do conhecimento, sentindo segurança quanto à própria capacidade de construir e aplicar conhecimentos matemáticos.",
+            "4. Fazer observações sistemáticas de aspectos quantitativos e qualitativos presentes nas práticas sociais e culturais, de modo a investigar, organizar, representar e comunicar informações relevantes, para interpretá-las e avaliá-las crítica e eticamente, produzindo argumentos convincentes.",
+            "5. Utilizar processos e ferramentas matemáticas, inclusive tecnologias digitais disponíveis, para modelar e resolver problemas cotidianos, sociais e de outras áreas de conhecimento, validando estratégias e resultados.",
+            "6. Enfrentar situações-problema em múltiplos contextos, incluindo-se situações imaginadas, não diretamente relacionadas com o aspecto prático-utilitário, expressar suas respostas e sintetizar conclusões, utilizando diferentes registros e linguagens (gráficos, tabelas, esquemas, além de texto escrito na língua materna e outras linguagens para descrever algoritmos, como fluxogramas, e dados).",
+            "7. Desenvolver e/ou discutir projetos que abordem, sobretudo, questões de urgência social, com base em princípios éticos, democráticos, sustentáveis e solidários, valorizando a diversidade de opiniões de indivíduos e de grupos sociais, sem preconceitos de qualquer natureza.",
+            "8. Interagir com seus pares de forma cooperativa, trabalhando coletivamente no planejamento e desenvolvimento de pesquisas para responder a questionamentos e na busca de soluções para problemas, de modo a identificar aspectos consensuais ou não na discussão de uma determinada questão, respeitando o modo de pensar dos colegas e aprendendo com eles."
+        ],
+        
+        # Competências Específicas da Área de Ciências da Natureza para o Ensino Fundamental
+        "Ciências da Natureza": [
+            "1. Compreender as Ciências da Natureza como empreendimento humano, e o conhecimento científico como provisório, cultural e histórico.",
+            "2. Compreender conceitos fundamentais e estruturas explicativas das Ciências da Natureza, bem como dominar processos, práticas e procedimentos da investigação científica, de modo a sentir segurança no debate de questões científicas, tecnológicas, socioambientais e do mundo do trabalho, continuar aprendendo e colaborar para a construção de uma sociedade justa, democrática e inclusiva.",
+            "3. Analisar, compreender e explicar características, fenômenos e processos relativos ao mundo natural, social e tecnológico (incluindo o digital), como também as relações que se estabelecem entre eles, exercitando a curiosidade para fazer perguntas, buscar respostas e criar soluções (inclusive tecnológicas) com base nos conhecimentos das Ciências da Natureza.",
+            "4. Avaliar aplicações e implicações políticas, socioambientais e culturais da ciência e de suas tecnologias para propor alternativas aos desafios do mundo contemporâneo, incluindo aqueles relativos ao mundo do trabalho.",
+            "5. Construir argumentos com base em dados, evidências e informações confiáveis e negociar e defender ideias e pontos de vista que promovam a consciência socioambiental e o respeito a si próprio e ao outro, acolhendo e valorizando a diversidade de indivíduos e de grupos sociais, sem preconceitos de qualquer natureza.",
+            "6. Utilizar diferentes linguagens e tecnologias digitais de informação e comunicação para se comunicar, acessar e disseminar informações, produzir conhecimentos e resolver problemas das Ciências da Natureza de forma crítica, significativa, reflexiva e ética.",
+            "7. Conhecer, apreciar e cuidar de si, do seu corpo e bem-estar, compreendendo-se na diversidade humana, fazendo-se respeitar e respeitando o outro, recorrendo aos conhecimentos das Ciências da Natureza e às suas tecnologias.",
+            "8. Agir pessoal e coletivamente com respeito, autonomia, responsabilidade, flexibilidade, resiliência e determinação, recorrendo aos conhecimentos das Ciências da Natureza para tomar decisões frente a questões científico-tecnológicas e socioambientais e a respeito da saúde individual e coletiva, com base em princípios éticos, democráticos, sustentáveis e solidários."
+        ],
+        
+        # Competências Específicas da Área de Ciências Humanas para o Ensino Fundamental
+        "Ciências Humanas": [
+            "1. Compreender a si e ao outro como identidades diferentes, de forma a exercitar o respeito à diferença em uma sociedade plural e promover os direitos humanos.",
+            "2. Analisar o mundo social, cultural e digital e o meio técnico-científico-informacional com base nos conhecimentos das Ciências Humanas, considerando suas variações de significado no tempo e no espaço, para intervir em situações do cotidiano e se posicionar diante de problemas do mundo contemporâneo.",
+            "3. Identificar, comparar e explicar a intervenção do ser humano na natureza e na sociedade, exercitando a curiosidade e propondo ideias e ações que contribuam para a transformação espacial, social e cultural, de modo a participar efetivamente das dinâmicas da vida social.",
+            "4. Interpretar e expressar sentimentos, crenças e dúvidas com relação a si mesmo, aos outros e às diferentes culturas, com base nos instrumentos de investigação das Ciências Humanas, promovendo o acolhimento e a valorização da diversidade de indivíduos e de grupos sociais, seus saberes, identidades, culturas e potencialidades, sem preconceitos de qualquer natureza.",
+            "5. Comparar eventos ocorridos simultaneamente no mesmo espaço e em espaços variados, e eventos ocorridos em tempos diferentes no mesmo espaço e em espaços variados.",
+            "6. Construir argumentos, com base nos conhecimentos das Ciências Humanas, para negociar e defender ideias e opiniões que respeitem e promovam os direitos humanos e a consciência socioambiental, exercitando a responsabilidade e o protagonismo voltados para o bem comum e a construção de uma sociedade justa, democrática e inclusiva.",
+            "7. Utilizar as linguagens cartográfica, gráfica e iconográfica e diferentes gêneros textuais e tecnologias digitais de informação e comunicação no desenvolvimento do raciocínio espaço-temporal relacionado a localização, distância, direção, duração, simultaneidade, sucessão, ritmo e conexão."
+        ],
+        
+        # Competências Específicas de Geografia para o Ensino Fundamental
+        "Geografia": [
+            "1. Utilizar os conhecimentos geográficos para entender a interação sociedade/natureza e exercitar o interesse e o espírito de investigação e de resolução de problemas.",
+            "2. Estabelecer conexões entre diferentes temas do conhecimento geográfico, reconhecendo a importância dos objetos técnicos para a compreensão das formas como os seres humanos fazem uso dos recursos da natureza ao longo da história.",
+            "3. Desenvolver autonomia e senso crítico para compreensão e aplicação do raciocínio geográfico na análise da ocupação humana e produção do espaço, envolvendo os princípios de analogia, conexão, diferenciação, distribuição, extensão, localização e ordem.",
+            "4. Desenvolver o pensamento espacial, fazendo uso das linguagens cartográficas e iconográficas, de diferentes gêneros textuais e das geotecnologias para a resolução de problemas que envolvam informações geográficas.",
+            "5. Desenvolver e utilizar processos, práticas e procedimentos de investigação para compreender o mundo natural, social, econômico, político e o meio técnico-científico e informacional, avaliar ações e propor perguntas e soluções (inclusive tecnológicas) para questões que requerem conhecimentos científicos da Geografia.",
+            "6. Construir argumentos com base em informações geográficas, debater e defender ideias e pontos de vista que respeitem e promovam a consciência socioambiental e o respeito à biodiversidade e ao outro, sem preconceitos de qualquer natureza.",
+            "7. Agir pessoal e coletivamente com respeito, autonomia, responsabilidade, flexibilidade, resiliência e determinação, propondo ações sobre as questões socioambientais, com base em princípios éticos, democráticos, sustentáveis e solidários."
+        ],
+        
+        # Competências Específicas de História para o Ensino Fundamental
+        "História": [
+            "1. Compreender acontecimentos históricos, relações de poder e processos e mecanismos de transformação e manutenção das estruturas sociais, políticas, econômicas e culturais ao longo do tempo e em diferentes espaços para analisar, posicionar-se e intervir no mundo contemporâneo.",
+            "2. Compreender a historicidade no tempo e no espaço, relacionando acontecimentos e processos de transformação e manutenção das estruturas sociais, políticas, econômicas e culturais, bem como problematizar os significados das lógicas de organização cronológica.",
+            "3. Elaborar questionamentos, hipóteses, argumentos e proposições em relação a documentos, interpretações e contextos históricos específicos, recorrendo a diferentes linguagens e mídias, exercitando a empatia, o diálogo, a resolução de conflitos, a cooperação e o respeito.",
+            "4. Identificar interpretações que expressem visões de diferentes sujeitos, culturas e povos com relação a um mesmo contexto histórico, e posicionar-se criticamente com base em princípios éticos, democráticos, inclusivos, sustentáveis e solidários.",
+            "5. Analisar e compreender o movimento de populações e mercadorias no tempo e no espaço e seus significados históricos, levando em conta o respeito e a solidariedade com as diferentes populações.",
+            "6. Compreender e problematizar os conceitos e procedimentos norteadores da produção historiográfica.",
+            "7. Produzir, avaliar e utilizar tecnologias digitais de informação e comunicação de modo crítico, ético e responsável, compreendendo seus significados para os diferentes grupos ou estratos sociais."
+        ],
+        
+        # Competências Específicas da Área de Ensino Religioso para o Ensino Fundamental
+        "Ensino Religioso": [
+            "1. Conhecer os aspectos estruturantes das diferentes tradições/movimentos religiosos e filosofias de vida, a partir de pressupostos científicos, filosóficos, estéticos e éticos.",
+            "2. Compreender, valorizar e respeitar as manifestações religiosas e filosofias de vida, suas experiências e saberes, em diferentes tempos, espaços e territórios.",
+            "3. Reconhecer e cuidar de si, do outro, da coletividade e da natureza, enquanto expressão de valor da vida.",
+            "4. Conviver com a diversidade de crenças, pensamentos, convicções, modos de ser e viver.",
+            "5. Analisar as relações entre as tradições religiosas e os campos da cultura, da política, da economia, da saúde, da ciência, da tecnologia e do meio ambiente.",
+            "6. Debater, problematizar e posicionar-se frente aos discursos e práticas de intolerância, discriminação e violência de cunho religioso, de modo a assegurar os direitos humanos no constante exercício da cidadania e da cultura de paz."
+        ]
+    }
+    
     return competencias
 
 def extract_ef_final(pdf):
-    print("--- Processando Ensino Fundamental (Estrutura Completa 8 Níveis) ---")
+    """
+    Extrai Ensino Fundamental com contexto correto de Unidade Temática e Objetos de Conhecimento.
     
-    # 1. Extração Prévia de Competências (Levels 2 & 4)
+    Estratégia: O PDF alterna entre tabelas de "contexto" (Unidades/Objetos) e tabelas de "habilidades".
+    Precisamos armazenar o contexto da tabela anterior para aplicar às habilidades.
+    """
+    print("--- Processando Ensino Fundamental (Estrutura Completa) ---")
+    
+    # 1. Extração Prévia de Competências
     competencias_map = extract_competencias_ef(pdf, EF_PAGE_RANGE)
     
     # Inicializa a árvore com a estrutura fixa
@@ -227,198 +349,424 @@ def extract_ef_final(pdf):
                 "anos": {}
             }
 
-    # Variáveis de Estado (Memória de Células Mescladas)
-    current_area = None
+    # ========================================================================
+    # CONTEXTO GLOBAL - Variáveis de estado entre páginas/tabelas
+    # ========================================================================
     current_comp = None
-    previous_comp = None
-    current_campo = None
-    last_unidade = "Geral"
-    last_objeto = "Geral"
-
-    for page_num in EF_PAGE_RANGE:
-        if page_num >= len(pdf.pages): break
-        page = pdf.pages[page_num]
+    current_area = None
+    
+    # Contexto de Unidade/Objeto (persistem entre tabelas da mesma página)
+    context_unidades = []  # Lista de {unidade, objetos=[]}
+    last_unidade = ""
+    last_objeto = ""
+    
+    # ========================================================================
+    # FUNÇÕES AUXILIARES
+    # ========================================================================
+    def is_valid_label(text):
+        """Valida se o texto é um label válido de Unidade/Objeto."""
+        if not text or len(text) < 3: return False
+        if len(text) > 300: return False
+        if RE_CODE_EF.search(text): return False
+        upper = text.upper().strip()
+        headers = ['HABILIDADES', 'UNIDADE TEMÁTICA', 'UNIDADES TEMÁTICAS', 
+                   'OBJETOS DE CONHECIMENTO', 'OBJETO DE CONHECIMENTO',
+                   'PRÁTICAS DE LINGUAGEM', 'CAMPO DE ATUAÇÃO']
+        if upper in headers: return False
+        if text.isupper() and ' ' not in text and len(text) < 15: return False
+        return True
+    
+    def is_context_table(header_str):
+        """Detecta se é uma tabela de contexto (Unidades/Objetos, sem habilidades)."""
+        has_unidade = "UNIDADE" in header_str or "CAMPO" in header_str or "PRÁTICA" in header_str
+        has_objeto = "OBJETO" in header_str or "CONHECIMENTO" in header_str
+        no_habilidade = "HABILIDADES" not in header_str
+        return (has_unidade or has_objeto) and no_habilidade
+    
+    def is_skills_table(header_str, table):
+        """Detecta se é uma tabela de habilidades."""
+        if "HABILIDADES" in header_str:
+            return True
+        # Também verifica se a tabela contém códigos de habilidade
+        for row in table[:5]:
+            for cell in row:
+                if cell and RE_CODE_EF.search(str(cell)):
+                    return True
+        return False
+    
+    def extract_context_from_table(table, num_cols):
+        """
+        Extrai contexto (Unidade, Objeto) de uma tabela, um par por linha.
+        Retorna lista de tuplas (unidade, objeto) para correspondência direta com linhas de habilidade.
+        """
+        result = []
+        last_unidade = ""
         
-        # Tenta identificar contexto da página (Componente no topo)
+        for row in table[1:]:  # Skip header
+            if not row or not any(c for c in row if c):
+                continue
+            
+            # Primeira coluna: Unidade Temática / Campo de Atuação
+            col0 = clean_text_basic(row[0]) if len(row) > 0 and row[0] else ""
+            # Segunda coluna: Objetos de Conhecimento
+            col1 = clean_text_basic(row[1]) if len(row) > 1 and row[1] else ""
+            # Terceira coluna (às vezes vazia)
+            col2 = clean_text_basic(row[2]) if len(row) > 2 and row[2] else ""
+            
+            # Forward-fill Unidade (células mescladas)
+            if is_valid_label(col0):
+                last_unidade = col0
+            
+            # Determina Objeto (pode estar em col1 ou col2)
+            obj = col1 if is_valid_label(col1) else col2
+            
+            # Adiciona entrada para esta linha
+            result.append((last_unidade, obj))
+        
+        return result
+    
+    def add_skill_to_tree(code, desc, sigla_comp, unidade_key, objeto_key):
+        """
+        Adiciona uma habilidade à árvore com a estrutura correta.
+        Se objeto_key contiver múltiplas linhas (objetos compostos), 
+        adiciona a skill a cada objeto separadamente.
+        """
+        if sigla_comp not in MAPA_EF_ESTRUTURA:
+            return
+        
+        info = MAPA_EF_ESTRUTURA[sigla_comp]
+        comp_name = info["componente"]
+        area_name = info["area"]
+        
+        anos_list = expandir_anos_ef(code)
+        
+        # Usa defaults específicos por componente se não tiver contexto
+        if not unidade_key:
+            defaults = {
+                "Língua Portuguesa": "Todos os campos de atuação",
+                "Arte": "Artes integradas", "Educação Física": "Brincadeiras e jogos",
+                "Língua Inglesa": "Eixo oralidade", "Matemática": "Números",
+                "Ciências": "Vida e evolução", "Geografia": "O sujeito e seu lugar no mundo",
+                "História": "Mundo pessoal: meu lugar no mundo",
+                "Ensino Religioso": "Identidades e alteridades"
+            }
+            unidade_key = defaults.get(comp_name, "Conteúdos")
+        
+        # Separa objetos compostos (múltiplas linhas ou padrões no mesmo texto)
+        # Cada objeto recebe a mesma habilidade
+        if not objeto_key:
+            objetos = ["Habilidades gerais"]
+        else:
+            # Primeiro split por newline
+            linhas = objeto_key.split('\n')
+            objetos_brutos = []
+            
+            for linha in linhas:
+                linha_limpa = linha.strip()
+                if not linha_limpa or len(linha_limpa) <= 3:
+                    continue
+                upper = linha_limpa.upper()
+                if upper in ['HABILIDADES', 'OBJETOS DE CONHECIMENTO', 'OBJETO DE CONHECIMENTO']:
+                    continue
+                
+                # Segundo: split por padrão de capitalização (objetos space-separated)
+                # Detecta quando uma palavra maiúscula começa após palavra que não é preposição
+                prepositions = {'de', 'do', 'da', 'dos', 'das', 'e', 'a', 'o', 'às', 'ao', 'aos', 
+                               'à', 'na', 'no', 'nas', 'nos', 'em', 'para', 'por', 'com'}
+                
+                words = linha_limpa.split()
+                if len(words) <= 1:
+                    objetos_brutos.append(linha_limpa)
+                    continue
+                
+                current_obj = [words[0]]
+                for i in range(1, len(words)):
+                    word = words[i]
+                    prev_word = words[i-1].lower().rstrip(',')
+                    
+                    # Check if this starts a new object:
+                    # - Current word starts with capital
+                    # - Previous word is NOT a preposition/article
+                    if word and word[0].isupper() and prev_word not in prepositions:
+                        # New object starts
+                        if current_obj:
+                            objetos_brutos.append(' '.join(current_obj))
+                        current_obj = [word]
+                    else:
+                        current_obj.append(word)
+                
+                if current_obj:
+                    objetos_brutos.append(' '.join(current_obj))
+            
+            # Filtra objetos válidos
+            objetos = [o for o in objetos_brutos if o and len(o) > 3]
+            
+            if not objetos:
+                objetos = ["Habilidades gerais"]
+        
+        # Nova estrutura: Unidade → lista de {objetos: [...], habilidades: [...]}
+        # Agrupa objetos que compartilham a mesma habilidade sem duplicar
+        for ano in anos_list:
+            base = tree[area_name]["componentes"][comp_name]["anos"]
+            if ano not in base:
+                base[ano] = {}
+            
+            if unidade_key not in base[ano]:
+                base[ano][unidade_key] = []
+            
+            unidade_list = base[ano][unidade_key]
+            
+            # Procura grupo existente com exatamente os mesmos objetos
+            objetos_set = tuple(sorted(objetos))  # Para comparação
+            grupo_existente = None
+            
+            for grupo in unidade_list:
+                if tuple(sorted(grupo.get("objetos", []))) == objetos_set:
+                    grupo_existente = grupo
+                    break
+            
+            if grupo_existente is None:
+                # Cria novo grupo
+                grupo_existente = {"objetos": objetos, "habilidades": []}
+                unidade_list.append(grupo_existente)
+            
+            # Adiciona habilidade ao grupo (sem duplicar)
+            if not any(s['codigo'] == code for s in grupo_existente["habilidades"]):
+                grupo_existente["habilidades"].append({"codigo": code, "descricao": desc})
+    
+    # ========================================================================
+    # LOOP PRINCIPAL DE EXTRAÇÃO
+    # ========================================================================
+    
+    for page_num in EF_PAGE_RANGE:
+        if page_num >= len(pdf.pages):
+            break
+        
+        page = pdf.pages[page_num]
         text_page = page.extract_text() or ""
         text_upper = text_page.upper()
         
-        for sigla, info in MAPA_EF_ESTRUTURA.items():
-            if info["componente"].upper() in text_upper: 
-                current_comp = info["componente"]
-                current_area = info["area"]
+        # Detecta componente atual pela página - com precisão para evitar falsos positivos
+        # Ordem de prioridade: componentes mais específicos primeiro
+        component_priority = ['Língua Portuguesa', 'Língua Inglesa', 'Educação Física', 
+                             'Ensino Religioso', 'Arte', 'Matemática', 'Geografia', 'História', 'Ciências']
+        
+        detected_comp = None
+        for comp_name in component_priority:
+            comp_upper = comp_name.upper()
+            # Verifica padrões específicos para evitar falsos positivos
+            # Padrão: "COMPONENTE –" ou "COMPONENTE -" (título de seção)
+            pattern1 = comp_upper + " –"
+            pattern2 = comp_upper + " -"
+            pattern3 = f"\\n{comp_upper}\\n"
+            
+            if pattern1 in text_upper or pattern2 in text_upper or pattern3 in text_upper:
+                detected_comp = comp_name
+                break
+            
+            # Fallback: nome do componente presente, mas não em contexto de área
+            # Evita "CIÊNCIAS" em "CIÊNCIAS HUMANAS" ou "CIÊNCIAS DA NATUREZA"
+            if comp_upper in text_upper:
+                # Verifica se não é parte de nome de área
+                if comp_name == "Ciências" and "CIÊNCIAS HUMANAS" in text_upper:
+                    continue  # Falso positivo
+                if comp_name == "História" and "CIÊNCIAS HUMANAS" in text_upper and "HISTÓRIA –" not in text_upper:
+                    continue  # Pode ser apenas parte do cabeçalho da área
+                detected_comp = comp_name
                 break
         
-        # Persist if not found
-        if not current_comp and previous_comp:
-            current_comp = previous_comp
+        if detected_comp:
+            # Encontra área correspondente
+            for sigla, info in MAPA_EF_ESTRUTURA.items():
+                if info["componente"] == detected_comp:
+                    if current_comp != detected_comp:
+                        # Mudou de componente, reseta contexto
+                        context_unidades = []
+                        last_unidade = ""
+                        last_objeto = ""
+                    current_comp = detected_comp
+                    current_area = info["area"]
+                    break
         
-        # Detect current_campo from text
-        lines = text_page.split('\n')
-        for line in lines:
-            line_clean = clean_text_basic(line)
-            line_upper = line_clean.upper()
-            if re.match(r"^[A-Z /()]+$", line_upper) and len(line_clean) > 10 and not re.search(r"\d", line_upper) and not "COMPETÊNCIAS" in line_upper and not "FUNDAMENTAL" in line_upper:
-                current_campo = line_clean
-        
-        # Reset last_unidade e last_objeto se o componente mudou
-        if current_comp != previous_comp:
-            last_unidade = "Geral"
-            last_objeto = "Geral"
-            current_campo = None
-            previous_comp = current_comp
-
-        # Extração de Tabela
+        # Extrai tabelas
         tables = page.extract_tables({"vertical_strategy": "lines", "horizontal_strategy": "lines"})
+        
         for table in tables:
-            if not table or len(table) < 2: continue
+            if not table or len(table) < 2:
+                continue
             
-            # Detecção de Colunas
-            header_row = [clean_text_basic(c).upper() for c in table[0] if c]
+            # Analisa header
+            header_row = [clean_text_basic(c).upper() if c else "" for c in table[0]]
             header_str = " ".join(header_row)
+            num_cols = len(table[0])
             
-            # Índices Padrão
-            idx_unidade = 0
-            idx_objeto = 1
-            idx_habilidade = 2
-            is_lp = False # Língua Portuguesa tem layout diferente
-            is_objetos_table = False
-            is_habilidades_table = False
+            # Skip competências
+            if "COMPETÊNCIAS" in header_str or "COMPETÊNCIA" in header_str:
+                continue
             
-            if current_comp == "Língua Portuguesa":
-                if len(table[0]) >=4 or "CAMPO" in header_str:
-                    is_lp = True
-                    idx_unidade = 0 # Campo de Atuação (Level 6)
-                    # Coluna 1 é "Práticas de Linguagem" (ignorar ou usar como unid se necessário)
-                    idx_objeto = 2  # Objeto de Conhecimento (Level 7)
-                    idx_habilidade = 3
-                else:
-                    if "PRÁTICAS DE LINGUAGEM" in header_str or "OBJETOS DE CONHECIMENTO" in header_str:
-                        is_objetos_table = True
-                        idx_unidade = 0 # Práticas or something
-                        idx_objeto = 1 if "OBJETOS" in header_str else 0
-                        idx_habilidade = -1
-                    elif "HABILIDADES" in header_str or re.search(r"\d+º ANO", header_str):
-                        is_habilidades_table = True
-                        idx_left = 0
-                        idx_right = 1 if len(table[0]) >1 else -1
-            else:
-                if len(table[0]) ==3 or "UNIDADE" in header_str:
-                    idx_unidade, idx_objeto, idx_habilidade = 0, 1, 2
-                else:
-                    continue 
-
-            # Processa linhas de dados
-            for row in table[1:]:
-                # For objetos table
-                if is_objetos_table:
-                    raw_unidade = clean_text_basic(row[idx_unidade]) if len(row) > idx_unidade else ""
-                    raw_objeto = clean_text_basic(row[idx_objeto]) if len(row) > idx_objeto else ""
-                    if raw_unidade: last_unidade = raw_unidade
-                    if raw_objeto: last_objeto = raw_objeto
-                    continue
+            # ============================================
+            # TABELA DE CONTEXTO (Unidades/Objetos)
+            # ============================================
+            if is_context_table(header_str):
+                new_context = extract_context_from_table(table, num_cols)
+                if new_context:
+                    context_unidades = new_context  # Lista de tuplas (unidade, objeto)
+                    # Atualiza last_unidade/last_objeto para primeira entrada
+                    if context_unidades:
+                        last_unidade, last_objeto = context_unidades[0]
+                continue
+            
+            # ============================================
+            # TABELA DE HABILIDADES
+            # ============================================
+            if is_skills_table(header_str, table):
+                # context_unidades já é lista de (unidade, objeto) - uso direto
                 
-                # For habilidades table
-                if is_habilidades_table:
-                    raw_habilidade = clean_text_basic(row[idx_left]) if len(row) > idx_left else ""
-                    if raw_habilidade and RE_CODE_EF.search(raw_habilidade):
-                        matches = list(RE_CODE_EF.finditer(raw_habilidade))
+                # Processa cada linha de dados (pula header)
+                data_rows = [r for r in table[1:] if r and any(c for c in r if c)]
+                
+                for row_idx, row in enumerate(data_rows):
+                    if not row:
+                        continue
+                    
+                    # Determina contexto para esta linha baseado no índice
+                    if context_unidades and row_idx < len(context_unidades):
+                        row_unidade, row_objeto = context_unidades[row_idx]
+                    else:
+                        row_unidade = last_unidade
+                        row_objeto = last_objeto
+                    
+                    # Processa cada célula que pode conter habilidades
+                    for col_idx, cell in enumerate(row):
+                        if not cell:
+                            continue
+                        
+                        cell_text = clean_text_basic(cell)
+                        
+                        # Verifica se a célula contém códigos de habilidade
+                        if not RE_CODE_EF.search(cell_text):
+                            # Pode ser label de Unidade/Objeto na primeira coluna
+                            if col_idx == 0 and is_valid_label(cell_text):
+                                # Atualiza contexto para próximas linhas sem contexto
+                                if len(cell_text) < 50:
+                                    last_unidade = cell_text
+                                else:
+                                    last_objeto = cell_text
+                            continue
+                        
+                        # Extrai todos os códigos da célula
+                        matches = list(RE_CODE_EF.finditer(cell_text))
+                        
                         for i, match in enumerate(matches):
                             code = match.group(1)
                             sigla_comp = match.group(2)
-                            start = match.end()
-                            end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
-                            desc = processar_descricao(raw_habilidade[start:end], code)
-                            if sigla_comp not in MAPA_EF_ESTRUTURA: continue
-                            info_now = MAPA_EF_ESTRUTURA[sigla_comp]
-                            comp_now = info_now["componente"]
-                            area_now = info_now["area"]
-                            anos_list = expandir_anos_ef(code)
-                            for ano in anos_list:
-                                base_node = tree[area_now]["componentes"][comp_now]["anos"]
-                                if ano not in base_node: base_node[ano] = {}
-                                lvl6_key = current_campo or last_unidade or "Geral"
-                                if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
-                                lvl7_key = last_objeto or "Geral"
-                                if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
-                                lista_habilidades = base_node[ano][lvl6_key][lvl7_key]
-                                if not any(h['codigo'] == code for h in lista_habilidades):
-                                    lista_habilidades.append({"codigo": code, "descricao": desc})
-                    if idx_right != -1:
-                        raw_habilidade = clean_text_basic(row[idx_right]) if len(row) > idx_right else ""
-                        if raw_habilidade and RE_CODE_EF.search(raw_habilidade):
-                            matches = list(RE_CODE_EF.finditer(raw_habilidade))
-                            for i, match in enumerate(matches):
-                                code = match.group(1)
-                                sigla_comp = match.group(2)
-                                start = match.end()
-                                end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
-                                desc = processar_descricao(raw_habilidade[start:end], code)
-                                if sigla_comp not in MAPA_EF_ESTRUTURA: continue
-                                info_now = MAPA_EF_ESTRUTURA[sigla_comp]
-                                comp_now = info_now["componente"]
-                                area_now = info_now["area"]
-                                anos_list = expandir_anos_ef(code)
-                                for ano in anos_list:
-                                    base_node = tree[area_now]["componentes"][comp_now]["anos"]
-                                    if ano not in base_node: base_node[ano] = {}
-                                    lvl6_key = current_campo or last_unidade or "Geral"
-                                    if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
-                                    lvl7_key = last_objeto or "Geral"
-                                    if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
-                                    lista_habilidades = base_node[ano][lvl6_key][lvl7_key]
-                                    if not any(h['codigo'] == code for h in lista_habilidades):
-                                        lista_habilidades.append({"codigo": code, "descricao": desc})
-                    continue
+                            
+                            # Extrai descrição
+                            start_pos = match.end()
+                            end_pos = matches[i+1].start() if i+1 < len(matches) else len(cell_text)
+                            desc = processar_descricao(cell_text[start_pos:end_pos], code)
+                            
+                            # Usa contexto da linha ou fallback
+                            add_skill_to_tree(code, desc, sigla_comp, 
+                                            row_unidade if row_unidade else last_unidade, 
+                                            row_objeto if row_objeto else last_objeto)
                 
-                # Standard processing for other tables
-                if len(row) <= idx_habilidade: continue
-                
-                raw_unidade = clean_text_basic(row[idx_unidade]) if len(row) > idx_unidade else ""
-                raw_objeto = clean_text_basic(row[idx_objeto]) if len(row) > idx_objeto else ""
-                raw_habilidade = clean_text_basic(row[idx_habilidade]) if len(row) > idx_habilidade else ""
-                
-                # Forward Fill
-                if raw_unidade: last_unidade = raw_unidade
-                else: raw_unidade = last_unidade
-                
-                if raw_objeto: last_objeto = raw_objeto
-                else: raw_objeto = last_objeto
-                
-                # Skip if no habilidade or no code
-                if not raw_habilidade or not RE_CODE_EF.search(raw_habilidade):
-                    continue
-                
-                # If code in raw_objeto, perhaps error, skip or adjust
-                if RE_CODE_EF.search(raw_objeto):
-                    continue
-                
-                matches = list(RE_CODE_EF.finditer(raw_habilidade))
-                if not matches: continue
-                
-                for i, match in enumerate(matches):
-                    code = match.group(1)
-                    sigla_comp = match.group(2)
-                    start = match.end()
-                    end = matches[i+1].start() if (i+1) < len(matches) else len(raw_habilidade)
-                    desc = processar_descricao(raw_habilidade[start:end], code)
-                    if sigla_comp not in MAPA_EF_ESTRUTURA: continue
-                    info_now = MAPA_EF_ESTRUTURA[sigla_comp]
-                    comp_now = info_now["componente"]
-                    area_now = info_now["area"]
-                    anos_list = expandir_anos_ef(code)
-                    for ano in anos_list:
-                        base_node = tree[area_now]["componentes"][comp_now]["anos"]
-                        if ano not in base_node: base_node[ano] = {}
-                        lvl6_key = current_campo or raw_unidade or "Geral"
-                        if lvl6_key not in base_node[ano]: base_node[ano][lvl6_key] = {}
-                        lvl7_key = raw_objeto or "Geral"
-                        if lvl7_key not in base_node[ano][lvl6_key]: base_node[ano][lvl6_key][lvl7_key] = []
-                        lista_habilidades = base_node[ano][lvl6_key][lvl7_key]
-                        if not any(h['codigo'] == code for h in lista_habilidades):
-                            lista_habilidades.append({"codigo": code, "descricao": desc})
+                continue
+            
+            # ============================================
+            # TABELA MISTA (3+ colunas com Unidade/Objeto/Habilidade)
+            # ============================================
+            if num_cols >= 3:
+                for row in table[1:]:
+                    if not row or len(row) < 3:
+                        continue
+                    
+                    col0 = clean_text_basic(row[0]) if row[0] else ""
+                    col1 = clean_text_basic(row[1]) if row[1] else ""
+                    col2 = clean_text_basic(row[2]) if len(row) > 2 and row[2] else ""
+                    
+                    # Atualiza contexto
+                    if is_valid_label(col0):
+                        last_unidade = col0
+                    if is_valid_label(col1):
+                        last_objeto = col1
+                    
+                    # Procura habilidades na última coluna (ou em col2)
+                    skill_text = col2 if RE_CODE_EF.search(col2) else ""
+                    if not skill_text:
+                        # Tenta col1 se col2 não tem código
+                        if RE_CODE_EF.search(col1):
+                            skill_text = col1
+                            last_objeto = ""  # col1 era habilidade, não objeto
+                    
+                    if not skill_text:
+                        continue
+                    
+                    matches = list(RE_CODE_EF.finditer(skill_text))
+                    for i, match in enumerate(matches):
+                        code = match.group(1)
+                        sigla_comp = match.group(2)
+                        start_pos = match.end()
+                        end_pos = matches[i+1].start() if i+1 < len(matches) else len(skill_text)
+                        desc = processar_descricao(skill_text[start_pos:end_pos], code)
+                        
+                        add_skill_to_tree(code, desc, sigla_comp, last_unidade, last_objeto)
+            
+            # ============================================
+            # TABELA 2 COLUNAS
+            # ============================================
+            elif num_cols == 2:
+                for row in table[1:]:
+                    if not row or len(row) < 2:
+                        continue
+                    
+                    col0 = clean_text_basic(row[0]) if row[0] else ""
+                    col1 = clean_text_basic(row[1]) if row[1] else ""
+                    
+                    # Col0 pode ser Unidade/Objeto label
+                    if is_valid_label(col0) and not RE_CODE_EF.search(col0):
+                        last_unidade = col0
+                    
+                    # Col1 geralmente tem as habilidades
+                    if not RE_CODE_EF.search(col1):
+                        continue
+                    
+                    matches = list(RE_CODE_EF.finditer(col1))
+                    for i, match in enumerate(matches):
+                        code = match.group(1)
+                        sigla_comp = match.group(2)
+                        start_pos = match.end()
+                        end_pos = matches[i+1].start() if i+1 < len(matches) else len(col1)
+                        desc = processar_descricao(col1[start_pos:end_pos], code)
+                        
+                        add_skill_to_tree(code, desc, sigla_comp, last_unidade, last_objeto)
 
+    # ========================================================================
+    # RELATÓRIO FINAL
+    # ========================================================================
+    print("\n--- Resumo da Extração EF ---")
+    total_all = 0
+    for area, area_data in tree.items():
+        for comp, comp_data in area_data["componentes"].items():
+            total_skills = 0
+            unique_codes = set()
+            def count_skills(obj):
+                nonlocal total_skills
+                if isinstance(obj, dict):
+                    if 'codigo' in obj: 
+                        total_skills += 1
+                        unique_codes.add(obj['codigo'])
+                    for v in obj.values(): count_skills(v)
+                elif isinstance(obj, list):
+                    for item in obj: count_skills(item)
+            count_skills(comp_data["anos"])
+            print(f"  {comp}: {total_skills} habilidades ({len(unique_codes)} códigos únicos)")
+            total_all += len(unique_codes)
+    
+    print(f"\n  TOTAL: {total_all} códigos únicos extraídos")
+    
     return tree
+
 
 def extract_em(pdf):
     # (Código Original Mantido - Ensino Médio)
