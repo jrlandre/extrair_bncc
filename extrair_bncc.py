@@ -396,8 +396,9 @@ def extract_ef_final(pdf):
     current_comp = None
     current_area = None
     
-    # Contexto de Unidade/Objeto (persistem entre tabelas da mesma página)
-    context_unidades = []  # Lista de {unidade, objetos=[]}
+    # Contexto de Campo/Unidade/Objeto (persistem entre tabelas da mesma página)
+    context_unidades = []  # Lista de (campo, unidade, objeto)
+    last_campo = ""  # Campo de Atuação (LP)
     last_unidade = ""
     last_objeto = ""
     
@@ -457,8 +458,13 @@ def extract_ef_final(pdf):
             # Terceira coluna (às vezes vazia)
             col2 = clean_text_basic(row[2]) if len(row) > 2 and row[2] else ""
             
-            # Detecta se col0 é um Campo de Atuação (LP)
-            is_campo = "CAMPO" in col0.upper() and ("–" in col0 or ":" in col0 or len(col0) > 40)
+            # Detecta se col0 é um Campo de Atuação (LP) ou Eixo (Inglês)
+            # LP: "CAMPO DA VIDA COTIDIANA – ...", "TODOS OS CAMPOS DE ATUAÇÃO"
+            # Inglês: "EIXO ORALIDADE – Práticas de...", "EIXO ESCRITA – ..."
+            is_campo = (
+                ("CAMPO" in col0.upper() or "EIXO" in col0.upper()) and 
+                ("–" in col0 or ":" in col0 or "TODOS" in col0.upper() or len(col0) > 40)
+            )
             
             # Detecta se col0 é uma Prática de Linguagem (LP)
             is_pratica = not is_campo and is_valid_label(col0) and any(p in col0 for p in [
@@ -482,14 +488,15 @@ def extract_ef_final(pdf):
             # Determina Objeto (pode estar em col1 ou col2)
             obj_raw = col1 if is_valid_label(col1) else (col2 if is_valid_label(col2) else "")
             
-            # Para LP: usa Campo ou Prática como Unidade (prioriza Prática se disponível)
-            # Para outros: usa Unidade Temática
+            # Para LP/Inglês: usa Prática ou Unidade como segundo nível
+            # Para outros: usa Unidade Temática diretamente
+            # Prioridade: last_pratica > last_unidade > last_campo (fallback)
             if last_pratica:
                 unidade_final = last_pratica
-            elif last_campo:
-                unidade_final = last_campo
-            else:
+            elif last_unidade:
                 unidade_final = last_unidade
+            else:
+                unidade_final = last_campo if last_campo else "Conteúdos"
             # Processa objetos da célula - podem ser múltiplos objetos separados por newline
             # Usa "||" como separador para indicar objetos distintos na mesma linha
             if obj_raw:
@@ -499,7 +506,7 @@ def extract_ef_final(pdf):
                     # Único objeto
                     obj = linhas[0]
                     if is_valid_label(obj) and len(obj) > 5:
-                        result.append((unidade_final, obj))
+                        result.append((last_campo, unidade_final, obj))
                 else:
                     # Múltiplas linhas - detectar se são objetos separados ou continuação
                     # Heurísticas mais robustas para identificar continuação vs novo objeto
@@ -573,14 +580,18 @@ def extract_ef_final(pdf):
                         if is_valid_label(o_limpo) and len(o_limpo) > 5:
                             objs_validos.append(o_limpo)
                     if objs_validos:
-                        result.append((unidade_final, "||".join(objs_validos)))
+                        # Retorna tupla de 3: (campo, pratica/unidade, objeto)
+                        # Para LP: campo é o Campo de Atuação, pratica é a Prática de Linguagem
+                        # Para outros: campo fica vazio, unidade é usada
+                        result.append((last_campo, unidade_final, "||".join(objs_validos)))
         
         return result
     
-    def add_skill_to_tree(code, desc, sigla_comp, unidade_key, objeto_key):
+    def add_skill_to_tree(code, desc, sigla_comp, campo_key, unidade_key, objeto_key):
         """
         Adiciona uma habilidade à árvore com a estrutura correta.
-        O objeto_key já vem processado de extract_context_from_table, não precisa dividir.
+        Para LP: ano → campo de atuação → prática → objetos + habilidades
+        Para outros: ano → unidade temática → objetos + habilidades
         """
         if sigla_comp not in MAPA_EF_ESTRUTURA:
             return
@@ -589,19 +600,33 @@ def extract_ef_final(pdf):
         comp_name = info["componente"]
         area_name = info["area"]
         
+        # LP e Inglês têm 4 níveis: ano → campo/eixo → prática/unidade → objetos
+        is_4_levels = comp_name in ["Língua Portuguesa", "Língua Inglesa"]
+        
         anos_list = expandir_anos_ef(code)
         
-        # Usa defaults específicos por componente se não tiver contexto
-        if not unidade_key:
-            defaults = {
-                "Língua Portuguesa": "Todos os campos de atuação",
-                "Arte": "Artes integradas", "Educação Física": "Brincadeiras e jogos",
-                "Língua Inglesa": "Eixo oralidade", "Matemática": "Números",
-                "Ciências": "Vida e evolução", "Geografia": "O sujeito e seu lugar no mundo",
-                "História": "Mundo pessoal: meu lugar no mundo",
-                "Ensino Religioso": "Identidades e alteridades"
-            }
-            unidade_key = defaults.get(comp_name, "Conteúdos")
+        # Defaults para campo (LP/Inglês) ou unidade (outros)
+        if is_4_levels:
+            if comp_name == "Língua Portuguesa":
+                if not campo_key:
+                    campo_key = "Todos os campos de atuação"
+                if not unidade_key:
+                    unidade_key = "Práticas de linguagem"
+            elif comp_name == "Língua Inglesa":
+                if not campo_key:
+                    campo_key = "Eixo oralidade"
+                if not unidade_key:
+                    unidade_key = "Interação discursiva"
+        else:
+            if not unidade_key:
+                defaults = {
+                    "Arte": "Artes integradas", "Educação Física": "Brincadeiras e jogos",
+                    "Matemática": "Números",
+                    "Ciências": "Vida e evolução", "Geografia": "O sujeito e seu lugar no mundo",
+                    "História": "Mundo pessoal: meu lugar no mundo",
+                    "Ensino Religioso": "Identidades e alteridades"
+                }
+                unidade_key = defaults.get(comp_name, "Conteúdos")
         
         # Divide objetos que foram separados por || (múltiplos objetos na mesma célula)
         if not objeto_key or len(objeto_key.strip()) < 5:
@@ -616,23 +641,32 @@ def extract_ef_final(pdf):
             else:
                 objetos = [obj_limpo]
         
-        # Nova estrutura: Unidade → lista de {objetos: [...], habilidades: [...]}
-        # Agrupa objetos que compartilham a mesma habilidade sem duplicar
         for ano in anos_list:
             base = tree[area_name]["componentes"][comp_name]["anos"]
             if ano not in base:
                 base[ano] = {}
             
-            if unidade_key not in base[ano]:
-                base[ano][unidade_key] = []
-            
-            unidade_list = base[ano][unidade_key]
+            if is_4_levels:
+                # LP/Inglês: 4 níveis - ano → campo/eixo → prática/unidade → grupos
+                if campo_key not in base[ano]:
+                    base[ano][campo_key] = {}
+                
+                if unidade_key not in base[ano][campo_key]:
+                    base[ano][campo_key][unidade_key] = []
+                
+                target_list = base[ano][campo_key][unidade_key]
+            else:
+                # Outros: 3 níveis - ano → unidade → grupos
+                if unidade_key not in base[ano]:
+                    base[ano][unidade_key] = []
+                
+                target_list = base[ano][unidade_key]
             
             # Procura grupo existente com exatamente os mesmos objetos
             objetos_set = tuple(sorted(objetos))  # Para comparação
             grupo_existente = None
             
-            for grupo in unidade_list:
+            for grupo in target_list:
                 if tuple(sorted(grupo.get("objetos", []))) == objetos_set:
                     grupo_existente = grupo
                     break
@@ -640,11 +674,15 @@ def extract_ef_final(pdf):
             if grupo_existente is None:
                 # Cria novo grupo
                 grupo_existente = {"objetos": objetos, "habilidades": []}
-                unidade_list.append(grupo_existente)
+                target_list.append(grupo_existente)
             
             # Adiciona habilidade ao grupo (sem duplicar)
             if not any(s['codigo'] == code for s in grupo_existente["habilidades"]):
-                grupo_existente["habilidades"].append({"codigo": code, "descricao": desc})
+                grupo_existente["habilidades"].append({
+                    "codigo": code, 
+                    "descricao": desc,
+                    "anos_aplicaveis": anos_list  # Lista de todos os anos onde essa habilidade se aplica
+                })
     
     # ========================================================================
     # LOOP PRINCIPAL DE EXTRAÇÃO
@@ -717,10 +755,12 @@ def extract_ef_final(pdf):
             if is_context_table(header_str):
                 new_context = extract_context_from_table(table, num_cols)
                 if new_context:
-                    context_unidades = new_context  # Lista de tuplas (unidade, objeto)
-                    # Atualiza last_unidade/last_objeto para ÚLTIMA entrada
+                    context_unidades = new_context  # Lista de tuplas (campo, unidade, objeto)
+                    # Atualiza last_campo/last_unidade/last_objeto para ÚLTIMA entrada
                     # (o contexto mais recente será usado para habilidades seguintes)
-                    for u, o in context_unidades:
+                    for c, u, o in context_unidades:
+                        if c:
+                            last_campo = c
                         if u:
                             last_unidade = u
                         if o:
@@ -755,9 +795,10 @@ def extract_ef_final(pdf):
                     
                     # Determina contexto para esta linha usando mapeamento 1:1
                     if context_unidades and row_idx < len(context_unidades):
-                        row_unidade, row_objeto = context_unidades[row_idx]
+                        row_campo, row_unidade, row_objeto = context_unidades[row_idx]
                     else:
                         # Fallback: usa último contexto conhecido
+                        row_campo = last_campo
                         row_unidade = last_unidade
                         row_objeto = last_objeto
                     
@@ -792,7 +833,8 @@ def extract_ef_final(pdf):
                             desc = processar_descricao(cell_text[start_pos:end_pos], code)
                             
                             # Usa contexto da linha ou fallback
-                            add_skill_to_tree(code, desc, sigla_comp, 
+                            add_skill_to_tree(code, desc, sigla_comp,
+                                            row_campo if row_campo else last_campo,
                                             row_unidade if row_unidade else last_unidade, 
                                             row_objeto if row_objeto else last_objeto)
                 
@@ -836,7 +878,7 @@ def extract_ef_final(pdf):
                         end_pos = matches[i+1].start() if i+1 < len(matches) else len(skill_text)
                         desc = processar_descricao(skill_text[start_pos:end_pos], code)
                         
-                        add_skill_to_tree(code, desc, sigla_comp, last_unidade, last_objeto)
+                        add_skill_to_tree(code, desc, sigla_comp, last_campo, last_unidade, last_objeto)
             
             # ============================================
             # TABELA 2 COLUNAS
@@ -865,7 +907,7 @@ def extract_ef_final(pdf):
                         end_pos = matches[i+1].start() if i+1 < len(matches) else len(col1)
                         desc = processar_descricao(col1[start_pos:end_pos], code)
                         
-                        add_skill_to_tree(code, desc, sigla_comp, last_unidade, last_objeto)
+                        add_skill_to_tree(code, desc, sigla_comp, last_campo, last_unidade, last_objeto)
 
     # ========================================================================
     # RELATÓRIO FINAL
