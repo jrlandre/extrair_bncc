@@ -44,6 +44,179 @@ MAPA_EF_ESTRUTURA = {
     "ER": {"componente": "Ensino Religioso", "area": "Ensino Religioso"}
 }
 
+# --- FUNÇÕES PARA EXTRAÇÃO DE ITÁLICO ---
+
+def build_formatted_text_from_chars(chars):
+    """
+    Reconstrói texto a partir de caracteres individuais, 
+    adicionando marcadores Markdown *texto* para texto em itálico.
+    """
+    if not chars:
+        return ""
+    
+    # Ordena caracteres por posição (top, left)
+    sorted_chars = sorted(chars, key=lambda c: (c.get('top', 0), c.get('x0', 0)))
+    
+    result = []
+    in_italic = False
+    last_x1 = None
+    last_top = None
+    
+    for c in sorted_chars:
+        char_text = c.get('text', '')
+        if not char_text:
+            continue
+            
+        fontname = c.get('fontname', '')
+        is_italic = 'Italic' in fontname or 'Oblique' in fontname
+        
+        # Detecta nova linha (diferença de top > threshold)
+        current_top = c.get('top', 0)
+        if last_top is not None and abs(current_top - last_top) > 8:
+            if in_italic:
+                result.append('*')
+                in_italic = False
+            result.append(' ')  # Substitui quebra de linha por espaço
+        else:
+            # Detecta espaço entre palavras
+            current_x0 = c.get('x0', 0)
+            if last_x1 is not None and current_x0 - last_x1 > 3:
+                if in_italic and not is_italic:
+                    result.append('*')
+                    in_italic = False
+                result.append(' ')
+                if is_italic and not in_italic:
+                    result.append('*')
+                    in_italic = True
+        
+        # Gerencia transição de estilo
+        if is_italic and not in_italic:
+            result.append('*')
+            in_italic = True
+        elif not is_italic and in_italic:
+            result.append('*')
+            in_italic = False
+        
+        result.append(char_text)
+        last_x1 = c.get('x1', 0)
+        last_top = current_top
+    
+    # Fecha itálico pendente
+    if in_italic:
+        result.append('*')
+    
+    text = ''.join(result)
+    # Limpa asteriscos vazios ou mal formados
+    text = re.sub(r'\*\s*\*', '', text)  # Remove ** vazios
+    text = re.sub(r'\s+', ' ', text).strip()  # Normaliza espaços
+    return text
+
+
+def get_page_italic_map(page):
+    """
+    Cria um mapa de regiões com texto em itálico para uma página.
+    Retorna um dicionário de (approx_top, approx_left) -> texto_formatado
+    """
+    chars = page.chars
+    if not chars:
+        return {}
+    
+    # Agrupa caracteres por linha aproximada
+    lines = {}
+    for c in chars:
+        top = round(c.get('top', 0) / 5) * 5  # Agrupa em faixas de 5px
+        if top not in lines:
+            lines[top] = []
+        lines[top].append(c)
+    
+    # Reconstrói texto formatado por linha
+    formatted_lines = {}
+    for top, line_chars in lines.items():
+        formatted_lines[top] = build_formatted_text_from_chars(line_chars)
+    
+    return formatted_lines
+
+
+def extract_italic_words(page):
+    """
+    Extrai todas as palavras/frases em itálico de uma página.
+    Retorna um set de strings que estão em itálico.
+    """
+    chars = page.chars
+    if not chars:
+        return set()
+    
+    italic_words = set()
+    current_word = []
+    in_italic = False
+    
+    sorted_chars = sorted(chars, key=lambda c: (c.get('top', 0), c.get('x0', 0)))
+    last_x1 = None
+    
+    for c in sorted_chars:
+        char_text = c.get('text', '')
+        if not char_text:
+            continue
+            
+        fontname = c.get('fontname', '')
+        is_italic = 'Italic' in fontname or 'Oblique' in fontname
+        current_x0 = c.get('x0', 0)
+        
+        # Detecta espaço entre palavras
+        is_space = last_x1 is not None and current_x0 - last_x1 > 3
+        
+        if is_italic:
+            if is_space and current_word:
+                # Salva palavra anterior se também era itálica
+                word = ''.join(current_word).strip()
+                if len(word) > 2:
+                    italic_words.add(word)
+                current_word = []
+            current_word.append(char_text)
+        else:
+            if current_word:
+                word = ''.join(current_word).strip()
+                if len(word) > 2:
+                    italic_words.add(word)
+                current_word = []
+        
+        last_x1 = c.get('x1', 0)
+    
+    # Última palavra
+    if current_word:
+        word = ''.join(current_word).strip()
+        if len(word) > 2:
+            italic_words.add(word)
+    
+    return italic_words
+
+
+def apply_italic_formatting(text, italic_words):
+    """
+    Aplica formatação Markdown (*palavra*) para palavras em itálico.
+    Usa word boundaries para evitar substituições parciais.
+    """
+    if not italic_words or not text:
+        return text
+    
+    result = text
+    # Ordena por tamanho decrescente para evitar substituições parciais
+    for word in sorted(italic_words, key=len, reverse=True):
+        if word in result and len(word) > 2:
+            # Evita duplicar asteriscos se já formatado
+            if f'*{word}*' not in result:
+                # Usa word boundary (\b ou espaço/pontuação) para substituição precisa
+                # Evita substituir "and" dentro de "explorando"
+                result = re.sub(
+                    r'(?<![a-zA-ZáéíóúàèìòùâêîôûãõäëïöüçñÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕÄËÏÖÜÇÑ\*])' + 
+                    re.escape(word) + 
+                    r'(?![a-zA-ZáéíóúàèìòùâêîôûãõäëïöüçñÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕÄËÏÖÜÇÑ\*])',
+                    f'*{word}*',
+                    result
+                )
+    
+    return result
+
 # --- UTILITÁRIOS ---
 
 def clean_text_basic(text):
@@ -93,14 +266,18 @@ def format_special_chars(text):
     
     return text
 
-def processar_descricao(texto_bruto, codigo):
+def processar_descricao(texto_bruto, codigo, italic_words=None):
     if codigo: texto = texto_bruto.replace(codigo, "")
     else: texto = texto_bruto
     # Remove newlines e normaliza espaços
     texto = texto.replace('\n', ' ')
     texto = re.sub(r'\s+', ' ', texto)  # Normaliza múltiplos espaços
     texto = re.sub(r"^[\s\(\)\.\-]+", "", texto).strip()
-    return format_special_chars(texto)
+    texto = format_special_chars(texto)
+    # Aplica formatação itálico se disponível
+    if italic_words:
+        texto = apply_italic_formatting(texto, italic_words)
+    return texto
 
 def expandir_anos_ef(codigo_bncc):
     """
@@ -696,6 +873,9 @@ def extract_ef_final(pdf):
         text_page = page.extract_text() or ""
         text_upper = text_page.upper()
         
+        # Extrai palavras em itálico da página para formatação Markdown
+        page_italic_words = extract_italic_words(page)
+        
         # Detecta componente atual pela página
         # PRIORIDADE 1: Padrões de área com componente específico
         detected_comp = None
@@ -830,7 +1010,7 @@ def extract_ef_final(pdf):
                             # Extrai descrição
                             start_pos = match.end()
                             end_pos = matches[i+1].start() if i+1 < len(matches) else len(cell_text)
-                            desc = processar_descricao(cell_text[start_pos:end_pos], code)
+                            desc = processar_descricao(cell_text[start_pos:end_pos], code, page_italic_words)
                             
                             # Usa contexto da linha ou fallback
                             add_skill_to_tree(code, desc, sigla_comp,
@@ -876,7 +1056,7 @@ def extract_ef_final(pdf):
                         sigla_comp = match.group(2)
                         start_pos = match.end()
                         end_pos = matches[i+1].start() if i+1 < len(matches) else len(skill_text)
-                        desc = processar_descricao(skill_text[start_pos:end_pos], code)
+                        desc = processar_descricao(skill_text[start_pos:end_pos], code, page_italic_words)
                         
                         add_skill_to_tree(code, desc, sigla_comp, last_campo, last_unidade, last_objeto)
             
@@ -905,7 +1085,7 @@ def extract_ef_final(pdf):
                         sigla_comp = match.group(2)
                         start_pos = match.end()
                         end_pos = matches[i+1].start() if i+1 < len(matches) else len(col1)
-                        desc = processar_descricao(col1[start_pos:end_pos], code)
+                        desc = processar_descricao(col1[start_pos:end_pos], code, page_italic_words)
                         
                         add_skill_to_tree(code, desc, sigla_comp, last_campo, last_unidade, last_objeto)
 
