@@ -665,6 +665,16 @@ def extract_competencias_ef(pdf, page_range):
             "10. Experimentar, desfrutar, apreciar e criar diferentes brincadeiras, jogos, danças, ginásticas, esportes, lutas e práticas corporais de aventura, valorizando o trabalho coletivo e o protagonismo."
         ],
         
+        # Competências Específicas de Língua Inglesa para o Ensino Fundamental (página 246 - imagem)
+        "Língua Inglesa": [
+            "1. Identificar o lugar de si e o do outro em um mundo plurilíngue e multicultural, refletindo, criticamente, sobre como a aprendizagem da língua inglesa contribui para a inserção dos sujeitos no mundo globalizado, inclusive no que concerne ao mundo do trabalho.",
+            "2. Comunicar-se na língua inglesa, por meio do uso variado de linguagens em mídias impressas ou digitais, reconhecendo-a como ferramenta de acesso ao conhecimento, de ampliação das perspectivas e de possibilidades para a compreensão dos valores e interesses de outras culturas e para o exercício do protagonismo social.",
+            "3. Identificar similaridades e diferenças entre a língua inglesa e a língua materna/outras línguas, articulando-as a aspectos sociais, culturais e identitários, em uma relação intrínseca entre língua, cultura e identidade.",
+            "4. Elaborar repertórios linguístico-discursivos da língua inglesa, usados em diferentes países e por grupos sociais distintos dentro de um mesmo país, de modo a reconhecer a diversidade linguística como direito e valorizar os usos heterogêneos, híbridos e multimodais emergentes nas sociedades contemporâneas.",
+            "5. Utilizar novas tecnologias, com novas linguagens e modos de interação, para pesquisar, selecionar, compartilhar, posicionar-se e produzir sentidos em práticas de letramento na língua inglesa, de forma ética, crítica e responsável.",
+            "6. Conhecer diferentes patrimônios culturais, materiais e imateriais, difundidos na língua inglesa, com vistas ao exercício da fruição e da ampliação de perspectivas no contato com diferentes manifestações artístico-culturais."
+        ],
+        
         # Competências Específicas da Área de Matemática para o Ensino Fundamental
         "Matemática": [
             "1. Reconhecer que a Matemática é uma ciência humana, fruto das necessidades e preocupações de diferentes culturas, em diferentes momentos históricos, e é uma ciência viva, que contribui para solucionar problemas científicos e tecnológicos e para alicerçar descobertas e construções, inclusive com impactos no mundo do trabalho.",
@@ -761,10 +771,32 @@ def extract_ef_final(pdf):
             }
         
         if comp not in tree[area]["componentes"]:
-            tree[area]["componentes"][comp] = {
-                "competencias_especificas_componente": competencias_map.get(comp, []),
-                "anos": {}
-            }
+            # Obtém competências do componente
+            comp_competencias = competencias_map.get(comp, [])
+            area_competencias = tree[area]["competencias_especificas_area"]
+            
+            # Verifica se são as mesmas (redundância) ou se componente está vazio
+            if comp_competencias == area_competencias and len(comp_competencias) > 0:
+                # Redundância: mesmas competências → usar referência
+                tree[area]["componentes"][comp] = {
+                    "competencias_especificas_componente": comp_competencias,
+                    "competencias_especificas_ref": "area",  # Indica que são as mesmas da área
+                    "anos": {}
+                }
+            elif len(comp_competencias) == 0 and len(area_competencias) > 0:
+                # Componente sem competências próprias → herda da área
+                tree[area]["componentes"][comp] = {
+                    "competencias_especificas_componente": area_competencias,
+                    "competencias_especificas_ref": "area",
+                    "anos": {}
+                }
+            else:
+                # Competências diferentes (normal)
+                tree[area]["componentes"][comp] = {
+                    "competencias_especificas_componente": comp_competencias,
+                    "anos": {}
+                }
+
 
     # ========================================================================
     # CONTEXTO GLOBAL - Variáveis de estado entre páginas/tabelas

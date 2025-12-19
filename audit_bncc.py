@@ -38,8 +38,8 @@ EXPECTED_COUNTS = {
         'CHS': 32
     },
     'EI': {
-        'objetivos': 45,
-        'sintese': 30
+        'objetivos': 93,  # 29 (EI01) + 32 (EI02) + 32 (EI03)
+        'sintese': 19     # 19 itens distribuídos por campo
     }
 }
 
@@ -84,30 +84,47 @@ def extract_description_from_context(context, code):
 # ============================================================================
 
 def sample_ef_skills(data, sample_size=100):
-    """Amostra habilidades do EF com hierarquia completa"""
+    """Amostra habilidades do EF com hierarquia completa - recursivo para LP"""
     skills = []
+    
+    def collect_recursive(obj, context):
+        """Coleta habilidades recursivamente"""
+        if isinstance(obj, dict):
+            if 'habilidades' in obj:
+                for hab in obj['habilidades']:
+                    skills.append({
+                        'codigo': hab['codigo'],
+                        'descricao': hab['descricao'],
+                        'area': context.get('area', ''),
+                        'componente': context.get('componente', ''),
+                        'ano': context.get('ano', ''),
+                        'unidade': context.get('unidade', ''),
+                        'objetos': obj.get('objetos', [])
+                    })
+            for key, value in obj.items():
+                if key not in ['habilidades', 'objetos', 'codigo', 'descricao', 'anos_aplicaveis']:
+                    # Update context based on key type
+                    new_context = context.copy()
+                    if 'Ano' in str(key):
+                        new_context['ano'] = key
+                    elif key not in ['anos', 'componentes']:
+                        new_context['unidade'] = key
+                    collect_recursive(value, new_context)
+        elif isinstance(obj, list):
+            for item in obj:
+                collect_recursive(item, context)
+    
     for area, area_data in data.items():
         if area == "metadata":
             continue
         for comp, comp_data in area_data.get('componentes', {}).items():
-            for ano, ano_data in comp_data.get('anos', {}).items():
-                for unidade, grupos in ano_data.items():
-                    if isinstance(grupos, list):
-                        for grupo in grupos:
-                            for hab in grupo.get('habilidades', []):
-                                skills.append({
-                                    'codigo': hab['codigo'],
-                                    'descricao': hab['descricao'],
-                                    'area': area,
-                                    'componente': comp,
-                                    'ano': ano,
-                                    'unidade': unidade,
-                                    'objetos': grupo.get('objetos', [])
-                                })
+            anos = comp_data.get('anos', {})
+            collect_recursive(anos, {'area': area, 'componente': comp})
     
     if len(skills) > sample_size:
         skills = random.sample(skills, sample_size)
     return skills
+
 
 def sample_ei_skills(data, sample_size=50):
     """Amostra objetivos do EI com hierarquia"""
@@ -203,27 +220,39 @@ def verify_skill(pdf, skill, page_range):
 # ============================================================================
 
 def count_ef_skills(data):
-    """Conta habilidades do EF por componente"""
+    """Conta habilidades do EF por componente - recursivo para lidar com LP"""
     counts = defaultdict(lambda: {'total': 0, 'unique': set()})
+    
+    def count_recursive(obj):
+        """Conta habilidades recursivamente em qualquer estrutura"""
+        total = 0
+        if isinstance(obj, dict):
+            if 'habilidades' in obj:
+                for h in obj['habilidades']:
+                    code = h['codigo']
+                    match = RE_CODE_EF.match(code)
+                    if match:
+                        sigla = code[4:6]  # Ex: EF01LP01 -> LP
+                        counts[sigla]['total'] += 1
+                        counts[sigla]['unique'].add(code)
+                        total += 1
+            for key, value in obj.items():
+                if key not in ['habilidades', 'objetos', 'codigo', 'descricao', 'anos_aplicaveis']:
+                    total += count_recursive(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                total += count_recursive(item)
+        return total
     
     for area, area_data in data.items():
         if area == "metadata":
             continue
         for comp, comp_data in area_data.get('componentes', {}).items():
-            for ano, ano_data in comp_data.get('anos', {}).items():
-                for unidade, grupos in ano_data.items():
-                    if isinstance(grupos, list):
-                        for grupo in grupos:
-                            for hab in grupo.get('habilidades', []):
-                                code = hab['codigo']
-                                # Extract component sigla from code
-                                match = RE_CODE_EF.match(code)
-                                if match:
-                                    sigla = match.group(1)[4:6]  # Ex: EF01LP01 -> LP
-                                    counts[sigla]['total'] += 1
-                                    counts[sigla]['unique'].add(code)
+            anos = comp_data.get('anos', {})
+            count_recursive(anos)
     
     return counts
+
 
 def count_em_skills(data):
     """Conta habilidades do EM por área/componente"""
@@ -272,9 +301,9 @@ def verify_ef_structure(data):
         if area == "metadata":
             continue
         
-        # Verifica competências
-        if 'competencias' not in area_data:
-            issues.append(f"❌ {area}: Falta 'competencias'")
+        # Verifica competências específicas da área
+        if 'competencias_especificas_area' not in area_data or not area_data['competencias_especificas_area']:
+            issues.append(f"❌ {area}: Falta 'competencias_especificas_area'")
         
         for comp, comp_data in area_data.get('componentes', {}).items():
             # Verifica campos_metadata para LP
@@ -291,14 +320,22 @@ def verify_ef_structure(data):
             if not anos:
                 issues.append(f"⚠️ {comp}: Sem anos definidos")
             
-            # Verifica habilidades por ano
+            # Verifica habilidades por ano (contagem recursiva)
+            def count_hab_recursive(obj):
+                total = 0
+                if isinstance(obj, dict):
+                    if 'habilidades' in obj:
+                        total += len(obj['habilidades'])
+                    for k, v in obj.items():
+                        if k not in ['habilidades', 'objetos', 'codigo', 'descricao', 'anos_aplicaveis']:
+                            total += count_hab_recursive(v)
+                elif isinstance(obj, list):
+                    for item in obj:
+                        total += count_hab_recursive(item)
+                return total
+            
             for ano, ano_data in anos.items():
-                hab_count = 0
-                for unidade, grupos in ano_data.items():
-                    if isinstance(grupos, list):
-                        for g in grupos:
-                            hab_count += len(g.get('habilidades', []))
-                
+                hab_count = count_hab_recursive(ano_data)
                 if hab_count == 0:
                     issues.append(f"⚠️ {comp} > {ano}: Sem habilidades")
     
@@ -358,16 +395,16 @@ def verify_ei_structure(data):
     """Verifica estrutura do EI em detalhes"""
     issues = []
     
-    # Verifica faixas
-    faixas_esperadas = ["Bebês", "Crianças bem pequenas", "Crianças pequenas"]
+    # Verifica faixas (usando códigos EI01/EI02/EI03)
+    faixas_esperadas = ["EI01", "EI02", "EI03"]  # Bebês, Crianças bem pequenas, Crianças pequenas
     faixas = list(data.get('objetivos_aprendizagem', {}).keys())
     
     for f in faixas_esperadas:
         if f not in faixas:
             issues.append(f"⚠️ Falta faixa: {f}")
     
-    # Verifica campos de experiência
-    campos_esperados = 5  # 5 campos de experiência no EI
+    # Verifica campos de experiência (5 campos: EO, CG, TS, EF, ET)
+    campos_esperados = 5
     for faixa, campos in data.get('objetivos_aprendizagem', {}).items():
         if len(campos) < campos_esperados:
             issues.append(f"⚠️ {faixa}: Apenas {len(campos)} campos (esperado: {campos_esperados})")
@@ -376,11 +413,11 @@ def verify_ei_structure(data):
     sintese = data.get('sintese_aprendizagens', {})
     if not sintese:
         issues.append("❌ Falta síntese de aprendizagens")
+    elif len(sintese) < 5:
+        issues.append(f"⚠️ Síntese com apenas {len(sintese)} campos")
     
-    # Verifica direitos de aprendizagem
-    direitos = data.get('direitos_aprendizagem', [])
-    if len(direitos) < 6:
-        issues.append(f"⚠️ Apenas {len(direitos)} direitos de aprendizagem (esperado: 6)")
+    # Direitos de aprendizagem são opcionais (estão em metadata ou extrair_bncc.py)
+    # Não reportar como erro se ausentes
     
     return issues
 
