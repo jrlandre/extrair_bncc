@@ -96,6 +96,9 @@ def format_special_chars(text):
 def processar_descricao(texto_bruto, codigo):
     if codigo: texto = texto_bruto.replace(codigo, "")
     else: texto = texto_bruto
+    # Remove newlines e normaliza espaços
+    texto = texto.replace('\n', ' ')
+    texto = re.sub(r'\s+', ' ', texto)  # Normaliza múltiplos espaços
     texto = re.sub(r"^[\s\(\)\.\-]+", "", texto).strip()
     return format_special_chars(texto)
 
@@ -460,15 +463,19 @@ def extract_ef_final(pdf):
                 "Leitura", "Escrita", "Oralidade", "Análise", "Produção"
             ])
             
+            # Função para limpar newlines das unidades
+            def clean_label(s):
+                return re.sub(r'\s+', ' ', s.replace('\n', ' ')).strip()
+            
             # Atualiza contexto hierárquico
             if is_campo:
-                last_campo = col0
+                last_campo = clean_label(col0)
                 last_pratica = ""  # Reset prática quando muda campo
             elif is_pratica:
-                last_pratica = col0
+                last_pratica = clean_label(col0)
             elif is_valid_label(col0):
                 # Outros componentes: col0 é Unidade Temática
-                last_unidade = col0
+                last_unidade = clean_label(col0)
             
             # Determina Objeto (pode estar em col1 ou col2)
             obj_raw = col1 if is_valid_label(col1) else (col2 if is_valid_label(col2) else "")
@@ -510,8 +517,8 @@ def extract_ef_final(pdf):
                         
                         # Analisa buffer anterior
                         buffer_palavras = buffer.rstrip().split()
-                        ultima_palavra = buffer_palavras[-1].lower().rstrip('.,;:') if buffer_palavras else ''
-                        buffer_termina_incompleto = buffer.rstrip().endswith((',', '-', '–', ':'))
+                        ultima_palavra = buffer_palavras[-1].lower().rstrip('.,;:/') if buffer_palavras else ''
+                        buffer_termina_incompleto = buffer.rstrip().endswith((',', '-', '–', ':', '/'))
                         buffer_termina_com_prep = ultima_palavra in palavras_finais_continuacao
                         
                         # Analisa linha atual
@@ -556,7 +563,13 @@ def extract_ef_final(pdf):
                         objetos_finais.append(buffer)
                     
                     # Junta objetos válidos com separador || (preserva 1:1 com linha)
-                    objs_validos = [o for o in objetos_finais if is_valid_label(o) and len(o) > 5]
+                    # Limpa "/" que foi usado como marcador de continuação
+                    objs_validos = []
+                    for o in objetos_finais:
+                        # Remove "/" do final ou entre palavras (ex: "grafias/ Acentuação" -> "grafias/Acentuação")
+                        o_limpo = o.replace('/ ', '/').rstrip('/').strip()
+                        if is_valid_label(o_limpo) and len(o_limpo) > 5:
+                            objs_validos.append(o_limpo)
                     if objs_validos:
                         result.append((unidade_final, "||".join(objs_validos)))
         
@@ -718,6 +731,17 @@ def extract_ef_final(pdf):
             if is_skills_table(header_str, table):
                 # Processa cada linha de dados (pula header)
                 data_rows = [r for r in table[1:] if r and any(c for c in r if c)]
+                
+                # Filtra sub-headers que contêm apenas labels de anos (1º ANO, 2º ANO, etc.)
+                # Essas linhas não contêm habilidades e causam deslocamento no mapeamento
+                def is_year_subheader(row):
+                    text = ' '.join(str(c) if c else '' for c in row).strip().upper()
+                    # Se a linha contém apenas combinações de "Nº ANO" sem códigos EF
+                    return (bool(re.search(r'^\d+º?\s*ANO', text)) and 
+                            not RE_CODE_EF.search(text) and
+                            len(text) < 50)
+                
+                data_rows = [r for r in data_rows if not is_year_subheader(r)]
                 
                 # MAPEAMENTO POSICIONAL: Row N da tabela de habilidades corresponde
                 # a Row N da tabela de contexto (podem estar em páginas diferentes)
