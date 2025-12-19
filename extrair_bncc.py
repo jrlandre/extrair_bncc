@@ -44,6 +44,23 @@ MAPA_EF_ESTRUTURA = {
     "ER": {"componente": "Ensino Religioso", "area": "Ensino Religioso"}
 }
 
+# Mapeamento EM - Ensino Médio
+MAPA_EM_AREAS = {
+    "LGG": "Linguagens e suas Tecnologias",
+    "LP": "Linguagens e suas Tecnologias",  # Componente LP
+    "MAT": "Matemática e suas Tecnologias",
+    "CNT": "Ciências da Natureza e suas Tecnologias",
+    "CHS": "Ciências Humanas e Sociais Aplicadas"
+}
+
+# Páginas por área no EM
+EM_AREA_PAGES = {
+    "Linguagens e suas Tecnologias": (481, 530),
+    "Matemática e suas Tecnologias": (531, 555),
+    "Ciências da Natureza e suas Tecnologias": (555, 570),
+    "Ciências Humanas e Sociais Aplicadas": (570, 600)
+}
+
 # --- FUNÇÕES PARA EXTRAÇÃO DE ITÁLICO ---
 
 def build_formatted_text_from_chars(chars):
@@ -1368,6 +1385,330 @@ def extract_ef_final(pdf):
     return tree
 
 
+# ========================================================================
+# EXTRAÇÃO ENSINO MÉDIO - ESTRUTURA HIERÁRQUICA
+# ========================================================================
+
+def extract_em_final(pdf):
+    """
+    Extrai Ensino Médio em estrutura hierárquica:
+    - Áreas com Competências Específicas
+    - Habilidades agrupadas por Competência
+    - LP com Campos de Atuação e Competências Associadas
+    """
+    print("--- Processando Ensino Médio ---")
+    
+    # Regex patterns
+    RE_CODE_EM = re.compile(r"\(?(EM13([A-Z]{2,4})(\d{2,3}))\)?")
+    RE_COMP_ESP = re.compile(r"COMPETÊNCIA\s+ESPECÍFICA\s+(\d+)", re.IGNORECASE)
+    RE_CAMPO = re.compile(r"^(TODOS OS CAMPOS|CAMPO\s+D[AEO]\s+[A-ZÁÉÍÓÚÃÕÊ\s]+)", re.IGNORECASE)
+    
+    def clean_text(text):
+        if not text:
+            return ""
+        return re.sub(r'\s+', ' ', unicodedata.normalize("NFKC", text)).strip()
+    
+    # Estrutura de saída
+    tree = {
+        "Linguagens e suas Tecnologias": {
+            "competencias_especificas": [],
+            "componentes": {
+                "Língua Portuguesa": {
+                    "campos_de_atuacao": {}
+                }
+            }
+        },
+        "Matemática e suas Tecnologias": {
+            "competencias_especificas": []
+        },
+        "Ciências da Natureza e suas Tecnologias": {
+            "competencias_especificas": []
+        },
+        "Ciências Humanas e Sociais Aplicadas": {
+            "competencias_especificas": []
+        }
+    }
+    
+    # Estado de processamento
+    current_area = ""
+    current_comp_esp = None
+    current_campo = ""
+    current_praticas = ""
+    
+    # Dicionário temporário para competências
+    comp_esp_temp = {}  # {(area, numero): {"texto": str, "habilidades": []}}
+    lp_habilidades = []  # Lista de habilidades LP com competências associadas
+    
+    # ========================================================================
+    # FASE 1: Extrair Competências Específicas e suas descrições
+    # ========================================================================
+    
+    for page_num in range(480, 600):
+        if page_num >= len(pdf.pages):
+            break
+        
+        page = pdf.pages[page_num]
+        text = page.extract_text() or ""
+        upper_text = text.upper()
+        
+        # Detecta área atual
+        if "LINGUAGENS E SUAS TECNOLOGIAS" in upper_text and page_num < 530:
+            current_area = "Linguagens e suas Tecnologias"
+        elif "MATEMÁTICA E SUAS TECNOLOGIAS" in upper_text:
+            current_area = "Matemática e suas Tecnologias"
+        elif "CIÊNCIAS DA NATUREZA E SUAS TECNOLOGIAS" in upper_text:
+            current_area = "Ciências da Natureza e suas Tecnologias"
+        elif "CIÊNCIAS HUMANAS E SOCIAIS APLICADAS" in upper_text:
+            current_area = "Ciências Humanas e Sociais Aplicadas"
+        
+        # Detecta Competência Específica
+        comp_match = RE_COMP_ESP.search(text)
+        if comp_match and current_area:
+            comp_num = int(comp_match.group(1))
+            
+            # Extrai texto da competência (próximas linhas após o título)
+            lines = text.split('\n')
+            comp_text = ""
+            capture = False
+            for line in lines:
+                if RE_COMP_ESP.search(line):
+                    capture = True
+                    continue
+                if capture:
+                    clean_line = clean_text(line)
+                    # Para quando encontra habilidade ou próxima competência
+                    if RE_CODE_EM.search(clean_line) or RE_COMP_ESP.search(clean_line):
+                        break
+                    if len(clean_line) > 10:
+                        comp_text += " " + clean_line
+            
+            comp_text = clean_text(comp_text)
+            if comp_text:
+                key = (current_area, comp_num)
+                if key not in comp_esp_temp:
+                    comp_esp_temp[key] = {"texto": comp_text, "habilidades": []}
+            
+            current_comp_esp = comp_num
+    
+    # ========================================================================
+    # FASE 2: Extrair Habilidades e associá-las às Competências
+    # ========================================================================
+    
+    current_area = ""
+    current_comp_esp = None
+    
+    for page_num in range(480, 600):
+        if page_num >= len(pdf.pages):
+            break
+        
+        page = pdf.pages[page_num]
+        text = page.extract_text() or ""
+        upper_text = text.upper()
+        
+        # Detecta área
+        if "LINGUAGENS E SUAS TECNOLOGIAS" in upper_text and page_num < 530:
+            current_area = "Linguagens e suas Tecnologias"
+        elif "MATEMÁTICA E SUAS TECNOLOGIAS" in upper_text:
+            current_area = "Matemática e suas Tecnologias"
+        elif "CIÊNCIAS DA NATUREZA E SUAS TECNOLOGIAS" in upper_text:
+            current_area = "Ciências da Natureza e suas Tecnologias"
+        elif "CIÊNCIAS HUMANAS E SOCIAIS APLICADAS" in upper_text:
+            current_area = "Ciências Humanas e Sociais Aplicadas"
+        
+        # Detecta Competência Específica
+        comp_match = RE_COMP_ESP.search(text)
+        if comp_match:
+            current_comp_esp = int(comp_match.group(1))
+        
+        # Extrai habilidades
+        lines = text.split('\n')
+        buffer_code = None
+        buffer_desc = []
+        buffer_sigla = ""
+        
+        for line in lines:
+            clean_line = clean_text(line)
+            match = RE_CODE_EM.search(clean_line)
+            
+            if match:
+                # Salva habilidade anterior
+                if buffer_code and buffer_desc:
+                    desc = clean_text(" ".join(buffer_desc))
+                    _add_em_habilidade(comp_esp_temp, current_area, current_comp_esp, 
+                                       buffer_code, buffer_sigla, desc)
+                
+                # Nova habilidade
+                buffer_code = match.group(1)
+                buffer_sigla = match.group(2)
+                start_desc = clean_line[match.end():].strip()
+                start_desc = re.sub(r"^[\s\.\-\)]+", "", start_desc)
+                buffer_desc = [start_desc] if start_desc else []
+                
+            elif buffer_code:
+                # Continua descrição
+                if len(clean_line) > 3 and not clean_line.isdigit():
+                    buffer_desc.append(clean_line)
+        
+        # Última habilidade da página
+        if buffer_code and buffer_desc:
+            desc = clean_text(" ".join(buffer_desc))
+            _add_em_habilidade(comp_esp_temp, current_area, current_comp_esp,
+                               buffer_code, buffer_sigla, desc)
+    
+    # ========================================================================
+    # FASE 3: Processar LP com tabelas (Campos de Atuação + Competências Associadas)
+    # ========================================================================
+    
+    current_campo = "Todos os Campos de Atuação Social"
+    current_praticas = ""
+    
+    for page_num in range(506, 530):
+        if page_num >= len(pdf.pages):
+            break
+        
+        page = pdf.pages[page_num]
+        tables = page.extract_tables()
+        
+        for table in tables:
+            if not table or len(table) < 2:
+                continue
+            
+            for row in table:
+                if not row or len(row) < 1:
+                    continue
+                
+                col0 = clean_text(row[0]) if row[0] else ""
+                col1 = clean_text(row[1]) if len(row) > 1 and row[1] else ""
+                
+                # Detecta Campo de Atuação
+                if "TODOS OS CAMPOS" in col0.upper():
+                    current_campo = "Todos os Campos de Atuação Social"
+                elif "CAMPO DA VIDA PESSOAL" in col0.upper():
+                    current_campo = "Campo da Vida Pessoal"
+                elif "CAMPO DE ATUAÇÃO NA VIDA PÚBLICA" in col0.upper():
+                    current_campo = "Campo de Atuação na Vida Pública"
+                elif "CAMPO DAS PRÁTICAS DE ESTUDO" in col0.upper():
+                    current_campo = "Campo das Práticas de Estudo e Pesquisa"
+                elif "CAMPO JORNALÍSTICO" in col0.upper():
+                    current_campo = "Campo Jornalístico-Midiático"
+                elif "CAMPO ARTÍSTICO" in col0.upper():
+                    current_campo = "Campo Artístico-Literário"
+                
+                # Detecta Práticas
+                if "PRÁTICAS" in col0.upper() and len(col0) < 200:
+                    current_praticas = col0
+                
+                # Extrai habilidade LP
+                lp_match = RE_CODE_EM.search(col0)
+                if lp_match and lp_match.group(2) == "LP":
+                    code = lp_match.group(1)
+                    # Descrição é o resto da célula após o código
+                    desc_start = col0[lp_match.end():].strip()
+                    desc_start = re.sub(r"^[\s\.\-\)]+", "", desc_start)
+                    
+                    # Competências associadas (números na col1)
+                    comp_assoc = []
+                    if col1:
+                        nums = re.findall(r"\d+", col1)
+                        comp_assoc = [int(n) for n in nums if 1 <= int(n) <= 7]
+                    
+                    lp_habilidades.append({
+                        "codigo": code,
+                        "descricao": desc_start,
+                        "campo": current_campo,
+                        "praticas": current_praticas,
+                        "competencias_associadas": comp_assoc
+                    })
+    
+    # ========================================================================
+    # FASE 4: Montar estrutura final
+    # ========================================================================
+    
+    # Adiciona competências específicas às áreas
+    for (area, num), data in sorted(comp_esp_temp.items(), key=lambda x: (x[0][0], x[0][1])):
+        if area in tree:
+            # Filtra habilidades LGG/MAT/CNT/CHS (não LP)
+            habilidades_filtradas = [h for h in data["habilidades"] if "LP" not in h["codigo"]]
+            
+            tree[area]["competencias_especificas"].append({
+                "numero": num,
+                "texto": data["texto"][:500] if data["texto"] else "",  # Limita tamanho
+                "habilidades": habilidades_filtradas
+            })
+    
+    # Adiciona habilidades LP aos campos de atuação
+    lp_data = tree["Linguagens e suas Tecnologias"]["componentes"]["Língua Portuguesa"]
+    for hab in lp_habilidades:
+        campo = hab["campo"]
+        if campo not in lp_data["campos_de_atuacao"]:
+            lp_data["campos_de_atuacao"][campo] = {
+                "habilidades": []
+            }
+        
+        lp_data["campos_de_atuacao"][campo]["habilidades"].append({
+            "codigo": hab["codigo"],
+            "descricao": hab["descricao"],
+            "competencias_associadas": hab["competencias_associadas"]
+        })
+    
+    # ========================================================================
+    # ESTATÍSTICAS
+    # ========================================================================
+    
+    total_hab = 0
+    for area, area_data in tree.items():
+        area_count = 0
+        for comp in area_data.get("competencias_especificas", []):
+            area_count += len(comp.get("habilidades", []))
+        
+        # Conta LP separadamente
+        if "componentes" in area_data:
+            for comp_name, comp_data in area_data["componentes"].items():
+                for campo, campo_data in comp_data.get("campos_de_atuacao", {}).items():
+                    area_count += len(campo_data.get("habilidades", []))
+        
+        if area_count > 0:
+            print(f"  {area}: {area_count} habilidades")
+        total_hab += area_count
+    
+    print(f"\n  TOTAL EM: {total_hab} habilidades extraídas")
+    
+    return tree
+
+
+def _add_em_habilidade(comp_esp_temp, area, comp_num, code, sigla, desc):
+    """Adiciona habilidade à competência específica correspondente."""
+    if not area or not comp_num:
+        return
+    
+    # Deriva competência do código (ex: EM13LGG101 -> comp 1, EM13LGG201 -> comp 2)
+    if sigla in ["LGG", "MAT", "CNT", "CHS"]:
+        # O primeiro dígito após a sigla indica a competência
+        match = re.search(r"\d+$", code)
+        if match:
+            num_str = match.group()
+            if len(num_str) >= 2:
+                derived_comp = int(num_str[0])
+            else:
+                derived_comp = comp_num
+        else:
+            derived_comp = comp_num
+    else:
+        derived_comp = comp_num
+    
+    key = (area, derived_comp)
+    if key not in comp_esp_temp:
+        comp_esp_temp[key] = {"texto": "", "habilidades": []}
+    
+    # Evita duplicatas
+    existing_codes = [h["codigo"] for h in comp_esp_temp[key]["habilidades"]]
+    if code not in existing_codes:
+        comp_esp_temp[key]["habilidades"].append({
+            "codigo": code,
+            "descricao": desc
+        })
+
+
 def extract_em(pdf):
     # (Código Original Mantido - Ensino Médio)
     print("--- Processando Ensino Médio ---")
@@ -1415,7 +1756,7 @@ def main():
 
     ei_data = extract_ei_final(pdf)
     ef_data = extract_ef_final(pdf) # Nova versão estruturada
-    em_data = extract_em(pdf)
+    em_data = extract_em_final(pdf)  # Nova versão estruturada
     
     pdf.close()
 
