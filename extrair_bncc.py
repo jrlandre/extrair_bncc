@@ -49,13 +49,19 @@ MAPA_EF_ESTRUTURA = {
 def clean_text_basic(text):
     if not text: return ""
     text = unicodedata.normalize("NFKC", text)
-    return re.sub(r'\s+', ' ', text).strip()
+    # CRÍTICO: Preserva newlines mas normaliza espaços dentro de cada linha
+    lines = text.split('\n')
+    lines = [re.sub(r'[ \t]+', ' ', line).strip() for line in lines]
+    return '\n'.join(line for line in lines if line)
 
 def clean_item_sintese(text):
     if not text: return ""
     text = unicodedata.normalize("NFKC", text)
     text = re.sub(r"^[\s•\-]+", "", text)
-    text = re.sub(r'\s+', ' ', text).strip()
+    # CRÍTICO: Preserva newlines mas normaliza espaços dentro de cada linha
+    lines = text.split('\n')
+    lines = [re.sub(r'[ \t]+', ' ', line).strip() for line in lines]
+    text = '\n'.join(lines)
     return format_special_chars(text)
 
 def format_special_chars(text):
@@ -427,39 +433,139 @@ def extract_ef_final(pdf):
     def extract_context_from_table(table, num_cols):
         """
         Extrai contexto (Unidade, Objeto) de uma tabela, um par por linha.
-        Retorna lista de tuplas (unidade, objeto) para correspondência direta com linhas de habilidade.
+        Para LP: detecta estrutura hierárquica Campo → Prática → Objeto.
+        Retorna lista de tuplas (unidade, objeto) para correspondência com linhas de habilidade.
         """
         result = []
-        last_unidade = ""
+        last_campo = ""  # Campo de Atuação (LP)
+        last_pratica = ""  # Prática de Linguagem (LP)
+        last_unidade = ""  # Unidade Temática (outros componentes)
         
         for row in table[1:]:  # Skip header
             if not row or not any(c for c in row if c):
                 continue
             
-            # Primeira coluna: Unidade Temática / Campo de Atuação
+            # Primeira coluna: pode ser Campo, Prática, ou Unidade Temática
             col0 = clean_text_basic(row[0]) if len(row) > 0 and row[0] else ""
             # Segunda coluna: Objetos de Conhecimento
             col1 = clean_text_basic(row[1]) if len(row) > 1 and row[1] else ""
             # Terceira coluna (às vezes vazia)
             col2 = clean_text_basic(row[2]) if len(row) > 2 and row[2] else ""
             
-            # Forward-fill Unidade (células mescladas)
-            if is_valid_label(col0):
+            # Detecta se col0 é um Campo de Atuação (LP)
+            is_campo = "CAMPO" in col0.upper() and ("–" in col0 or ":" in col0 or len(col0) > 40)
+            
+            # Detecta se col0 é uma Prática de Linguagem (LP)
+            is_pratica = not is_campo and is_valid_label(col0) and any(p in col0 for p in [
+                "Leitura", "Escrita", "Oralidade", "Análise", "Produção"
+            ])
+            
+            # Atualiza contexto hierárquico
+            if is_campo:
+                last_campo = col0
+                last_pratica = ""  # Reset prática quando muda campo
+            elif is_pratica:
+                last_pratica = col0
+            elif is_valid_label(col0):
+                # Outros componentes: col0 é Unidade Temática
                 last_unidade = col0
             
             # Determina Objeto (pode estar em col1 ou col2)
-            obj = col1 if is_valid_label(col1) else col2
+            obj_raw = col1 if is_valid_label(col1) else (col2 if is_valid_label(col2) else "")
             
-            # Adiciona entrada para esta linha
-            result.append((last_unidade, obj))
+            # Para LP: usa Campo ou Prática como Unidade (prioriza Prática se disponível)
+            # Para outros: usa Unidade Temática
+            if last_pratica:
+                unidade_final = last_pratica
+            elif last_campo:
+                unidade_final = last_campo
+            else:
+                unidade_final = last_unidade
+            # Processa objetos da célula - podem ser múltiplos objetos separados por newline
+            # Usa "||" como separador para indicar objetos distintos na mesma linha
+            if obj_raw:
+                linhas = [l.strip() for l in obj_raw.split('\n') if l.strip()]
+                
+                if len(linhas) == 1:
+                    # Único objeto
+                    obj = linhas[0]
+                    if is_valid_label(obj) and len(obj) > 5:
+                        result.append((unidade_final, obj))
+                else:
+                    # Múltiplas linhas - detectar se são objetos separados ou continuação
+                    # Heurísticas mais robustas para identificar continuação vs novo objeto
+                    objetos_finais = []
+                    buffer = linhas[0]
+                    
+                    # Palavras que indicam continuação na próxima linha
+                    palavras_finais_continuacao = {
+                        'do', 'da', 'dos', 'das', 'de', 'no', 'na', 'nos', 'nas',
+                        'e', 'ou', 'como', 'entre', 'sobre', 'para', 'por', 'com',
+                        'ao', 'aos', 'à', 'às', 'em', 'que', 'o', 'a', 'os', 'as',
+                        'seu', 'sua', 'seus', 'suas', 'um', 'uma', 'uns', 'umas'
+                    }
+                    
+                    for i in range(1, len(linhas)):
+                        linha = linhas[i]
+                        
+                        # Analisa buffer anterior
+                        buffer_palavras = buffer.rstrip().split()
+                        ultima_palavra = buffer_palavras[-1].lower().rstrip('.,;:') if buffer_palavras else ''
+                        buffer_termina_incompleto = buffer.rstrip().endswith((',', '-', '–', ':'))
+                        buffer_termina_com_prep = ultima_palavra in palavras_finais_continuacao
+                        
+                        # Analisa linha atual
+                        primeiro_char = linha[0] if linha else ''
+                        primeira_palavra = linha.split()[0].lower() if linha.split() else ''
+                        palavras_linha = linha.split()
+                        
+                        # Preposições que indicam continuação se a linha é muito curta
+                        preps = {'no', 'na', 'nos', 'nas', 'do', 'da', 'dos', 'das', 'de', 'e'}
+                        
+                        # Heurística baseada em proporção de tamanho:
+                        # - Linha muito curta (<20 chars) após buffer longo (>30 chars) 
+                        # - E contém preposição → provavelmente continua o anterior
+                        # Ex: "Solar no Universo" (17 chars) após "..do Sistema" (45+ chars)
+                        linha_parece_continuacao = False
+                        if len(linha) < 20 and len(buffer) > 30:
+                            # Verifica se contém preposição
+                            palavras_lower = {w.lower() for w in palavras_linha}
+                            if palavras_lower & preps:
+                                linha_parece_continuacao = True
+                        
+                        # Detecta se é CONTINUAÇÃO:
+                        # 1. Buffer termina com preposição/artigo (frase incompleta)
+                        # 2. Buffer termina com pontuação incompleta
+                        # 3. Linha começa com minúscula
+                        # 4. Linha muito curta com preposição (completa frase anterior)
+                        eh_continuacao = (
+                            buffer_termina_com_prep or
+                            buffer_termina_incompleto or
+                            not primeiro_char.isupper() or
+                            primeiro_char in '•–-(' or
+                            linha_parece_continuacao
+                        )
+                        if eh_continuacao:
+                            buffer += ' ' + linha
+                        else:
+                            # Novo objeto
+                            objetos_finais.append(buffer)
+                            buffer = linha
+                    
+                    if buffer:
+                        objetos_finais.append(buffer)
+                    
+                    # Junta objetos válidos com separador || (preserva 1:1 com linha)
+                    objs_validos = [o for o in objetos_finais if is_valid_label(o) and len(o) > 5]
+                    if objs_validos:
+                        result.append((unidade_final, "||".join(objs_validos)))
         
         return result
     
     def add_skill_to_tree(code, desc, sigla_comp, unidade_key, objeto_key):
         """
         Adiciona uma habilidade à árvore com a estrutura correta.
-        Se objeto_key contiver múltiplas linhas (objetos compostos), 
-        adiciona a skill a cada objeto separadamente.
+        O objeto_key já vem processado de extract_context_from_table, não precisa dividir.
         """
         if sigla_comp not in MAPA_EF_ESTRUTURA:
             return
@@ -482,57 +588,18 @@ def extract_ef_final(pdf):
             }
             unidade_key = defaults.get(comp_name, "Conteúdos")
         
-        # Separa objetos compostos (múltiplas linhas ou padrões no mesmo texto)
-        # Cada objeto recebe a mesma habilidade
-        if not objeto_key:
+        # Divide objetos que foram separados por || (múltiplos objetos na mesma célula)
+        if not objeto_key or len(objeto_key.strip()) < 5:
             objetos = ["Habilidades gerais"]
         else:
-            # Primeiro split por newline
-            linhas = objeto_key.split('\n')
-            objetos_brutos = []
-            
-            for linha in linhas:
-                linha_limpa = linha.strip()
-                if not linha_limpa or len(linha_limpa) <= 3:
-                    continue
-                upper = linha_limpa.upper()
-                if upper in ['HABILIDADES', 'OBJETOS DE CONHECIMENTO', 'OBJETO DE CONHECIMENTO']:
-                    continue
-                
-                # Segundo: split por padrão de capitalização (objetos space-separated)
-                # Detecta quando uma palavra maiúscula começa após palavra que não é preposição
-                prepositions = {'de', 'do', 'da', 'dos', 'das', 'e', 'a', 'o', 'às', 'ao', 'aos', 
-                               'à', 'na', 'no', 'nas', 'nos', 'em', 'para', 'por', 'com'}
-                
-                words = linha_limpa.split()
-                if len(words) <= 1:
-                    objetos_brutos.append(linha_limpa)
-                    continue
-                
-                current_obj = [words[0]]
-                for i in range(1, len(words)):
-                    word = words[i]
-                    prev_word = words[i-1].lower().rstrip(',')
-                    
-                    # Check if this starts a new object:
-                    # - Current word starts with capital
-                    # - Previous word is NOT a preposition/article
-                    if word and word[0].isupper() and prev_word not in prepositions:
-                        # New object starts
-                        if current_obj:
-                            objetos_brutos.append(' '.join(current_obj))
-                        current_obj = [word]
-                    else:
-                        current_obj.append(word)
-                
-                if current_obj:
-                    objetos_brutos.append(' '.join(current_obj))
-            
-            # Filtra objetos válidos
-            objetos = [o for o in objetos_brutos if o and len(o) > 3]
-            
-            if not objetos:
+            obj_limpo = objeto_key.strip()
+            if obj_limpo.upper() in ['HABILIDADES', 'OBJETOS DE CONHECIMENTO', 'OBJETO DE CONHECIMENTO']:
                 objetos = ["Habilidades gerais"]
+            elif "||" in obj_limpo:
+                # Múltiplos objetos separados por ||
+                objetos = [o.strip() for o in obj_limpo.split("||") if o.strip()]
+            else:
+                objetos = [obj_limpo]
         
         # Nova estrutura: Unidade → lista de {objetos: [...], habilidades: [...]}
         # Agrupa objetos que compartilham a mesma habilidade sem duplicar
@@ -576,34 +643,29 @@ def extract_ef_final(pdf):
         text_page = page.extract_text() or ""
         text_upper = text_page.upper()
         
-        # Detecta componente atual pela página - com precisão para evitar falsos positivos
-        # Ordem de prioridade: componentes mais específicos primeiro
-        component_priority = ['Língua Portuguesa', 'Língua Inglesa', 'Educação Física', 
-                             'Ensino Religioso', 'Arte', 'Matemática', 'Geografia', 'História', 'Ciências']
-        
+        # Detecta componente atual pela página
+        # PRIORIDADE 1: Padrões de área com componente específico
         detected_comp = None
-        for comp_name in component_priority:
-            comp_upper = comp_name.upper()
-            # Verifica padrões específicos para evitar falsos positivos
-            # Padrão: "COMPONENTE –" ou "COMPONENTE -" (título de seção)
-            pattern1 = comp_upper + " –"
-            pattern2 = comp_upper + " -"
-            pattern3 = f"\\n{comp_upper}\\n"
-            
-            if pattern1 in text_upper or pattern2 in text_upper or pattern3 in text_upper:
-                detected_comp = comp_name
-                break
-            
-            # Fallback: nome do componente presente, mas não em contexto de área
-            # Evita "CIÊNCIAS" em "CIÊNCIAS HUMANAS" ou "CIÊNCIAS DA NATUREZA"
-            if comp_upper in text_upper:
-                # Verifica se não é parte de nome de área
-                if comp_name == "Ciências" and "CIÊNCIAS HUMANAS" in text_upper:
-                    continue  # Falso positivo
-                if comp_name == "História" and "CIÊNCIAS HUMANAS" in text_upper and "HISTÓRIA –" not in text_upper:
-                    continue  # Pode ser apenas parte do cabeçalho da área
-                detected_comp = comp_name
-                break
+        
+        # Check área patterns primeiro (mais específicos)
+        if "CIÊNCIAS HUMANAS – HISTÓRIA" in text_upper or "HISTÓRIA –" in text_upper:
+            detected_comp = "História"
+        elif "CIÊNCIAS HUMANAS – GEOGRAFIA" in text_upper or "GEOGRAFIA –" in text_upper:
+            detected_comp = "Geografia"
+        elif "CIÊNCIAS DA NATUREZA – CIÊNCIAS" in text_upper or "CIÊNCIAS –" in text_upper:
+            detected_comp = "Ciências"
+        elif "LINGUAGENS – ARTE" in text_upper or "\nARTE –" in text_upper or "\nARTE\n" in text_upper:
+            detected_comp = "Arte"
+        elif "LINGUAGENS – EDUCAÇÃO FÍSICA" in text_upper or "EDUCAÇÃO FÍSICA –" in text_upper:
+            detected_comp = "Educação Física"
+        elif "LINGUAGENS – LÍNGUA INGLESA" in text_upper or "LÍNGUA INGLESA –" in text_upper:
+            detected_comp = "Língua Inglesa"
+        elif "LINGUAGENS – LÍNGUA PORTUGUESA" in text_upper or "LÍNGUA PORTUGUESA –" in text_upper:
+            detected_comp = "Língua Portuguesa"
+        elif "ENSINO RELIGIOSO –" in text_upper or "\nENSINO RELIGIOSO\n" in text_upper:
+            detected_comp = "Ensino Religioso"
+        elif "MATEMÁTICA –" in text_upper or "\nMATEMÁTICA\n" in text_upper:
+            detected_comp = "Matemática"
         
         if detected_comp:
             # Encontra área correspondente
@@ -641,28 +703,35 @@ def extract_ef_final(pdf):
                 new_context = extract_context_from_table(table, num_cols)
                 if new_context:
                     context_unidades = new_context  # Lista de tuplas (unidade, objeto)
-                    # Atualiza last_unidade/last_objeto para primeira entrada
-                    if context_unidades:
-                        last_unidade, last_objeto = context_unidades[0]
+                    # Atualiza last_unidade/last_objeto para ÚLTIMA entrada
+                    # (o contexto mais recente será usado para habilidades seguintes)
+                    for u, o in context_unidades:
+                        if u:
+                            last_unidade = u
+                        if o:
+                            last_objeto = o
                 continue
             
             # ============================================
             # TABELA DE HABILIDADES
             # ============================================
             if is_skills_table(header_str, table):
-                # context_unidades já é lista de (unidade, objeto) - uso direto
-                
                 # Processa cada linha de dados (pula header)
                 data_rows = [r for r in table[1:] if r and any(c for c in r if c)]
+                
+                # MAPEAMENTO POSICIONAL: Row N da tabela de habilidades corresponde
+                # a Row N da tabela de contexto (podem estar em páginas diferentes)
+                # context_unidades persiste da última tabela de contexto processada
                 
                 for row_idx, row in enumerate(data_rows):
                     if not row:
                         continue
                     
-                    # Determina contexto para esta linha baseado no índice
+                    # Determina contexto para esta linha usando mapeamento 1:1
                     if context_unidades and row_idx < len(context_unidades):
                         row_unidade, row_objeto = context_unidades[row_idx]
                     else:
+                        # Fallback: usa último contexto conhecido
                         row_unidade = last_unidade
                         row_objeto = last_objeto
                     
@@ -700,6 +769,7 @@ def extract_ef_final(pdf):
                             add_skill_to_tree(code, desc, sigla_comp, 
                                             row_unidade if row_unidade else last_unidade, 
                                             row_objeto if row_objeto else last_objeto)
+                
                 
                 continue
             
