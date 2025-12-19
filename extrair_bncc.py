@@ -217,8 +217,10 @@ def extract_ei_final(pdf):
                     if "SÍNTESE" in row_str and len(row_cells_clean) < 3: continue
                     if len(row) == 2:
                         col_campo_clean = clean_text_basic(row[0] if row[0] else "")
+                        # Remove newlines para comparação com nomes de campos
+                        col_campo_normalized = col_campo_clean.replace('\n', ' ').upper()
                         for sigla, nome in CAMPOS_EXPERIENCIA.items():
-                            if nome.upper() in col_campo_clean.upper(): ultimo_campo_sintese = sigla; break
+                            if nome.upper() in col_campo_normalized: ultimo_campo_sintese = sigla; break
                         col_texto_raw = row[1] if row[1] else ""
                         if ultimo_campo_sintese and col_texto_raw:
                             novos = separar_itens_sintese(col_texto_raw)
