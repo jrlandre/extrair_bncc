@@ -217,6 +217,188 @@ def apply_italic_formatting(text, italic_words):
     
     return result
 
+
+def parse_campo_name_description(raw_text):
+    """
+    Separa nome de Campo/Eixo da sua descrição e aplica formatação inteligente.
+    
+    Retorna:
+        {
+            "nome": "Campo das práticas de estudo e pesquisa",  # Title Case inteligente
+            "descricao": "Trata-se de ampliar e qualificar..."  # Texto formatado
+        }
+    
+    Regras de capitalização:
+    - Palavras principais: capitalize
+    - Preposições/artigos (de, da, do, das, dos, e, a, o, as, os, em, na, no, nas, nos): minúsculo
+    - Exceção: primeira palavra sempre maiúscula
+    - Hífens: preservar capitalização em cada parte
+    """
+    if not raw_text:
+        return {"nome": "", "descricao": ""}
+    
+    # Só processa se for realmente um Campo/Eixo
+    # Textos como "Oralidade *considerar..." não são campos
+    upper_text = raw_text.upper()
+    is_campo_or_eixo = (
+        upper_text.startswith("CAMPO") or 
+        upper_text.startswith("EIXO") or
+        upper_text.startswith("TODOS") or  # "TODOS OS CAMPOS DE ATUAÇÃO"
+        "CAMPO DE ATUAÇÃO" in upper_text or
+        "CAMPOS DE ATUAÇÃO" in upper_text or  # plural
+        "CAMPO DAS" in upper_text or
+        "CAMPO DA" in upper_text
+    )
+    
+    if not is_campo_or_eixo:
+        # Retorna texto original sem parsing
+        return {"nome": raw_text, "descricao": ""}
+    
+    # Caso simples: Campo sem descrição (ex: "TODOS OS CAMPOS DE ATUAÇÃO")
+    # Verifica se tem separador de descrição
+    has_separator = any(sep in raw_text for sep in [" – ", " - ", "Trata-se", "O que está"])
+    if not has_separator:
+        return {"nome": _smart_title_case(raw_text), "descricao": ""}
+    
+    # Identificadores de início de descrição
+    separadores = [
+        " – Trata-se",
+        " – O que está",
+        " – Este campo",
+        " – Neste campo",
+        " – Campo de",
+        " – Práticas de",
+        " – ",  # Fallback genérico
+    ]
+    
+    nome_raw = raw_text
+    descricao = ""
+    
+    # Tenta encontrar o separador
+    for sep in separadores:
+        if sep in raw_text:
+            parts = raw_text.split(sep, 1)
+            nome_raw = parts[0].strip()
+            if len(parts) > 1:
+                # Reconstrói o início da descrição
+                if sep != " – ":
+                    # Recoloca o início que foi perdido no split
+                    inicio = sep.replace(" – ", "").strip()
+                    descricao = inicio + parts[1]
+                else:
+                    descricao = parts[1].strip()
+            break
+    
+    # Aplica Title Case inteligente ao nome
+    nome_formatado = _smart_title_case(nome_raw)
+    
+    # Formata a descrição com quebras de linha inteligentes
+    descricao_formatada = _format_campo_description(descricao) if descricao else ""
+    
+    return {
+        "nome": nome_formatado,
+        "descricao": descricao_formatada
+    }
+
+
+def _smart_title_case(text):
+    """
+    Aplica Title Case inteligente, mantendo preposições e artigos em minúsculo.
+    """
+    if not text:
+        return ""
+    
+    # Palavras que devem permanecer minúsculas (exceto no início)
+    lowercase_words = {
+        'de', 'da', 'do', 'das', 'dos',
+        'a', 'à', 'o', 'as', 'os',
+        'e', 'em', 'na', 'no', 'nas', 'nos',
+        'por', 'para', 'com', 'sem',
+        'que', 'ao', 'aos', 'pela', 'pelo', 'pelas', 'pelos'
+    }
+    
+    # Palavras que devem manter capitalização especial
+    special_words = {
+        'LP': 'LP', 'EF': 'EF', 'EI': 'EI', 'EM': 'EM',
+        'TV': 'TV', 'DVD': 'DVD', 'CD': 'CD'
+    }
+    
+    # Limpa e normaliza
+    text = text.strip()
+    
+    # Trata texto todo em maiúsculas
+    if text.isupper():
+        text = text.lower()
+    
+    words = text.split()
+    result = []
+    
+    for i, word in enumerate(words):
+        # Trata palavras com hífen
+        if '-' in word:
+            parts = word.split('-')
+            formatted_parts = []
+            for j, part in enumerate(parts):
+                if part.upper() in special_words:
+                    formatted_parts.append(special_words[part.upper()])
+                elif part.lower() in lowercase_words and j > 0:
+                    formatted_parts.append(part.lower())
+                else:
+                    formatted_parts.append(part.capitalize())
+            result.append('-'.join(formatted_parts))
+        elif word.upper() in special_words:
+            result.append(special_words[word.upper()])
+        elif i == 0:
+            # Primeira palavra sempre capitalizada
+            result.append(word.capitalize())
+        elif word.lower() in lowercase_words:
+            result.append(word.lower())
+        else:
+            result.append(word.capitalize())
+    
+    return ' '.join(result)
+
+
+def _format_campo_description(text):
+    """
+    Formata descrição de campo com quebras de linha inteligentes.
+    
+    - Preserva listas com "-" ou "•"
+    - Adiciona quebras antes de marcadores
+    - Normaliza espaçamento
+    """
+    if not text:
+        return ""
+    
+    # Normaliza espaços
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Adiciona quebra antes de marcadores de lista
+    text = re.sub(r'\s*[-–•]\s+', '\n- ', text)
+    
+    # Adiciona quebra antes de frases que começam novo parágrafo
+    paragraph_starters = [
+        'Trata-se também',
+        'Para além',
+        'Essas habilidades',
+        'Considerando',
+        'Além disso',
+        'É importante',
+        'Nesse sentido',
+        'Dessa forma',
+    ]
+    
+    for starter in paragraph_starters:
+        text = text.replace(f' {starter}', f'\n\n{starter}')
+    
+    # Remove quebras duplicadas
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    
+    # Garante que começa sem quebra
+    text = text.strip()
+    
+    return text
+
 # --- UTILITÁRIOS ---
 
 def clean_text_basic(text):
@@ -579,6 +761,10 @@ def extract_ef_final(pdf):
     last_unidade = ""
     last_objeto = ""
     
+    # Dicionário para acumular continuações de descrições de campos
+    # (aplicado ao campos_metadata no final do processamento)
+    campo_desc_extra = {}  # {campo_nome_parseado: [lista de continuações]}
+    
     # ========================================================================
     # FUNÇÕES AUXILIARES
     # ========================================================================
@@ -638,13 +824,16 @@ def extract_ef_final(pdf):
             # Detecta se col0 é um Campo de Atuação (LP) ou Eixo (Inglês)
             # LP: "CAMPO DA VIDA COTIDIANA – ...", "TODOS OS CAMPOS DE ATUAÇÃO"
             # Inglês: "EIXO ORALIDADE – Práticas de...", "EIXO ESCRITA – ..."
+            # EXCLUI: notas com asterisco (ex: "Oralidade *Considerar...")
+            is_nota = "*" in col0 and col0.index("*") < 50  # Asterisco no início = nota
             is_campo = (
+                not is_nota and
                 ("CAMPO" in col0.upper() or "EIXO" in col0.upper()) and 
                 ("–" in col0 or ":" in col0 or "TODOS" in col0.upper() or len(col0) > 40)
             )
             
             # Detecta se col0 é uma Prática de Linguagem (LP)
-            is_pratica = not is_campo and is_valid_label(col0) and any(p in col0 for p in [
+            is_pratica = not is_campo and not is_nota and is_valid_label(col0) and any(p in col0 for p in [
                 "Leitura", "Escrita", "Oralidade", "Análise", "Produção"
             ])
             
@@ -657,7 +846,17 @@ def extract_ef_final(pdf):
                 last_campo = clean_label(col0)
                 last_pratica = ""  # Reset prática quando muda campo
             elif is_pratica:
-                last_pratica = clean_label(col0)
+                # Separa nome da prática de observações (ex: "Oralidade *Considerar...")
+                pratica_text = clean_label(col0)
+                if "*" in pratica_text:
+                    parts = pratica_text.split("*", 1)
+                    pratica_nome = parts[0].strip()
+                    pratica_nota = "*" + parts[1].strip() if len(parts) > 1 else ""
+                    # Armazena nota de prática em metadata (se disponível)
+                    # Nota: praticas_metadata seria criado no add_skill_to_tree
+                else:
+                    pratica_nome = pratica_text
+                last_pratica = pratica_nome
             elif is_valid_label(col0):
                 # Outros componentes: col0 é Unidade Temática
                 last_unidade = clean_label(col0)
@@ -825,13 +1024,28 @@ def extract_ef_final(pdf):
             
             if is_4_levels:
                 # LP/Inglês: 4 níveis - ano → campo/eixo → prática/unidade → grupos
-                if campo_key not in base[ano]:
-                    base[ano][campo_key] = {}
+                # Parseia campo_key para separar nome de descrição
+                parsed_campo = parse_campo_name_description(campo_key)
+                campo_nome = parsed_campo["nome"] or "Campo não especificado"
+                campo_descricao = parsed_campo["descricao"]
                 
-                if unidade_key not in base[ano][campo_key]:
-                    base[ano][campo_key][unidade_key] = []
+                # Inicializa campos_metadata se necessário
+                comp_base = tree[area_name]["componentes"][comp_name]
+                if "campos_metadata" not in comp_base:
+                    comp_base["campos_metadata"] = {}
                 
-                target_list = base[ano][campo_key][unidade_key]
+                # Armazena descrição do campo (evita duplicatas)
+                if campo_nome not in comp_base["campos_metadata"] and campo_descricao:
+                    comp_base["campos_metadata"][campo_nome] = campo_descricao
+                
+                # Usa nome limpo como chave
+                if campo_nome not in base[ano]:
+                    base[ano][campo_nome] = {}
+                
+                if unidade_key not in base[ano][campo_nome]:
+                    base[ano][campo_nome][unidade_key] = []
+                
+                target_list = base[ano][campo_nome][unidade_key]
             else:
                 # Outros: 3 níveis - ano → unidade → grupos
                 if unidade_key not in base[ano]:
@@ -991,8 +1205,31 @@ def extract_ef_final(pdf):
                         
                         # Verifica se a célula contém códigos de habilidade
                         if not RE_CODE_EF.search(cell_text):
+                            # Detecta continuação de descrição de Campo (qualquer coluna)
+                            # (texto longo sem código EF que parece descrição)
+                            if (len(cell_text) > 80 and 
+                                  (cell_text.startswith("Trata-se") or 
+                                   cell_text.startswith("Considerando") or
+                                   cell_text.startswith("Essas habilidades") or
+                                   cell_text.startswith("Para além") or
+                                   cell_text.startswith("É importante") or
+                                   cell_text.startswith("Vários são") or  # Campo Jornalístico
+                                   cell_text.startswith("Diversos também") or  # Continuação
+                                   cell_text.startswith("Ainda com relação") or  # Continuação
+                                   cell_text.startswith("Nesse campo") or  # Continuação
+                                   cell_text.startswith("A formação") or  # Campo Artístico-Literário
+                                   "vivências significativas" in cell_text or
+                                   "articulação com todas as áreas" in cell_text) and
+                                  last_campo):
+                                # Acumula continuação para aplicar no final
+                                parsed = parse_campo_name_description(last_campo)
+                                campo_nome = parsed["nome"]
+                                continuation = _format_campo_description(cell_text)
+                                if campo_nome not in campo_desc_extra:
+                                    campo_desc_extra[campo_nome] = []
+                                campo_desc_extra[campo_nome].append(continuation)
                             # Pode ser label de Unidade/Objeto na primeira coluna
-                            if col_idx == 0 and is_valid_label(cell_text):
+                            elif col_idx == 0 and is_valid_label(cell_text):
                                 # Atualiza contexto para próximas linhas sem contexto
                                 if len(cell_text) < 50:
                                     last_unidade = cell_text
@@ -1112,6 +1349,21 @@ def extract_ef_final(pdf):
             total_all += len(unique_codes)
     
     print(f"\n  TOTAL: {total_all} códigos únicos extraídos")
+    
+    # Aplica continuações de descrições de campos acumuladas
+    if campo_desc_extra:
+        for area_name, area_data in tree.items():
+            if "componentes" not in area_data:
+                continue
+            for comp_name, comp_data in area_data.get("componentes", {}).items():
+                if "campos_metadata" not in comp_data:
+                    continue
+                for campo_nome, continuations in campo_desc_extra.items():
+                    if campo_nome in comp_data["campos_metadata"]:
+                        existing = comp_data["campos_metadata"][campo_nome]
+                        for cont in continuations:
+                            existing = existing + "\n\n" + cont
+                        comp_data["campos_metadata"][campo_nome] = existing
     
     return tree
 
