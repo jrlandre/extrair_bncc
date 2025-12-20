@@ -3,7 +3,7 @@
     "competencias_especificas": [
       {
         "numero": 1,
-        "texto": "Compreender o funcionamento das diferentes linguagens e práticas culturais (artís- ticas, corporais e verbais) e mobilizar esses conhecimentos na recepção e produção de discursos nos diferentes campos de atuação social e nas diversas mídias, para ampliar as formas de participação social, o entendimento e as possibilidades de explicação e interpretação crítica da realidade e para continuar aprendendo. Essa competência específica indica que, durante o Ensino Médio, os jovens devem desenvolver uma ",
+        "texto": "Compreender o funcionamento das diferentes linguagens e práticas culturais (artísticas, corporais e verbais) e mobilizar esses conhecimentos na recepção e produção de discursos nos diferentes campos de atuação social e nas diversas mídias, para ampliar as formas de participação social, o entendimento e as possibilidades de explicação e interpretação crítica da realidade e para continuar aprendendo.",
         "habilidades": [
           {
             "codigo": "EM13LGG101",
@@ -29,7 +29,7 @@
       },
       {
         "numero": 2,
-        "texto": "Compreender os processos identitários, conflitos e relações de poder que permeiam as práticas sociais de linguagem, respeitando as diversidades e a pluralidade de ideias e posições, e atuar socialmente com base em princípios e valores assentados na democracia, na igualdade e nos Direitos Humanos, exercitando o autoconheci- mento, a empatia, o diálogo, a resolução de conflitos e a cooperação, e combatendo preconceitos de qualquer natureza. Essa competência específica diz respeito à compreensão e ",
+        "texto": "Compreender os processos identitários, conflitos e relações de poder que permeiam as práticas sociais de linguagem, respeitando as diversidades e a pluralidade de ideias e posições, e atuar socialmente com base em princípios e valores assentados na democracia, na igualdade e nos Direitos Humanos, exercitando o autoconhecimento, a empatia, o diálogo, a resolução de conflitos e a cooperação, e combatendo preconceitos de qualquer natureza.",
         "habilidades": [
           {
             "codigo": "EM13LGG201",
@@ -51,7 +51,7 @@
       },
       {
         "numero": 3,
-        "texto": "Utilizar diferentes linguagens (artísticas, corporais e verbais) para exercer, com auto- nomia e colaboração, protagonismo e autoria na vida pessoal e coletiva, de forma crítica, criativa, ética e solidária, defendendo pontos de vista que respeitem o outro e promovam os Direitos Humanos, a consciência socioambiental e o consumo res- ponsável, em âmbito local, regional e global. Essa competência específica focaliza a construção da autonomia dos estudantes nas práticas de compreensão/recepção e de",
+        "texto": "Utilizar diferentes linguagens (artísticas, corporais e verbais) para exercer, com autonomia e colaboração, protagonismo e autoria na vida pessoal e coletiva, de forma crítica, criativa, ética e solidária, defendendo pontos de vista que respeitem o outro e promovam os Direitos Humanos, a consciência socioambiental e o consumo responsável, em âmbito local, regional e global.",
         "habilidades": [
           {
             "codigo": "EM13LGG301",
@@ -77,7 +77,7 @@
       },
       {
         "numero": 4,
-        "texto": "Compreender as línguas como fenômeno (geo)político, histórico, cultural, social, variável, heterogêneo e sensível aos contextos de uso, reconhecendo suas varieda- des e vivenciando-as como formas de expressões identitárias, pessoais e coletivas, bem como agindo no enfrentamento de preconceitos de qualquer natureza. Essa competência específica indica a necessidade de, ao final do Ensino Médio, os estudantes compreenderem as línguas e seu funcionamento como fenômeno marcado pela heterogeneidade e ",
+        "texto": "Compreender as línguas como fenômeno (geo)político, histórico, cultural, social, variável, heterogêneo e sensível aos contextos de uso, reconhecendo suas variedades e vivenciando-as como formas de expressões identitárias, pessoais e coletivas, bem como agindo no enfrentamento de preconceitos de qualquer natureza.",
         "habilidades": [
           {
             "codigo": "EM13LGG401",
@@ -95,7 +95,7 @@
       },
       {
         "numero": 5,
-        "texto": "Compreender os processos de produção e negociação de sentidos nas práticas cor- porais, reconhecendo-as e vivenciando-as como formas de expressão de valores e identidades, em uma perspectiva democrática e de respeito à diversidade. Essa competência específica indica que, ao final do Ensino Médio, o jovem deverá apresentar uma compreensão aprofundada e sistemática acerca da presença das práticas corporais em sua vida e na sociedade, incluindo os fatores sociais, culturais, ideológicos, econômicos",
+        "texto": "Compreender os processos de produção e negociação de sentidos nas práticas corporais, reconhecendo-as e vivenciando-as como formas de expressão de valores e identidades, em uma perspectiva democrática e de respeito à diversidade.",
         "habilidades": [
           {
             "codigo": "EM13LGG501",
@@ -113,7 +113,7 @@
       },
       {
         "numero": 6,
-        "texto": "Apreciar esteticamente as mais diversas produções artísticas e culturais, conside- rando suas características locais, regionais e globais, e mobilizar seus conhecimentos sobre as linguagens artísticas para dar significado e (re)construir produções auto- rais individuais e coletivas, exercendo protagonismo de maneira crítica e criativa, com respeito à diversidade de saberes, identidades e culturas. Ao final do Ensino Médio, os jovens devem ser capazes de fruir manifestações artísticas e culturais",
+        "texto": "Apreciar esteticamente as mais diversas produções artísticas e culturais, considerando suas características locais, regionais e globais, e mobilizar seus conhecimentos sobre as linguagens artísticas para dar significado e (re)construir produções autorais individuais e coletivas, exercendo protagonismo de maneira crítica e criativa, com respeito à diversidade de saberes, identidades e culturas.",
         "habilidades": [
           {
             "codigo": "EM13LGG601",
@@ -135,7 +135,7 @@
       },
       {
         "numero": 7,
-        "texto": "Mobilizar práticas de linguagem no universo digital, considerando as dimensões técnicas, críticas, criativas, éticas e estéticas, para expandir as formas de produzir sentidos, de engajar-se em práticas autorais e coletivas, e de aprender a aprender nos campos da ciência, cultura, trabalho, informação e vida pessoal e coletiva. Essa competência específica diz respeito às práticas de linguagem em ambiente digital, que têm modificado as práticas de linguagem em diferentes campos de atuação social. ",
+        "texto": "Mobilizar práticas de linguagem no universo digital, considerando as dimensões técnicas, críticas, criativas, éticas e estéticas, para expandir as formas de produzir sentidos, de engajar-se em práticas autorais e coletivas, e de aprender a aprender nos campos da ciência, cultura, trabalho, informação e vida pessoal e coletiva.",
         "habilidades": [
           {
             "codigo": "EM13LGG701",
@@ -590,7 +590,7 @@
     "competencias_especificas": [
       {
         "numero": 1,
-        "texto": "Utilizar estratégias, conceitos e procedimentos matemáticos para interpretar situa- ções em diversos contextos, sejam atividades cotidianas, sejam fatos das Ciências da Natureza e Humanas, das questões socioeconômicas ou tecnológicas, divulgados por diferentes meios, de modo a contribuir para uma formação geral. O desenvolvimento dessa competência específica, que é bastante ampla, pressupõe habilidades que podem favorecer a interpretação e compreensão da realidade pelos estudantes, utilizando co",
+        "texto": "Utilizar estratégias, conceitos e procedimentos matemáticos para interpretar situações em diversos contextos, sejam atividades cotidianas, sejam fatos das Ciências da Natureza e Humanas, das questões socioeconômicas ou tecnológicas, divulgados por diferentes meios, de modo a contribuir para uma formação geral.",
         "habilidades": [
           {
             "codigo": "EM13MAT101",
@@ -620,7 +620,7 @@
       },
       {
         "numero": 2,
-        "texto": "Propor ou participar de ações para investigar desafios do mundo contemporâneo e tomar decisões éticas e socialmente responsáveis, com base na análise de problemas sociais, como os voltados a situações de saúde, sustentabilidade, das implicações da tecnologia no mundo do trabalho, entre outros, mobilizando e articulando concei- tos, procedimentos e linguagens próprios da Matemática. Essa competência específica amplia a anterior por colocar os estudantes em situa- ções nas quais precisam investiga",
+        "texto": "Propor ou participar de ações para investigar desafios do mundo contemporâneo e tomar decisões éticas e socialmente responsáveis, com base na análise de problemas sociais, como os voltados a situações de saúde, sustentabilidade, das implicações da tecnologia no mundo do trabalho, entre outros, mobilizando e articulando conceitos, procedimentos e linguagens próprios da Matemática.",
         "habilidades": [
           {
             "codigo": "EM13MAT201",
@@ -638,7 +638,7 @@
       },
       {
         "numero": 3,
-        "texto": "Utilizar estratégias, conceitos, definições e procedimentos matemáticos para inter- pretar, construir modelos e resolver problemas em diversos contextos, analisando a plausibilidade dos resultados e a adequação das soluções propostas, de modo a construir argumentação consistente. As habilidades indicadas para o desenvolvimento dessa competência específica estão relacionadas à interpretação, construção de modelos, resolução e formulação de pro- blemas matemáticos envolvendo noções, conceitos e pr",
+        "texto": "Utilizar estratégias, conceitos, definições e procedimentos matemáticos para interpretar, construir modelos e resolver problemas em diversos contextos, analisando a plausibilidade dos resultados e a adequação das soluções propostas, de modo a construir argumentação consistente.",
         "habilidades": [
           {
             "codigo": "EM13MAT301",
@@ -708,7 +708,7 @@
       },
       {
         "numero": 4,
-        "texto": "Compreender e utilizar, com flexibilidade e precisão, diferentes registros de repre- sentação matemáticos (algébrico, geométrico, estatístico, computacional etc.), na busca de solução e comunicação de resultados de problemas. As habilidades vinculadas a essa competência específica tratam da utilização das dife- rentes representações de um mesmo objeto matemático na resolução de problemas em vários contextos, como os socioambientais e da vida cotidiana, tendo em vista que elas têm um papel decisi",
+        "texto": "Compreender e utilizar, com flexibilidade e precisão, diferentes registros de representação matemáticos (algébrico, geométrico, estatístico, computacional etc.), na busca de solução e comunicação de resultados de problemas.",
         "habilidades": [
           {
             "codigo": "EM13MAT401",
@@ -742,7 +742,7 @@
       },
       {
         "numero": 5,
-        "texto": "Investigar e estabelecer conjecturas a respeito de diferentes conceitos e proprieda- des matemáticas, empregando estratégias e recursos, como observação de padrões, experimentações e diferentes tecnologias, identificando a necessidade, ou não, de uma demonstração cada vez mais formal na validação das referidas conjecturas. O desenvolvimento dessa competência específica pressupõe um conjunto de habi- lidades voltadas às capacidades de investigação e de formulação de explicações e argumentos, que ",
+        "texto": "Investigar e estabelecer conjecturas a respeito de diferentes conceitos e propriedades matemáticas, empregando estratégias e recursos, como observação de padrões, experimentações e diferentes tecnologias, identificando a necessidade, ou não, de uma demonstração cada vez mais formal na validação das referidas conjecturas.",
         "habilidades": [
           {
             "codigo": "EM13MAT501",
@@ -796,7 +796,7 @@
     "competencias_especificas": [
       {
         "numero": 1,
-        "texto": "Analisar fenômenos naturais e processos tecnológicos, com base nas interações e relações entre matéria e energia, para propor ações individuais e coletivas que aper- feiçoem processos produtivos, minimizem impactos socioambientais e melhorem as condições de vida em âmbito local, regional e global. Nessa competência específica, os fenômenos naturais e os processos tecnológicos são analisados sob a perspectiva das relações entre matéria e energia, possibilitando, por exemplo, a avaliação de potenc",
+        "texto": "Analisar fenômenos naturais e processos tecnológicos, com base nas interações e relações entre matéria e energia, para propor ações individuais e coletivas que aperfeiçoem processos produtivos, minimizem impactos socioambientais e melhorem as condições de vida em âmbito local, regional e global.",
         "habilidades": [
           {
             "codigo": "EM13CNT101",
@@ -830,7 +830,7 @@
       },
       {
         "numero": 2,
-        "texto": "Analisar e utilizar interpretações sobre a dinâmica da Vida, da Terra e do Cosmos para elaborar argumentos, realizar previsões sobre o funcionamento e a evolução dos seres vivos e do Universo, e fundamentar e defender decisões éticas e responsáveis. Ao reconhecerem que os processos de transformação e evolução permeiam a natureza e ocorrem das moléculas às estrelas em diferentes escalas de tempo, os estudantes têm a oportunidade de elaborar reflexões que situem a humanidade e o planeta Terra na h",
+        "texto": "Analisar e utilizar interpretações sobre a dinâmica da Vida, da Terra e do Cosmos para elaborar argumentos, realizar previsões sobre o funcionamento e a evolução dos seres vivos e do Universo, e fundamentar e defender decisões éticas e responsáveis.",
         "habilidades": [
           {
             "codigo": "EM13CNT201",
@@ -872,7 +872,7 @@
       },
       {
         "numero": 3,
-        "texto": "Investigar situações-problema e avaliar aplicações do conhecimento científico e tecnológico e suas implicações no mundo, utilizando procedimentos e lingua- gens próprios das Ciências da Natureza, para propor soluções que considerem demandas locais, regionais e/ou globais, e comunicar suas descobertas e conclu- sões a públicos variados, em diversos contextos e por meio de diferentes mídias e tecnologias digitais de informação e comunicação (TDIC). Em um mundo repleto de informações de diferentes ",
+        "texto": "Investigar situações-problema e avaliar aplicações do conhecimento científico e tecnológico e suas implicações no mundo, utilizando procedimentos e linguagens próprios das Ciências da Natureza, para propor soluções que considerem demandas locais, regionais e/ou globais, e comunicar suas descobertas e conclusões a públicos variados, em diversos contextos e por meio de diferentes mídias e tecnologias digitais de informação e comunicação (TDIC).",
         "habilidades": [
           {
             "codigo": "EM13CNT301",
@@ -922,7 +922,7 @@
     "competencias_especificas": [
       {
         "numero": 1,
-        "texto": "Analisar processos políticos, econômicos, sociais, ambientais e culturais nos âmbitos local, regional, nacional e mundial em diferentes tempos, a partir da pluralidade de procedimentos epistemológicos, científicos e tecnológicos, de modo a compreender e posicionar-se criticamente em relação a eles, considerando diferentes pontos de vista e tomando decisões baseadas em argumentos e fontes de natureza científica. Nessa competência específica, pretende-se ampliar as capacidades dos estudantes de el",
+        "texto": "Analisar processos políticos, econômicos, sociais, ambientais e culturais nos âmbitos local, regional, nacional e mundial em diferentes tempos, a partir da pluralidade de procedimentos epistemológicos, científicos e tecnológicos, de modo a compreender e posicionar-se criticamente em relação a eles, considerando diferentes pontos de vista e tomando decisões baseadas em argumentos e fontes de natureza científica.",
         "habilidades": [
           {
             "codigo": "EM13CHS101",
@@ -952,7 +952,7 @@
       },
       {
         "numero": 2,
-        "texto": "Analisar a formação de territórios e fronteiras em diferentes tempos e espaços, mediante a compreensão das relações de poder que determinam as territorialidades e o papel geopolítico dos Estados-nações. Nessa competência específica, pretende-se comparar e avaliar a ocupação do espaço e a delimitação de fronteiras, como também o papel dos agentes responsáveis por essas transformações. Os atores sociais (na cidade, no campo, nas zonas limítrofes, em uma região, em um Estado ou mesmo na relação ent",
+        "texto": "Analisar a formação de territórios e fronteiras em diferentes tempos e espaços, mediante a compreensão das relações de poder que determinam as territorialidades e o papel geopolítico dos Estados-nações.",
         "habilidades": [
           {
             "codigo": "EM13CHS201",
@@ -982,7 +982,7 @@
       },
       {
         "numero": 3,
-        "texto": "Analisar e avaliar criticamente as relações de diferentes grupos, povos e sociedades com a natureza (produção, distribuição e consumo) e seus impactos econômicos e socioambientais, com vistas à proposição de alternativas que respeitem e promo- vam a consciência, a ética socioambiental e o consumo responsável em âmbito local, regional, nacional e global. Nessa competência específica, propõe-se analisar os paradigmas que refletem pensa- mentos e saberes de diferentes grupos, povos e sociedades (in",
+        "texto": "Analisar e avaliar criticamente as relações de diferentes grupos, povos e sociedades com a natureza (produção, distribuição e consumo) e seus impactos econômicos e socioambientais, com vistas à proposição de alternativas que respeitem e promovam a consciência, a ética socioambiental e o consumo responsável em âmbito local, regional, nacional e global.",
         "habilidades": [
           {
             "codigo": "EM13CHS301",
@@ -1012,7 +1012,7 @@
       },
       {
         "numero": 4,
-        "texto": "Analisar as relações de produção, capital e trabalho em diferentes territórios, con- textos e culturas, discutindo o papel dessas relações na construção, consolidação e transformação das sociedades. Nessa competência específica, pretende-se que os estudantes compreendam o sig- nificado de trabalho em diferentes culturas e sociedades, suas especificidades e os processos de estratificação social caracterizados por uma maior ou menor desigual- dade econômico-social e participação política. Além dis",
+        "texto": "Analisar as relações de produção, capital e trabalho em diferentes territórios, contextos e culturas, discutindo o papel dessas relações na construção, consolidação e transformação das sociedades.",
         "habilidades": [
           {
             "codigo": "EM13CHS401",
@@ -1034,7 +1034,7 @@
       },
       {
         "numero": 5,
-        "texto": "Identificar e combater as diversas formas de injustiça, preconceito e violência, adotando princípios éticos, democráticos, inclusivos e solidários, e respeitando os Direitos Humanos. O exercício de reflexão, que preside a construção do pensamento filosófico, permite aos jovens compreender os fundamentos da ética em diferentes culturas, estimulando o respeito às diferenças (linguísticas, culturais, religiosas, étnico-raciais etc.), à cidada- nia e aos Direitos Humanos. Ao realizar esse exercício ",
+        "texto": "Identificar e combater as diversas formas de injustiça, preconceito e violência, adotando princípios éticos, democráticos, inclusivos e solidários, e respeitando os Direitos Humanos.",
         "habilidades": [
           {
             "codigo": "EM13CHS501",
@@ -1056,7 +1056,7 @@
       },
       {
         "numero": 6,
-        "texto": "Participar do debate público de forma crítica, respeitando diferentes posições e fazendo escolhas alinhadas ao exercício da cidadania e ao seu projeto de vida, com liberdade, autonomia, consciência crítica e responsabilidade. A construção da cidadania é um exercício contínuo, dinâmico e que demanda a par- ticipação de todos para assegurar seus direitos e fazer cumprir deveres pactuados por princípios constitucionais e de respeito aos direitos humanos. Assim, para que os estudantes compreendam a ",
+        "texto": "Participar do debate público de forma crítica, respeitando diferentes posições e fazendo escolhas alinhadas ao exercício da cidadania e ao seu projeto de vida, com liberdade, autonomia, consciência crítica e responsabilidade.",
         "habilidades": [
           {
             "codigo": "EM13CHS601",

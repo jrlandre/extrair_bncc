@@ -1438,6 +1438,10 @@ def extract_em_final(pdf):
     def clean_text(text):
         if not text:
             return ""
+        # Remove hifenização de quebra de linha APENAS quando seguido de letra minúscula
+        # Ex: "artís- ticas" → "artísticas", "con- textos" → "contextos"
+        # Mas preserva: "sócio-econômico", "pós-graduação" (palavras compostas)
+        text = re.sub(r'-\s+([a-záéíóúãõâêîôûç])', r'\1', text)
         return re.sub(r'\s+', ' ', unicodedata.normalize("NFKC", text)).strip()
     
     # Estrutura de saída
@@ -1515,6 +1519,94 @@ def extract_em_final(pdf):
                         comp_text += " " + clean_line
             
             comp_text = clean_text(comp_text)
+            
+            # =============================================================
+            # Algoritmo probabilístico para detectar fim da competência
+            # Combina múltiplos fatores indicativos
+            # =============================================================
+            def find_competencia_end(text):
+                """
+                Encontra o ponto onde a competência termina e a explicação começa.
+                Usa combinação de fatores:
+                1. Frases explicativas (peso alto)
+                2. Comprimento típico de competência (150-450 chars)
+                3. Padrão de início de frase após ponto
+                """
+                if not text or len(text) < 100:
+                    return len(text)
+                
+                # Padrões que indicam início de explicação (peso alto: +10)
+                explanation_starters = [
+                    r'Essa competência',
+                    r'Nessa competência',
+                    r'Esta competência',
+                    r'O desenvolvimento',
+                    r'Pretende-se',
+                    r'Ao final do Ensino',
+                    r'Ao reconhecerem',
+                    r'Por fim,',
+                    r'Além disso,',
+                    r'Isso significa',
+                    r'Para isso',
+                    r'Trata-se de',
+                    r'É importante',
+                    r'Os jovens devem',
+                    r'Os estudantes devem',
+                    r'As habilidades indicadas',
+                    r'As habilidades vinculadas',
+                    r'As habilidades relacionadas',
+                    r'No caso d[aeo]',
+                    r'A partir d[aeo]',
+                ]
+                
+                # Encontra todos os pontos finais
+                period_positions = [m.end() for m in re.finditer(r'\.\s+', text)]
+                
+                if not period_positions:
+                    return len(text)
+                
+                best_pos = len(text)
+                best_score = 0
+                
+                for pos in period_positions:
+                    score = 0
+                    remaining = text[pos:].strip()
+                    text_before = text[:pos]
+                    
+                    # Fator 1: Frase explicativa após o ponto (peso alto)
+                    for pattern in explanation_starters:
+                        if re.match(pattern, remaining, re.IGNORECASE):
+                            score += 10
+                            break
+                    
+                    # Fator 2: Comprimento ideal (150-450 chars = bom)
+                    if 150 <= len(text_before) <= 450:
+                        score += 3
+                    elif 100 <= len(text_before) <= 500:
+                        score += 1
+                    
+                    # Fator 3: Texto antes termina completando ideia (termina em substantivo/verbo comum)
+                    if text_before.rstrip().endswith(('.', 'es.', 'ão.', 'ar.', 'er.', 'ir.')):
+                        score += 1
+                    
+                    # Fator 4: Próximo texto começa com artigo/pronome (típico de explicação)
+                    if remaining and remaining[0] in 'AOEUIN':  # A, O, E, Um, Isso, Nessa
+                        score += 1
+                    
+                    if score > best_score:
+                        best_score = score
+                        best_pos = pos
+                
+                # Só corta se tiver alta confiança (score >= 5)
+                if best_score >= 5:
+                    return best_pos - 1  # Remove o espaço após o ponto
+                
+                return len(text)
+            
+            end_pos = find_competencia_end(comp_text)
+            if end_pos < len(comp_text):
+                comp_text = comp_text[:end_pos].strip()
+            
             if comp_text:
                 key = (current_area, comp_num)
                 if key not in comp_esp_temp:
@@ -1664,7 +1756,7 @@ def extract_em_final(pdf):
             
             tree[area]["competencias_especificas"].append({
                 "numero": num,
-                "texto": data["texto"][:500] if data["texto"] else "",  # Limita tamanho
+                "texto": data["texto"] if data["texto"] else "",
                 "habilidades": habilidades_filtradas
             })
     
